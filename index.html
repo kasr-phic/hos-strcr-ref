@@ -1,0 +1,1601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Department of Health — Hospitals &amp; Structure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500;1,9..144,600&family=Figtree:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --canopy:#1B3624; --canopy-2:#25492F; --canopy-3:#2E5A3A;
+  --gold:#E3A63E; --gold-deep:#C6862A; --gold-soft:#F3D9A4;
+  --floor:#F7F4EC; --umber:#6B5A45; --ink:#1B3624; --paper:#FFFFFF;
+  --risk:#B23A2E; --risk-soft:#F7E3E0; --line:#E4DFD1; --muted:#7C8B7C;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;font-family:'Figtree',sans-serif;background:var(--floor);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;}
+h1,h2,h3,h4{font-family:'Fraunces',serif;font-weight:600;line-height:1.14;margin:0 0 .4em 0;letter-spacing:-0.01em;}
+p{margin:0 0 1em 0;}
+a{color:inherit;}
+.mono{font-family:'IBM Plex Mono',monospace;}
+::selection{background:var(--gold-soft);color:var(--canopy);}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:3px;}
+button{font-family:inherit;}
+
+/* ===== Top bar ===== */
+.topbar{
+  position:sticky;top:0;z-index:50;background:var(--canopy);color:#fff;
+  padding:0 28px;
+}
+.topbar-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:22px;height:64px;}
+.brand{display:flex;align-items:center;gap:11px;flex:none;}
+.leaf-mark{width:24px;height:24px;border-radius:50%;background:radial-gradient(circle at 35% 30%, var(--gold) 0%, var(--gold-deep) 60%, #8a5f1e 100%);flex:none;}
+.brand-text{font-family:'Fraunces',serif;font-weight:700;font-size:15px;color:#fff;line-height:1.15;}
+.brand-text small{display:block;font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:10.5px;color:rgba(243,217,164,0.65);letter-spacing:.03em;margin-top:1px;}
+.tabs{display:flex;gap:4px;margin-left:12px;}
+.tabbtn{
+  appearance:none;border:none;background:transparent;color:rgba(243,217,164,0.65);
+  font-size:14px;font-weight:600;padding:10px 16px;border-radius:8px;cursor:pointer;
+  display:flex;align-items:center;gap:8px;transition:background .15s,color .15s;
+}
+.tabbtn:hover{background:rgba(255,255,255,0.06);color:#fff;}
+.tabbtn.active{background:rgba(227,166,62,0.16);color:#fff;}
+.tabbtn .n{font-family:'IBM Plex Mono',monospace;font-size:10.5px;background:rgba(255,255,255,0.12);border-radius:5px;padding:1px 6px;}
+.topbar-meta{margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:11px;color:rgba(243,217,164,0.55);text-align:right;flex:none;}
+@media(max-width:760px){.topbar-inner{flex-wrap:wrap;height:auto;padding:12px 0;gap:10px;} .topbar-meta{display:none;}}
+
+/* ===== Header strip (per tab) ===== */
+.tabhead{padding:40px 28px 8px;max-width:1280px;margin:0 auto;}
+.tabhead h1{font-size:clamp(26px,3.4vw,36px);max-width:760px;}
+.tabhead p{color:var(--umber);font-size:15px;max-width:680px;}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.eyebrow::before{content:"";width:14px;height:1px;background:var(--gold-deep);}
+
+/* ===== Sub-nav (sticky within tab) ===== */
+.subnav{
+  position:sticky;top:64px;z-index:40;background:rgba(247,244,236,0.94);backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);padding:0 28px;
+}
+.subnav-inner{max-width:1280px;margin:0 auto;display:flex;gap:4px;overflow-x:auto;}
+.subnav a{
+  white-space:nowrap;font-size:13px;font-weight:600;color:var(--umber);text-decoration:none;
+  padding:13px 14px;border-bottom:2.5px solid transparent;
+}
+.subnav a:hover{color:var(--ink);}
+.subnav a.active{color:var(--canopy);border-bottom-color:var(--gold);}
+
+/* ===== Body ===== */
+.wrap{max-width:1280px;margin:0 auto;padding:36px 28px 100px;}
+.tabpanel{display:none;}
+.tabpanel.active{display:block;}
+h2.stitle{font-size:23px;margin-bottom:4px;}
+.sdek{color:var(--umber);font-size:14px;max-width:680px;margin-bottom:22px;}
+
+/* ===== Legend / tiers ===== */
+.legend{display:flex;flex-wrap:wrap;gap:16px;font-size:12.3px;color:var(--umber);margin:6px 0 28px;padding:12px 16px;background:#F1EDE0;border-radius:10px;}
+.legend span{display:inline-flex;align-items:center;gap:6px;}
+.tier{font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:10.5px;display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:5px;flex:none;}
+.tier-A{background:#DCEBDC;color:#2E5A3A;}
+.tier-B{background:#F1EADA;color:var(--gold-deep);}
+.tier-C{background:#EFEBE0;color:var(--muted);}
+.tier-D{background:var(--risk-soft);color:var(--risk);}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;flex:none;position:relative;top:1px;}
+.dot-filled{background:radial-gradient(circle at 35% 30%, var(--gold) 0%, var(--gold-deep) 70%);}
+.dot-half{background:conic-gradient(var(--gold) 0deg 180deg, #E4DFD1 180deg 360deg);border:1px solid var(--gold-deep);}
+.dot-risk{background:var(--risk);}
+
+/* ===== Cards ===== */
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px;}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:980px){.grid-4{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:640px){.grid-4,.grid-2{grid-template-columns:1fr;}}
+
+/* ===== GOCC cards ===== */
+.gocc-card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px;position:relative;}
+.gocc-card .tag{font-family:'IBM Plex Mono',monospace;font-size:10.3px;text-transform:uppercase;letter-spacing:.05em;color:var(--gold-deep);font-weight:700;margin-bottom:10px;}
+.gocc-card h4{font-size:16.5px;margin-bottom:2px;}
+.gocc-card .head{font-size:13.6px;color:var(--umber);margin-bottom:10px;}
+.gocc-card .meta{font-size:12px;color:var(--muted);display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding-top:12px;border-top:1px solid var(--line);}
+.oic-flag{display:inline-flex;align-items:center;gap:5px;background:#F1EADA;color:var(--gold-deep);border-radius:100px;padding:3px 9px;font-size:10.6px;font-weight:700;font-family:'IBM Plex Mono',monospace;margin-top:8px;}
+
+/* ===== Region accordions (hospitals) ===== */
+details.region{border:1px solid var(--line);border-radius:12px;margin-bottom:10px;background:var(--paper);overflow:hidden;}
+details.region[open]{border-color:var(--gold-deep);}
+details.region summary{
+  list-style:none;cursor:pointer;padding:15px 20px;display:flex;align-items:center;gap:12px;
+  font-family:'Fraunces',serif;font-weight:600;font-size:15.5px;color:var(--canopy);
+}
+details.region summary::-webkit-details-marker{display:none;}
+.region-count{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;color:var(--umber);
+  background:#F1EDE0;border-radius:100px;padding:2px 10px;
+}
+.region-usec{font-family:'IBM Plex Mono',monospace;font-size:10.3px;color:var(--muted);margin-left:auto;font-weight:500;}
+.region-chevron{color:var(--gold-deep);font-size:16px;transition:transform .15s;}
+details.region[open] .region-chevron{transform:rotate(180deg);}
+.region-body{border-top:1px solid var(--line);}
+.hosp-row{
+  display:grid;grid-template-columns:2fr 1.3fr 1fr 1.5fr auto;gap:12px;align-items:center;
+  padding:11px 20px;font-size:13px;border-top:1px solid var(--line);
+}
+.hosp-row.head{font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600;padding-top:12px;padding-bottom:8px;border-top:none;}
+.hosp-row:first-child{border-top:none;}
+.hosp-row.risk{background:var(--risk-soft);}
+.hosp-row .h-name{font-weight:700;color:var(--canopy);}
+.hosp-row.risk .h-name{color:var(--risk);}
+.hosp-row .h-loc{color:var(--muted);font-size:12.3px;}
+.hosp-row .h-mcc{color:var(--ink);}
+.hosp-row .h-mcc.unverified{color:var(--muted);font-style:italic;font-size:12.3px;}
+@media(max-width:760px){.hosp-row{grid-template-columns:1fr;gap:3px;padding:12px 16px;} .hosp-row .h-loc{order:2;}}
+
+.lvl-chip{
+  display:inline-flex;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:10.6px;font-weight:700;
+  padding:3px 8px;border-radius:100px;white-space:nowrap;
+}
+.lvl-1{background:#E4EEE0;color:#3d6b34;}
+.lvl-2{background:#F1EADA;color:var(--gold-deep);}
+.lvl-3{background:#F6DCC8;color:#a5552a;}
+.lvl-spec{background:#E3D9F0;color:#6a3f9e;}
+.lvl-unk{background:#EFEBE0;color:var(--muted);font-weight:600;}
+
+/* ===== Heat map ===== */
+.heatmap-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--paper);}
+table.heatmap{width:100%;border-collapse:collapse;font-size:13px;min-width:640px;}
+table.heatmap th.hm-collabel{
+  font-family:'IBM Plex Mono',monospace;font-size:10.3px;text-transform:uppercase;letter-spacing:.05em;
+  color:var(--umber);font-weight:600;padding:12px 10px;text-align:center;border-bottom:1.5px solid var(--line);
+}
+table.heatmap th.hm-rowlabel{
+  text-align:left;padding:9px 14px;font-weight:700;color:var(--canopy);font-size:12.8px;
+  border-bottom:1px solid var(--line);white-space:nowrap;position:sticky;left:0;background:var(--paper);
+}
+.hm-cell{text-align:center;padding:9px 6px;border-bottom:1px solid var(--line);font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:12.6px;color:#fff;min-width:56px;}
+.hm-0{color:var(--line);font-weight:400;background:transparent;}
+.hm-num-1{background:#EFD9BC;color:#7a4a1a;}
+.hm-num-2{background:#E3A63E;color:#4a2f0a;}
+.hm-num-3{background:#C6862A;color:#fff;}
+.hm-spec-1{background:#DECBF0;color:#4a2c6e;}
+.hm-spec-2{background:#B78EDA;color:#fff;}
+.hm-spec-3{background:#8A54BE;color:#fff;}
+.hm-unk-1{background:#EBE6D8;color:#7c7360;}
+.hm-unk-2{background:#D9D0B8;color:#5c5442;}
+.hm-unk-3{background:#C2B693;color:#3a3527;}
+.hm-total{text-align:center;padding:9px 10px;border-bottom:1px solid var(--line);font-family:'IBM Plex Mono',monospace;font-weight:700;color:var(--canopy);background:#F1EDE0;}
+.hm-foot th,.hm-foot td{border-top:2px solid var(--gold-deep);border-bottom:none;font-weight:700;}
+.hm-foot-cell{background:#EDE4D0 !important;color:var(--canopy) !important;}
+.heatmap-legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12px;color:var(--umber);margin-top:14px;}
+.heatmap-legend span{display:inline-flex;align-items:center;gap:6px;}
+.leg-swatch{width:13px;height:13px;border-radius:3px;flex:none;}
+
+
+/* ===== Distribution ===== */
+.dist-wrap{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;}
+@media(max-width:900px){.dist-wrap{grid-template-columns:1fr;}}
+.dist-collabel{font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--umber);margin-bottom:10px;font-weight:600;}
+.dist-row{margin-bottom:10px;}
+.dist-toprow{display:flex;justify-content:space-between;font-size:12.6px;margin-bottom:4px;}
+.dist-toprow .rname{font-weight:600;color:var(--ink);}
+.dist-toprow .rcount{font-family:'IBM Plex Mono',monospace;color:var(--umber);}
+.dist-track{height:8px;border-radius:4px;background:#EDE8D8;overflow:hidden;}
+.dist-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--gold-deep),var(--gold));}
+.dist-fill.thin{background:var(--risk);}
+.covbar{margin-top:22px;padding:16px 18px;background:#F1EDE0;border-radius:10px;font-size:12.8px;color:var(--umber);}
+
+/* ===== Org tree (structure tab) ===== */
+.orgroot{background:var(--canopy);color:#fff;border-radius:14px;padding:18px 22px;margin-bottom:4px;display:flex;align-items:center;gap:12px;}
+.orgroot .role{font-size:11px;color:var(--gold-soft);text-transform:uppercase;letter-spacing:.06em;font-family:'IBM Plex Mono',monospace;}
+.orgroot .name{font-family:'Fraunces',serif;font-weight:700;font-size:18px;}
+.org-branch{position:relative;padding-left:24px;margin-top:4px;}
+.org-branch::before{content:"";position:absolute;left:8px;top:0;bottom:0;width:1.5px;background:var(--line);}
+details.orgnode{margin:0;background:transparent;}
+details.orgnode>summary{
+  list-style:none;cursor:pointer;position:relative;padding:11px 14px 11px 18px;margin:6px 0;border-radius:10px;
+  background:var(--paper);border:1px solid var(--line);display:flex;align-items:center;gap:10px;font-size:13.4px;
+}
+details.orgnode>summary::-webkit-details-marker{display:none;}
+details.orgnode>summary::before{content:"";position:absolute;left:-16px;top:50%;width:13px;height:1.5px;background:var(--line);}
+details.orgnode>summary .oc-arrow{margin-left:auto;color:var(--gold-deep);font-size:12px;transition:transform .15s;flex:none;}
+details.orgnode[open]>summary .oc-arrow{transform:rotate(90deg);}
+.oc-name{font-weight:700;color:var(--canopy);}
+.oc-title{color:var(--muted);font-size:11.6px;}
+.orgnode-children{padding:6px 0 10px 20px;position:relative;}
+.orgnode-children::before{content:"";position:absolute;left:8px;top:0;bottom:10px;width:1.5px;background:var(--line);}
+.leaf{position:relative;margin:6px 0 6px 4px;padding-left:18px;}
+.leaf::before{content:"";position:absolute;left:-12px;top:11px;width:10px;height:1.5px;background:var(--line);}
+.leaf-row{display:flex;align-items:center;gap:9px;font-size:12.9px;color:var(--ink);}
+.leaf-title{color:var(--muted);font-size:11.3px;}
+.strat{
+  margin-top:7px;background:#FBF3E0;border:1px solid #E9CE94;border-radius:9px;padding:9px 12px;
+  font-size:12.2px;color:#5c451a;display:flex;gap:8px;
+}
+.strat b{color:#7a5417;font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.04em;flex:none;white-space:nowrap;}
+.strat.risk{background:var(--risk-soft);border-color:#e2b6ae;color:#7a2b21;}
+.strat.risk b{color:var(--risk);}
+
+/* ===== HPAAC detail panel ===== */
+details.hpaac{margin-top:8px;}
+details.hpaac summary{cursor:pointer;font-size:12.2px;color:var(--risk);font-weight:700;font-family:'IBM Plex Mono',monospace;list-style:none;display:flex;align-items:center;gap:6px;}
+details.hpaac summary::-webkit-details-marker{display:none;}
+details.hpaac summary::before{content:"▸";transition:transform .15s;}
+details.hpaac[open] summary::before{transform:rotate(90deg);}
+details.hpaac .hpaac-body{margin-top:10px;font-size:12.6px;color:var(--umber);}
+details.hpaac .hpaac-body p{margin-bottom:10px;}
+
+/* ===== At-a-glance table ===== */
+table.dt{width:100%;border-collapse:collapse;font-size:12.8px;}
+table.dt th{text-align:left;font-family:'IBM Plex Mono',monospace;font-size:10.3px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600;padding:8px 10px;border-bottom:1.5px solid var(--line);}
+table.dt td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top;}
+table.dt tr:last-child td{border-bottom:none;}
+
+/* ===== Footer sources strip ===== */
+.footstrip{border-top:1px solid var(--line);background:var(--paper);}
+.footstrip-inner{max-width:1280px;margin:0 auto;padding:26px 28px;}
+details.srcpanel summary{cursor:pointer;list-style:none;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:700;color:var(--umber);text-transform:uppercase;letter-spacing:.04em;display:flex;align-items:center;gap:8px;}
+details.srcpanel summary::-webkit-details-marker{display:none;}
+details.srcpanel summary::before{content:"▸";color:var(--gold-deep);transition:transform .15s;}
+details.srcpanel[open] summary::before{transform:rotate(90deg);}
+.srcpanel-body{margin-top:16px;font-size:12.8px;color:var(--umber);}
+.srcpanel-body .grid-2{margin-top:14px;}
+.footnote{font-size:11.6px;color:var(--muted);margin-top:8px;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <div class="leaf-mark" aria-hidden="true"></div>
+      <div class="brand-text">Department of Health<small>Hospitals &amp; Structure — working reference</small></div>
+    </div>
+    <div class="tabs" role="tablist">
+      <button class="tabbtn active" data-tab="hospitals" role="tab" aria-selected="true">DOH Hospitals</button>
+      <button class="tabbtn" data-tab="structure" role="tab" aria-selected="false">Internal Structure</button>
+    </div>
+    <div class="topbar-meta">As of 7 Aug 2026<br>DPO 2026-4726–5144</div>
+  </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- TAB 1: HOSPITALS -->
+<!-- ============================================================= -->
+<div class="tabpanel active" id="panel-hospitals">
+  <div class="tabhead">
+    <div class="eyebrow">Facilities</div>
+    <h1>DOH Hospitals</h1>
+    <p>The four GOCC specialty centers, then all 92 DOH-retained hospitals by region, then a facility-level heat map. Medical Center Chiefs are shown only where independently verified — the rest are named honestly as unconfirmed rather than filled with stale directory data.</p>
+  </div>
+
+  <div class="subnav">
+    <div class="subnav-inner">
+      <a href="#gocc" class="active">GOCC Hospitals</a>
+      <a href="#regional">Regional Hospitals</a>
+      <a href="#distribution">Distribution</a>
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <h2 class="stitle" id="gocc">GOCC hospitals</h2>
+    <p class="sdek">Government-owned and controlled corporations, each governed by a Board of Trustees chaired by the Secretary of Health, and overseen directly by the Office of the Secretary rather than through a CHD.</p>
+    <div class="grid-4" style="margin-bottom:44px;">
+      <div class="gocc-card">
+        <div class="tag">Cardiovascular</div>
+        <h4>Philippine Heart Center</h4>
+        <div class="head">Dr. Avenilo L. Aventura Jr., MD, MHM<br><span style="color:var(--muted);">Executive Director</span></div>
+        <div class="meta"><span class="tier tier-B">B</span><span>Quezon City · dated to Jul 2026</span></div>
+      </div>
+      <div class="gocc-card">
+        <div class="tag">Kidney &amp; transplant</div>
+        <h4>National Kidney &amp; Transplant Institute</h4>
+        <div class="head">Dr. Jose Dante P. Dator<br><span style="color:var(--muted);">Executive Director</span></div>
+        <div class="meta"><span class="tier tier-B">B</span><span>Quezon City · dated to May 2026</span></div>
+      </div>
+      <div class="gocc-card">
+        <div class="tag">Pulmonary</div>
+        <h4>Lung Center of the Philippines</h4>
+        <div class="head">Dr. Jubert P. Benedicto, MD, FPCP, FPCCP<br><span style="color:var(--muted);">OIC-Executive Director</span></div>
+        <div class="oic-flag"><span class="dot dot-half"></span>No permanent ED</div>
+        <div class="meta"><span class="tier tier-B">B</span><span>Quezon City</span></div>
+      </div>
+      <div class="gocc-card">
+        <div class="tag">Pediatric · 200-bed</div>
+        <h4>Philippine Children's Medical Center</h4>
+        <div class="head">Dr. Cecilia O. Gan, MD, MPM, MNSA, CESE<br><span style="color:var(--muted);">Executive Director</span></div>
+        <div class="meta"><span class="tier tier-B">B</span><span>Quezon City · dated to Jul 2026</span></div>
+      </div>
+    </div>
+
+    <h2 class="stitle" id="regional">Regional hospitals, by CHD</h2>
+    <p class="sdek">Sourced against the DOH Health Facility Development Bureau's own regional facility rosters (each hospital's enabling Republic Act, current through early 2026) — a more complete and more current base than the earlier Zero Balance Billing list this replaces. Facility level is shown only where the enabling law states it explicitly; a dagger (†) marks a level drawn from another dated source instead of the law itself. Click a region to expand.</p>
+    <div class="legend">
+      <span><span class="tier tier-B">B</span>&nbsp;Dated MCC confirmation, within ~24 months</span>
+      <span><span class="tier tier-C">C</span>&nbsp;Undated or older MCC confirmation</span>
+      <span><em style="color:var(--muted);">Not independently verified</em>&nbsp;— named, no current MCC confirmed</span>
+      <span><span class="dot dot-risk"></span>&nbsp;Confirmed vacancy</span>
+      <span><span class="lvl-chip lvl-3" style="padding:2px 7px;">Level 3</span>&nbsp;from the enabling law; † = from another source</span>
+      <span><span class="lvl-chip lvl-unk" style="padding:2px 7px;">Unspecified</span>&nbsp;level not stated anywhere found</span>
+    </div>
+
+    <div id="region-accordions">
+<details class="region" id="reg-ncr">
+  <summary>
+    <span>NCR — Metro Manila</span>
+    <span class="region-count">19 hospitals · 5 MCC verified</span>
+    <span class="region-usec">USEC. PUNZALAN</span>
+    <span class="region-chevron">⌄</span>
+  </summary>
+  <div class="region-body">
+    <div class="hosp-row head"><div>Hospital</div><div>Location</div><div>Facility level</div><div>Medical Center Chief</div><div></div></div>
+    <div class="hosp-row">
+  <div class="h-name">Amang Rodriguez Memorial Medical Center</div>
+  <div class="h-loc">Marikina City</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">East Avenue Medical Center</div>
+  <div class="h-loc">Quezon City</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Dr. Jose Fabella Memorial Hospital</div>
+  <div class="h-loc">Manila City</div>
+  <div><span class="lvl-chip lvl-spec">Specialty</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Dr. Jose N. Rodriguez Memorial Hospital and Sanitarium</div>
+  <div class="h-loc">Caloocan City</div>
+  <div><span class="lvl-chip lvl-3">Level 3</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Jose R. Reyes Memorial Medical Center</div>
+  <div class="h-loc">Manila City</div>
+  <div><span class="lvl-chip lvl-3">Level 3<span title="Basis: independent source, not the enabling law">†</span></span></div>
+  <div><span class="h-mcc">Dr. Emmanuel F. Montaña Jr.</span></div>
+  <div><span class="tier tier-C">C</span></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Las Piñas General Hospital and Satellite Trauma Center</div>
+  <div class="h-loc">Las Piñas City</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc">Dr. Ignacia G. Fajardo</span></div>
+  <div><span class="tier tier-B">B</span></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">National Center for Geriatric Health</div>
+  <div class="h-loc">Manila City (under JRRMMC)</div>
+  <div><span class="lvl-chip lvl-spec">Specialty</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">National Center for Mental Health</div>
+  <div class="h-loc">Mandaluyong City</div>
+  <div><span class="lvl-chip lvl-spec">Specialty</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">National Children&#x27;s Hospital</div>
+  <div class="h-loc">Quezon City</div>
+  <div><span class="lvl-chip lvl-spec">Specialty</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Philippine Cancer Center</div>
+  <div class="h-loc">Quezon City (under DOH Central Office)</div>
+  <div><span class="lvl-chip lvl-spec">Specialty</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row risk">
+  <div class="h-name">Philippine Orthopedic Center</div>
+  <div class="h-loc">Quezon City</div>
+  <div><span class="lvl-chip lvl-spec">Specialty</span></div>
+  <div><span class="h-mcc">VACANT — no MCC named since 14 Jul 2026</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Quirino Memorial Medical Center</div>
+  <div class="h-loc">Quezon City</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Research Institute for Tropical Medicine</div>
+  <div class="h-loc">Muntinlupa City</div>
+  <div><span class="lvl-chip lvl-spec">Specialty</span></div>
+  <div><span class="h-mcc">Atty. Ana Liza P. Hombrado-Duran (Director IV)</span></div>
+  <div><span class="tier tier-A">A</span></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Rizal Medical Center</div>
+  <div class="h-loc">Pasig City</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">San Lazaro Hospital</div>
+  <div class="h-loc">Manila City</div>
+  <div><span class="lvl-chip lvl-spec">Specialty</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">San Lorenzo Ruiz General Hospital</div>
+  <div class="h-loc">Malabon City</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Senate President Neptali A. Gonzales General Hospital</div>
+  <div class="h-loc">Mandaluyong City</div>
+  <div><span class="lvl-chip lvl-3">Level 3</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Tondo Medical Center</div>
+  <div class="h-loc">Manila City</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Valenzuela Medical Center</div>
+  <div class="h-loc">Valenzuela City</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc">Dr. Edilberto V. Cavaneyro</span></div>
+  <div><span class="tier tier-B">B</span></div>
+</div>
+  </div>
+</details>
+<details class="region" id="reg-car">
+  <summary>
+    <span>CAR — Cordillera</span>
+    <span class="region-count">4 hospitals · 2 MCC verified</span>
+    <span class="region-usec">USEC. BALBOA</span>
+    <span class="region-chevron">⌄</span>
+  </summary>
+  <div class="region-body">
+    <div class="hosp-row head"><div>Hospital</div><div>Location</div><div>Facility level</div><div>Medical Center Chief</div><div></div></div>
+    <div class="hosp-row">
+  <div class="h-name">Baguio General Hospital and Medical Center</div>
+  <div class="h-loc">Baguio City, Benguet</div>
+  <div><span class="lvl-chip lvl-3">Level 3<span title="Basis: independent source, not the enabling law">†</span></span></div>
+  <div><span class="h-mcc">Dr. Larry C. Haya</span></div>
+  <div><span class="tier tier-B">B</span></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Conner District Hospital</div>
+  <div class="h-loc">Conner, Apayao</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Far North Luzon General Hospital and Training Center</div>
+  <div class="h-loc">Luna, Apayao</div>
+  <div><span class="lvl-chip lvl-2">Level 2<span title="Basis: independent source, not the enabling law">†</span></span></div>
+  <div><span class="h-mcc">Dr. Nelson O. Rigor</span></div>
+  <div><span class="tier tier-C">C</span></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Luis Hora Memorial Regional Hospital</div>
+  <div class="h-loc">Bauko, Mountain Province</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+  </div>
+</details>
+<details class="region" id="reg-r1">
+  <summary>
+    <span>Region I — Ilocos</span>
+    <span class="region-count">5 hospitals · 0 MCC verified</span>
+    <span class="region-usec">USEC. BALBOA</span>
+    <span class="region-chevron">⌄</span>
+  </summary>
+  <div class="region-body">
+    <div class="hosp-row head"><div>Hospital</div><div>Location</div><div>Facility level</div><div>Medical Center Chief</div><div></div></div>
+    <div class="hosp-row">
+  <div class="h-name">Conrado F. Estrella Regional Medical and Trauma Center</div>
+  <div class="h-loc">Rosales, Pangasinan</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Ilocos Sur Medical Center</div>
+  <div class="h-loc">Candon City, Ilocos Sur</div>
+  <div><span class="lvl-chip lvl-3">Level 3</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Ilocos Training and Regional Medical Center</div>
+  <div class="h-loc">San Fernando, La Union</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Mariano Marcos Memorial Hospital and Medical Center</div>
+  <div class="h-loc">Batac City, Ilocos Norte</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Region I Medical Center</div>
+  <div class="h-loc">Dagupan City, Pangasinan</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+  </div>
+</details>
+<details class="region" id="reg-r2">
+  <summary>
+    <span>Region II — Cagayan Valley</span>
+    <span class="region-count">5 hospitals · 0 MCC verified</span>
+    <span class="region-usec">USEC. BALBOA</span>
+    <span class="region-chevron">⌄</span>
+  </summary>
+  <div class="region-body">
+    <div class="hosp-row head"><div>Hospital</div><div>Location</div><div>Facility level</div><div>Medical Center Chief</div><div></div></div>
+    <div class="hosp-row">
+  <div class="h-name">Batanes General Hospital</div>
+  <div class="h-loc">Basco, Batanes</div>
+  <div><span class="lvl-chip lvl-2">Level 2</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Cagayan Valley Medical Center</div>
+  <div class="h-loc">Tuguegarao City, Cagayan</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Northwestern Cagayan General Hospital</div>
+  <div class="h-loc">Abulug, Cagayan</div>
+  <div><span class="lvl-chip lvl-3">Level 3</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Region II Trauma and Medical Center</div>
+  <div class="h-loc">Bayombong, Nueva Vizcaya</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Southern Isabela Medical Center</div>
+  <div class="h-loc">Santiago City, Isabela</div>
+  <div><span class="lvl-chip lvl-3">Level 3</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+  </div>
+</details>
+<details class="region" id="reg-r3">
+  <summary>
+    <span>Region III — Central Luzon</span>
+    <span class="region-count">10 hospitals · 2 MCC verified</span>
+    <span class="region-usec">USEC. BALBOA</span>
+    <span class="region-chevron">⌄</span>
+  </summary>
+  <div class="region-body">
+    <div class="hosp-row head"><div>Hospital</div><div>Location</div><div>Facility level</div><div>Medical Center Chief</div><div></div></div>
+    <div class="hosp-row">
+  <div class="h-name">Aurora Medical Center</div>
+  <div class="h-loc">Baler, Aurora</div>
+  <div><span class="lvl-chip lvl-3">Level 3</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Bataan General Hospital and Medical Center</div>
+  <div class="h-loc">Balanga City, Bataan</div>
+  <div><span class="lvl-chip lvl-spec">Specialty</span></div>
+  <div><span class="h-mcc">Dr. Glory V. Baltazar</span></div>
+  <div><span class="tier tier-B">B</span></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Clark Multi-Specialty Medical Center</div>
+  <div class="h-loc">Clark Freeport Zone, Mabalacat City, Pampanga</div>
+  <div><span class="lvl-chip lvl-spec">Specialty</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Dr. Paulino J. Garcia Memorial Research and Medical Center</div>
+  <div class="h-loc">Cabanatuan City, Nueva Ecija</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Freeport Area of Bataan General Hospital</div>
+  <div class="h-loc">Mariveles, Bataan</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Jose B. Lingad Memorial General Hospital</div>
+  <div class="h-loc">San Fernando City, Pampanga</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc">Dr. Monserrat S. Chichioco</span></div>
+  <div><span class="tier tier-C">C</span></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Joni Villanueva General Hospital</div>
+  <div class="h-loc">Bocaue, Bulacan</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Mariveles Mental Wellness and General Hospital</div>
+  <div class="h-loc">Mariveles, Bataan</div>
+  <div><span class="lvl-chip lvl-spec">Specialty</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Sen. Edgardo J. Angara General Hospital</div>
+  <div class="h-loc">San Jose City, Nueva Ecija</div>
+  <div><span class="lvl-chip lvl-2">Level 2</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Talavera General Hospital</div>
+  <div class="h-loc">Talavera, Nueva Ecija</div>
+  <div><span class="lvl-chip lvl-2">Level 2</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+  </div>
+</details>
+<details class="region" id="reg-r4a">
+  <summary>
+    <span>Region IV-A — CALABARZON</span>
+    <span class="region-count">7 hospitals · 1 MCC verified</span>
+    <span class="region-usec">USEC. BALBOA</span>
+    <span class="region-chevron">⌄</span>
+  </summary>
+  <div class="region-body">
+    <div class="hosp-row head"><div>Hospital</div><div>Location</div><div>Facility level</div><div>Medical Center Chief</div><div></div></div>
+    <div class="hosp-row">
+  <div class="h-name">Batangas Medical Center</div>
+  <div class="h-loc">Batangas City</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Laguna Regional Hospital</div>
+  <div class="h-loc">Bay, Laguna</div>
+  <div><span class="lvl-chip lvl-2">Level 2</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Lucena City Hospital</div>
+  <div class="h-loc">Lucena City, Quezon</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Maria L. Eleazar General Hospital</div>
+  <div class="h-loc">Tagkawayan, Quezon</div>
+  <div><span class="lvl-chip lvl-3">Level 3</span></div>
+  <div><span class="h-mcc">Dr. Malcolm L. Remo</span></div>
+  <div><span class="tier tier-B">B</span></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Northern Tagalog Regional Hospital</div>
+  <div class="h-loc">Rodriguez, Rizal</div>
+  <div><span class="lvl-chip lvl-2">Level 2</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Southern Luzon Multi-Specialty Medical Center</div>
+  <div class="h-loc">Tayabas City, Quezon</div>
+  <div><span class="lvl-chip lvl-spec">Specialty</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Southern Tagalog Regional Hospital</div>
+  <div class="h-loc">Bacoor City, Cavite</div>
+  <div><span class="lvl-chip lvl-3">Level 3</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+  </div>
+</details>
+<details class="region" id="reg-r4b">
+  <summary>
+    <span>Region IV-B — MIMAROPA</span>
+    <span class="region-count">2 hospitals · 1 MCC verified</span>
+    <span class="region-usec">USEC. BALBOA</span>
+    <span class="region-chevron">⌄</span>
+  </summary>
+  <div class="region-body">
+    <div class="hosp-row head"><div>Hospital</div><div>Location</div><div>Facility level</div><div>Medical Center Chief</div><div></div></div>
+    <div class="hosp-row">
+  <div class="h-name">Culion Sanitarium and General Hospital</div>
+  <div class="h-loc">Culion, Palawan</div>
+  <div><span class="lvl-chip lvl-spec">Specialty</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Ospital ng Palawan</div>
+  <div class="h-loc">Puerto Princesa City, Palawan</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc">Dr. Melecio N. Dy</span></div>
+  <div><span class="tier tier-B">B</span></div>
+</div>
+  </div>
+</details>
+<details class="region" id="reg-r5">
+  <summary>
+    <span>Region V — Bicol</span>
+    <span class="region-count">3 hospitals · 0 MCC verified</span>
+    <span class="region-usec">USEC. BALBOA</span>
+    <span class="region-chevron">⌄</span>
+  </summary>
+  <div class="region-body">
+    <div class="hosp-row head"><div>Hospital</div><div>Location</div><div>Facility level</div><div>Medical Center Chief</div><div></div></div>
+    <div class="hosp-row">
+  <div class="h-name">Bicol Medical Center</div>
+  <div class="h-loc">Naga City, Camarines Sur</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Bicol Region General Hospital and Geriatric Medical Center</div>
+  <div class="h-loc">Cabusao, Camarines Sur</div>
+  <div><span class="lvl-chip lvl-spec">Specialty</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Bicol Regional Hospital and Medical Center</div>
+  <div class="h-loc">Legazpi City, Albay</div>
+  <div><span class="lvl-chip lvl-spec">Specialty</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+  </div>
+</details>
+<details class="region" id="reg-r6">
+  <summary>
+    <span>Region VI — Western Visayas</span>
+    <span class="region-count">4 hospitals · 0 MCC verified</span>
+    <span class="region-usec">USEC. PALERMO-MAESTRAL</span>
+    <span class="region-chevron">⌄</span>
+  </summary>
+  <div class="region-body">
+    <p style="font-size:12px;color:var(--muted);padding:10px 20px 0;margin:0;">⚠ HFDB's facility roster still groups Corazon Locsin Montelibano Memorial Regional Hospital under Western Visayas. The DPO org structure (see Internal Structure) has already split this hospital's province, Negros Occidental, into the separate Negros Island Region CHD under Dr. Razel Nikka M. Hao. Two DOH sources disagree; shown here as HFDB has it, flagged rather than silently resolved.</p>
+    <div class="hosp-row head"><div>Hospital</div><div>Location</div><div>Facility level</div><div>Medical Center Chief</div><div></div></div>
+    <div class="hosp-row">
+  <div class="h-name">Corazon Locsin Montelibano Memorial Regional Hospital <span style="color:var(--muted);font-weight:400;">(NIR, per CHD structure)</span></div>
+  <div class="h-loc">Bacolod City, Negros Occidental</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Don Jose S. Monfort Medical Center</div>
+  <div class="h-loc">Barotac Nuevo, Iloilo</div>
+  <div><span class="lvl-chip lvl-3">Level 3</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Western Visayas Medical Center</div>
+  <div class="h-loc">Iloilo City, Iloilo</div>
+  <div><span class="lvl-chip lvl-3">Level 3<span title="Basis: independent source, not the enabling law">†</span></span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Western Visayas Sanitarium and General Hospital</div>
+  <div class="h-loc">Sta. Barbara, Iloilo</div>
+  <div><span class="lvl-chip lvl-spec">Specialty</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+  </div>
+</details>
+<details class="region" id="reg-r7">
+  <summary>
+    <span>Region VII — Central Visayas</span>
+    <span class="region-count">7 hospitals · 1 MCC verified</span>
+    <span class="region-usec">USEC. PALERMO-MAESTRAL</span>
+    <span class="region-chevron">⌄</span>
+  </summary>
+  <div class="region-body">
+    <div class="hosp-row head"><div>Hospital</div><div>Location</div><div>Facility level</div><div>Medical Center Chief</div><div></div></div>
+    <div class="hosp-row">
+  <div class="h-name">Cebu South Medical Center</div>
+  <div class="h-loc">Talisay City, Cebu</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Eversley Childs Sanitarium and General Hospital</div>
+  <div class="h-loc">Mandaue City, Cebu</div>
+  <div><span class="lvl-chip lvl-spec">Specialty</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Don Emilio del Valle Memorial Hospital</div>
+  <div class="h-loc">Ubay, Bohol</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc">Dr. Nelson A. Elle</span></div>
+  <div><span class="tier tier-B">B</span></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Gov. Celestino Gallares Memorial Medical Center</div>
+  <div class="h-loc">Tagbilaran City, Bohol</div>
+  <div><span class="lvl-chip lvl-spec">Specialty</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Gov. Celestino Gallares Multi-Specialty Medical Center</div>
+  <div class="h-loc">Cortes, Bohol</div>
+  <div><span class="lvl-chip lvl-spec">Specialty</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">St. Anthony Mother and Child Hospital</div>
+  <div class="h-loc">Cebu City, Cebu</div>
+  <div><span class="lvl-chip lvl-spec">Specialty</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Vicente Sotto Memorial Medical Center</div>
+  <div class="h-loc">Cebu City, Cebu</div>
+  <div><span class="lvl-chip lvl-3">Level 3<span title="Basis: independent source, not the enabling law">†</span></span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+  </div>
+</details>
+<details class="region" id="reg-r8">
+  <summary>
+    <span>Region VIII — Eastern Visayas</span>
+    <span class="region-count">3 hospitals · 1 MCC verified</span>
+    <span class="region-usec">USEC. PALERMO-MAESTRAL</span>
+    <span class="region-chevron">⌄</span>
+  </summary>
+  <div class="region-body">
+    <div class="hosp-row head"><div>Hospital</div><div>Location</div><div>Facility level</div><div>Medical Center Chief</div><div></div></div>
+    <div class="hosp-row">
+  <div class="h-name">Eastern Visayas Medical Center</div>
+  <div class="h-loc">Tacloban City, Leyte</div>
+  <div><span class="lvl-chip lvl-3">Level 3<span title="Basis: independent source, not the enabling law">†</span></span></div>
+  <div><span class="h-mcc">Dr. Salvador B. Evardone</span></div>
+  <div><span class="tier tier-C">C</span></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Governor Benjamin T. Romualdez General Hospital and Schistosomiasis Center</div>
+  <div class="h-loc">Palo, Leyte</div>
+  <div><span class="lvl-chip lvl-spec">Specialty</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Samar Island Medical Center</div>
+  <div class="h-loc">Calbayog City, Samar</div>
+  <div><span class="lvl-chip lvl-3">Level 3</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+  </div>
+</details>
+<details class="region" id="reg-r9">
+  <summary>
+    <span>Region IX — Zamboanga Peninsula</span>
+    <span class="region-count">8 hospitals · 0 MCC verified</span>
+    <span class="region-usec">USEC. BAGGAO</span>
+    <span class="region-chevron">⌄</span>
+  </summary>
+  <div class="region-body">
+    <div class="hosp-row head"><div>Hospital</div><div>Location</div><div>Facility level</div><div>Medical Center Chief</div><div></div></div>
+    <div class="hosp-row">
+  <div class="h-name">Basilan Medical Center</div>
+  <div class="h-loc">Isabela City, Basilan</div>
+  <div><span class="lvl-chip lvl-3">Level 3</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Dr. Jose Rizal Memorial Hospital</div>
+  <div class="h-loc">Dapitan City, Zamboanga del Norte</div>
+  <div><span class="lvl-chip lvl-3">Level 3</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Labuan General Hospital</div>
+  <div class="h-loc">Zamboanga City</div>
+  <div><span class="lvl-chip lvl-2">Level 2</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Liloy General Hospital</div>
+  <div class="h-loc">Liloy, Zamboanga del Norte</div>
+  <div><span class="lvl-chip lvl-2">Level 2</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Margosatubig Regional Hospital</div>
+  <div class="h-loc">Margosatubig, Zamboanga del Sur</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Sulu Sanitarium and General Hospital</div>
+  <div class="h-loc">Jolo, Sulu</div>
+  <div><span class="lvl-chip lvl-spec">Specialty</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Zamboanga City Medical Center</div>
+  <div class="h-loc">Zamboanga City</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Zamboanga Regional Medical Center</div>
+  <div class="h-loc">Pasobolong, Zamboanga City</div>
+  <div><span class="lvl-chip lvl-3">Level 3</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+  </div>
+</details>
+<details class="region" id="reg-r10">
+  <summary>
+    <span>Region X — Northern Mindanao</span>
+    <span class="region-count">5 hospitals · 1 MCC verified</span>
+    <span class="region-usec">USEC. BAGGAO</span>
+    <span class="region-chevron">⌄</span>
+  </summary>
+  <div class="region-body">
+    <div class="hosp-row head"><div>Hospital</div><div>Location</div><div>Facility level</div><div>Medical Center Chief</div><div></div></div>
+    <div class="hosp-row">
+  <div class="h-name">Camiguin General Hospital</div>
+  <div class="h-loc">Mambajao, Camiguin</div>
+  <div><span class="lvl-chip lvl-2">Level 2</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">First Misamis Oriental General Hospital</div>
+  <div class="h-loc">Medina, Misamis Oriental</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Mayor Hilarion A. Ramiro Sr. Medical Center</div>
+  <div class="h-loc">Ozamiz City, Misamis Occidental</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Northeastern Misamis General Hospital</div>
+  <div class="h-loc">Villanueva, Misamis Oriental</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Northern Mindanao Medical Center</div>
+  <div class="h-loc">Cagayan de Oro City</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc">Dr. Jose C. Chan</span></div>
+  <div><span class="tier tier-B">B</span></div>
+</div>
+  </div>
+</details>
+<details class="region" id="reg-r11">
+  <summary>
+    <span>Region XI — Davao</span>
+    <span class="region-count">3 hospitals · 0 MCC verified</span>
+    <span class="region-usec">USEC. BAGGAO</span>
+    <span class="region-chevron">⌄</span>
+  </summary>
+  <div class="region-body">
+    <div class="hosp-row head"><div>Hospital</div><div>Location</div><div>Facility level</div><div>Medical Center Chief</div><div></div></div>
+    <div class="hosp-row">
+  <div class="h-name">Davao Occidental General Hospital</div>
+  <div class="h-loc">Malita, Davao Occidental</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Davao Regional Medical Center</div>
+  <div class="h-loc">Tagum City, Davao del Norte</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Southern Philippines Medical Center</div>
+  <div class="h-loc">Davao City, Davao del Sur</div>
+  <div><span class="lvl-chip lvl-3">Level 3<span title="Basis: independent source, not the enabling law">†</span></span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+  </div>
+</details>
+<details class="region" id="reg-r12">
+  <summary>
+    <span>Region XII — SOCCSKSARGEN</span>
+    <span class="region-count">1 hospitals · 0 MCC verified</span>
+    <span class="region-usec">USEC. BAGGAO</span>
+    <span class="region-chevron">⌄</span>
+  </summary>
+  <div class="region-body">
+    <div class="hosp-row head"><div>Hospital</div><div>Location</div><div>Facility level</div><div>Medical Center Chief</div><div></div></div>
+    <div class="hosp-row">
+  <div class="h-name">SOCCSKSARGEN General Hospital</div>
+  <div class="h-loc">Surallah, South Cotabato</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+  </div>
+</details>
+<details class="region" id="reg-r13">
+  <summary>
+    <span>Region XIII — Caraga</span>
+    <span class="region-count">3 hospitals · 0 MCC verified</span>
+    <span class="region-usec">USEC. BAGGAO</span>
+    <span class="region-chevron">⌄</span>
+  </summary>
+  <div class="region-body">
+    <div class="hosp-row head"><div>Hospital</div><div>Location</div><div>Facility level</div><div>Medical Center Chief</div><div></div></div>
+    <div class="hosp-row">
+  <div class="h-name">Adela Serra Ty Memorial Medical Center</div>
+  <div class="h-loc">Tandag City, Surigao del Sur</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Caraga Regional Hospital</div>
+  <div class="h-loc">Surigao City, Surigao del Norte</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Siargao Island Medical Center</div>
+  <div class="h-loc">Dapa, Surigao del Norte</div>
+  <div><span class="lvl-chip lvl-2">Level 2</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+  </div>
+</details>
+<details class="region" id="reg-barmm">
+  <summary>
+    <span>BARMM — Ministry of Health</span>
+    <span class="region-count">3 hospitals · 1 MCC verified</span>
+    <span class="region-usec">MOH-BARMM (not DOH CHD)</span>
+    <span class="region-chevron">⌄</span>
+  </summary>
+  <div class="region-body">
+    <div class="hosp-row head"><div>Hospital</div><div>Location</div><div>Facility level</div><div>Medical Center Chief</div><div></div></div>
+    <div class="hosp-row">
+  <div class="h-name">Amai Pakpak Medical Center</div>
+  <div class="h-loc">Marawi City, Lanao del Sur</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Cotabato Regional and Medical Center</div>
+  <div class="h-loc">Cotabato City</div>
+  <div><span class="lvl-chip lvl-unk">Unspecified</span></div>
+  <div><span class="h-mcc unverified">Not independently verified</span></div>
+  <div></div>
+</div>
+<div class="hosp-row">
+  <div class="h-name">Cotabato Sanitarium and General Hospital</div>
+  <div class="h-loc">Sultan Kudarat, Maguindanao del Norte</div>
+  <div><span class="lvl-chip lvl-spec">Specialty</span></div>
+  <div><span class="h-mcc">Dr. Ibrahim V. Pangato Jr.</span></div>
+  <div><span class="tier tier-B">B</span></div>
+</div>
+  </div>
+</details>
+</div>
+
+    <div class="covbar">
+      <strong style="color:var(--ink);">Coverage note.</strong> This roster now runs to 92 DOH-retained hospitals plus the 4 GOCC centers — 96 in total, up from the 78 non-GOCC hospitals shown here previously. The increase isn't new construction; it's a better source. DOH's own Health Facility Development Bureau lists more hospitals per region — several established or upgraded as recently as 2025 — than the Zero Balance Billing list this replaces. Of the 92, 13 have a dated, independently verified Medical Center Chief (tiers B/C), plus the Research Institute for Tropical Medicine and the Philippine Orthopedic Center, both already tracked in Internal Structure (the latter confirmed vacant). The remaining 78 are correctly named and located, but their current head could not be confirmed within a defensible source and is marked accordingly.
+    </div>
+
+    <h2 class="stitle" id="distribution" style="margin-top:48px;">Distribution &amp; facility level</h2>
+    <p class="sdek">Every DOH-retained hospital and GOCC center, cross-tabulated by region and by licensing level. Level is shown only where an enabling Republic Act states it explicitly (or, marked †, from another dated source) — the "Unspecified" column is real and reported honestly rather than guessed at.</p>
+
+    <div class="heatmap-wrap">
+      <table class="heatmap">
+        <thead>
+          <tr>
+            <th class="hm-collabel" style="text-align:left;">Region</th>
+            <th class="hm-collabel">Level 1</th>
+            <th class="hm-collabel">Level 2</th>
+            <th class="hm-collabel">Level 3</th>
+            <th class="hm-collabel">Specialty</th>
+            <th class="hm-collabel">Unspecified</th>
+            <th class="hm-collabel">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+<tr><th class="hm-rowlabel">NCR</th><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-num-2" title="3">3</td><td class="hm-cell hm-spec-3" title="8">8</td><td class="hm-cell hm-unk-3" title="8">8</td><td class="hm-total">19</td></tr>
+<tr><th class="hm-rowlabel">GOCC (Nat'l)</th><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-spec-2" title="4">4</td><td class="hm-cell hm-0" title="0">·</td><td class="hm-total">4</td></tr>
+<tr><th class="hm-rowlabel">CAR</th><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-num-1" title="1">1</td><td class="hm-cell hm-num-1" title="1">1</td><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-unk-1" title="2">2</td><td class="hm-total">4</td></tr>
+<tr><th class="hm-rowlabel">Region I</th><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-num-1" title="1">1</td><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-unk-2" title="4">4</td><td class="hm-total">5</td></tr>
+<tr><th class="hm-rowlabel">Region II</th><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-num-1" title="1">1</td><td class="hm-cell hm-num-1" title="2">2</td><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-unk-1" title="2">2</td><td class="hm-total">5</td></tr>
+<tr><th class="hm-rowlabel">Region III</th><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-num-1" title="2">2</td><td class="hm-cell hm-num-1" title="1">1</td><td class="hm-cell hm-spec-2" title="3">3</td><td class="hm-cell hm-unk-2" title="4">4</td><td class="hm-total">10</td></tr>
+<tr><th class="hm-rowlabel">Region IV-A</th><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-num-1" title="2">2</td><td class="hm-cell hm-num-1" title="2">2</td><td class="hm-cell hm-spec-1" title="1">1</td><td class="hm-cell hm-unk-1" title="2">2</td><td class="hm-total">7</td></tr>
+<tr><th class="hm-rowlabel">Region IV-B</th><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-spec-1" title="1">1</td><td class="hm-cell hm-unk-1" title="1">1</td><td class="hm-total">2</td></tr>
+<tr><th class="hm-rowlabel">Region V</th><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-spec-1" title="2">2</td><td class="hm-cell hm-unk-1" title="1">1</td><td class="hm-total">3</td></tr>
+<tr><th class="hm-rowlabel">Region VI</th><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-num-1" title="2">2</td><td class="hm-cell hm-spec-1" title="1">1</td><td class="hm-cell hm-unk-1" title="1">1</td><td class="hm-total">4</td></tr>
+<tr><th class="hm-rowlabel">Region VII</th><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-num-1" title="1">1</td><td class="hm-cell hm-spec-2" title="4">4</td><td class="hm-cell hm-unk-1" title="2">2</td><td class="hm-total">7</td></tr>
+<tr><th class="hm-rowlabel">Region VIII</th><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-num-1" title="2">2</td><td class="hm-cell hm-spec-1" title="1">1</td><td class="hm-cell hm-0" title="0">·</td><td class="hm-total">3</td></tr>
+<tr><th class="hm-rowlabel">Region IX</th><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-num-1" title="2">2</td><td class="hm-cell hm-num-2" title="3">3</td><td class="hm-cell hm-spec-1" title="1">1</td><td class="hm-cell hm-unk-1" title="2">2</td><td class="hm-total">8</td></tr>
+<tr><th class="hm-rowlabel">Region X</th><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-num-1" title="1">1</td><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-unk-2" title="4">4</td><td class="hm-total">5</td></tr>
+<tr><th class="hm-rowlabel">Region XI</th><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-num-1" title="1">1</td><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-unk-1" title="2">2</td><td class="hm-total">3</td></tr>
+<tr><th class="hm-rowlabel">Region XII</th><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-unk-1" title="1">1</td><td class="hm-total">1</td></tr>
+<tr><th class="hm-rowlabel">Region XIII</th><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-num-1" title="1">1</td><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-unk-1" title="2">2</td><td class="hm-total">3</td></tr>
+<tr><th class="hm-rowlabel">BARMM</th><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-0" title="0">·</td><td class="hm-cell hm-spec-1" title="1">1</td><td class="hm-cell hm-unk-1" title="2">2</td><td class="hm-total">3</td></tr>
+<tr class="hm-foot"><th class="hm-rowlabel">Total</th><td class="hm-cell hm-foot-cell">0</td><td class="hm-cell hm-foot-cell">10</td><td class="hm-cell hm-foot-cell">19</td><td class="hm-cell hm-foot-cell">27</td><td class="hm-cell hm-foot-cell">40</td><td class="hm-total hm-foot-cell">96</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="heatmap-legend">
+      <span><span class="leg-swatch" style="background:#C6862A;"></span>Level 3 — darker = more facilities</span>
+      <span><span class="leg-swatch" style="background:#8A54BE;"></span>Specialty — darker = more facilities</span>
+      <span><span class="leg-swatch" style="background:#C2B693;"></span>Unspecified — darker = more facilities</span>
+      <span><span class="leg-swatch" style="background:transparent;border:1px solid var(--line);"></span>· = none</span>
+    </div>
+
+    <div class="covbar" style="margin-top:22px;">
+      <strong style="color:var(--ink);">No DOH-retained hospital in this dataset is licensed Level 1.</strong> That tracks with how the system is designed — Level 1 primary hospitals are typically LGU-run, while DOH retains the tertiary and apex tier. What DOH does retain skews toward Level 3 and Specialty (46 of 92, roughly half), with a genuinely large Unspecified column (40 of 92) — the enabling law for a "General Hospital" or "Medical Center" often doesn't state a numeric level at all, so this isn't a research gap so much as a gap in how these laws are written. Levels marked † come from an independent dated source rather than the law itself, and are the minority.
+      <br><br>
+      <strong style="color:var(--ink);">Region XII — SOCCSKSARGEN carries only one DOH-retained hospital</strong> in this dataset, against 5–8 in comparably-sized neighboring regions — and it's Unspecified in level. This is the same region whose CHD Director IV post is currently vacant (see Internal Structure).
+      <br><br>
+      <strong style="color:var(--ink);">On hospital-to-CHD distances:</strong> every hospital above resolves to a city/province, and every CHD's general location is known, so an approximate distance table is possible in principle — but building one credibly would mean geocoding all 92 facilities against their CHD office coordinates, which hasn't been done here. Happy to build it as a follow-on if useful.
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- TAB 2: STRUCTURE -->
+<!-- ============================================================= -->
+<div class="tabpanel" id="panel-structure">
+  <div class="tabhead">
+    <div class="eyebrow">Chain of command</div>
+    <h1>Verified DOH Internal Structure</h1>
+    <p>Rebuilt from Department Personnel Order 2026-4726 and its five amending orders, all signed by Acting Secretary Jose S. Pujalte Jr. Every designation is expressly interim. Where an office carries a live ask from the DOH–PhilHealth working agenda, it's attached directly below that office — not filed separately.</p>
+  </div>
+
+  <div class="subnav">
+    <div class="subnav-inner">
+      <a href="#execom" class="active">Executive Committee</a>
+      <a href="#osec-direct">OSEC — Direct</a>
+      <a href="#glance">At a Glance</a>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="legend">
+      <span><span class="tier tier-A">A</span>&nbsp;Named in a DPO held in hand</span>
+      <span><span class="tier tier-B">B</span>&nbsp;Institution's own dated output</span>
+      <span><span class="tier tier-D">D</span>&nbsp;Contested or unconfirmed incumbency</span>
+      <span style="background:#FBF3E0;border:1px solid #E9CE94;border-radius:6px;padding:2px 8px;color:#7a5417;font-weight:700;font-size:11px;">Strategic focus</span>
+      <span>&nbsp;= a live ask from the DOH–PhilHealth working agenda, attached to the office that owns it</span>
+    </div>
+
+    <h2 class="stitle" id="execom">Office of the Secretary &amp; Executive Committee</h2>
+    <div class="orgroot">
+      <div class="leaf-mark" style="width:32px;height:32px;"></div>
+      <div><div class="role">Acting Secretary of Health</div><div class="name">Dr. Jose Brittanio S. Pujalte Jr.</div></div>
+      <span class="tier tier-A" style="margin-left:auto;">A</span>
+    </div>
+
+    <div class="org-branch" id="org-tree"><details class="orgnode" id="node-0">
+  <summary><span class="dot dot-filled"></span><div><span class="oc-name">Usec. Elmer G. Punzalan</span> <span class="oc-title">— Metro Manila CHD · all DOH medical centers &amp; hospitals · PPP Mgmt Office</span></div><span class="oc-arrow">›</span></summary>
+  <div class="orgnode-children">
+    <div class="leaf">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Metro Manila CHD (NCR)</strong> <span class="leaf-title">— Dr. Lester M. Tan, Director IV</span></div></div>
+  
+</div>
+<div class="leaf">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>All DOH medical centers &amp; Metro Manila specialty hospitals</strong> <span class="leaf-title">— Lead oversight — see DOH Hospitals tab</span></div></div>
+  <div class="strat"><b>Strategic focus</b><span>Enforce 90:10 / 10:90 / 70:30 bed-allocation ratios; control hospital markups; policy on hospital surplus. Feeds directly into the Hospitals tab.</span></div>
+</div>
+<div class="leaf">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Public-Private Partnership Management Office</strong> <span class="leaf-title">— —</span></div></div>
+  
+</div>
+  </div>
+</details>
+<details class="orgnode" id="node-1">
+  <summary><span class="dot dot-filled"></span><div><span class="oc-name">Usec. Gloria J. Balboa</span> <span class="oc-title">— CHDs CAR / I / II / III / IV-A / IV-B / V · emergency mgmt · pharma · PNAC</span></div><span class="oc-arrow">›</span></summary>
+  <div class="orgnode-children">
+    <div class="leaf">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>7 Centers for Health Development</strong> <span class="leaf-title">— See DOH Hospitals tab for each region's hospital roster</span></div></div>
+  
+</div>
+<div class="leaf">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Health Emergency Management Bureau</strong> <span class="leaf-title">— Dr. Bernadett P. Velasco, Director IV</span></div></div>
+  
+</div>
+<div class="leaf">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Pharmaceutical Division</strong> <span class="leaf-title">— Dr. Uriel C. Cachero, OIC</span></div></div>
+  
+</div>
+<div class="leaf">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Health and Climate Change Office</strong> <span class="leaf-title">— Dr. Ronald Law, Director III</span></div></div>
+  
+</div>
+<div class="leaf">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Philippine National AIDS Council</strong> <span class="leaf-title">— Dr. Joselito R. Feliciano, Executive Director III</span></div></div>
+  
+</div>
+<div class="leaf">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Philippine Multi-Sectoral Nutrition Project</strong> <span class="leaf-title">— —</span></div></div>
+  
+</div>
+  </div>
+</details>
+<details class="orgnode" id="node-2">
+  <summary><span class="dot dot-filled"></span><div><span class="oc-name">Usec. Mary Ann Palermo-Maestral</span> <span class="oc-title">— CHDs VI / VII / VIII / NIR · UHC Health Services Cluster · all DATRCs</span></div><span class="oc-arrow">›</span></summary>
+  <div class="orgnode-children">
+    <div class="leaf">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>4 Centers for Health Development</strong> <span class="leaf-title">— See DOH Hospitals tab for each region's hospital roster</span></div></div>
+  
+</div>
+<div class="leaf">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>UHC HSC Technical Office</strong> <span class="leaf-title">— Ms. Frances Rose E. Mamaril, Director IV</span></div></div>
+  
+</div>
+<div class="leaf">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Disease Prevention &amp; Control Bureau</strong> <span class="leaf-title">— Dr. Jose Gerard B. Belimac, OIC</span></div></div>
+  
+</div>
+<div class="leaf">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Epidemiology Bureau</strong> <span class="leaf-title">— Dr. Gerna M. Manatad, Director IV</span></div></div>
+  
+</div>
+<div class="leaf">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Health Promotion Bureau</strong> <span class="leaf-title">— Dr. Mar Wynn D. Bello, Director IV</span></div></div>
+  <div class="strat"><b>Strategic focus</b><span>Joint rollout of Healthy Schools and Healthy Communities. PhilHealth side: build on Settings-based Empanelment.</span></div>
+</div>
+<div class="leaf">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Research Institute for Tropical Medicine</strong> <span class="leaf-title">— Atty. Ana Liza P. Hombrado-Duran, Director IV</span></div></div>
+  
+</div>
+<div class="leaf">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>All DOH Drug Abuse Treatment &amp; Rehabilitation Centers</strong> <span class="leaf-title">— —</span></div></div>
+  
+</div>
+  </div>
+</details>
+<details class="orgnode" id="node-3">
+  <summary><span class="dot dot-filled"></span><div><span class="oc-name">Usec. Glenn Mathew G. Baggao</span> <span class="oc-title">— CHDs IX / X / XI / XII / XIII</span></div><span class="oc-arrow">›</span></summary>
+  <div class="orgnode-children">
+    <div class="leaf">
+  <div class="leaf-row"><span class="dot dot-risk"></span><span class="tier tier-A">A</span><div><strong>5 Centers for Health Development</strong> <span class="leaf-title">— Region XII (SOCCSKSARGEN) currently vacant at Director IV — see DOH Hospitals tab</span></div></div>
+  
+</div>
+  </div>
+</details>
+<details class="orgnode" id="node-4">
+  <summary><span class="dot dot-filled"></span><div><span class="oc-name">Usec. Randy B. Escolango &amp; Asec. Maylene M. Beltran</span> <span class="oc-title">— co-oversight: local health systems · int'l cooperation · HR development</span></div><span class="oc-arrow">›</span></summary>
+  <div class="orgnode-children">
+    <div class="leaf">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Bureau of Local Health Systems Development</strong> <span class="leaf-title">— Dr. Juan Alfonso R. Perez IV, OIC</span></div></div>
+  <div class="strat"><b>Strategic focus</b><span>Issue joint guidelines on SHF utilization — specifically incentives — linked to LIPH and AOP.</span></div>
+</div>
+<div class="leaf">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Bureau of International Health Cooperation</strong> <span class="leaf-title">— Dr. Grace Fe Buquiran-Nericua, OIC</span></div></div>
+  <div class="strat"><b>Strategic focus</b><span>Reposition the Health System Strengthening Project (HSRP) to finance EMR, interconnectivity, and initial repository requirements.</span></div>
+</div>
+<div class="leaf">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Health Human Resource Development Bureau</strong> <span class="leaf-title">— Dr. Mary Ruth S. Politico, OIC</span></div></div>
+  <div class="strat"><b>Strategic focus</b><span>Institutionalize primary care as a practice; define task-shifting standards; workforce scholarships and HRH incentive design tied to SHF guidelines.</span></div>
+</div>
+  </div>
+</details>
+<details class="orgnode" id="node-5">
+  <summary><span class="dot dot-filled"></span><div><span class="oc-name">Asec. Maylene M. Beltran</span> <span class="oc-title">— Knowledge Management &amp; IT Service — added 28 Jul, DPO 5144</span></div><span class="oc-arrow">›</span></summary>
+  <div class="orgnode-children">
+    <div class="leaf">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>KMITS</strong> <span class="leaf-title">— Ms. Cherrie D. Esteban, OIC Director IV &amp; concurrent Chief Information Officer (DPO 5142)</span></div></div>
+  <div class="strat"><b>Strategic focus</b><span>Fast-track KMITS/FDA IT standards; publish iClinicSys as the default EMR. Primary care reform has matured into an IT-systems agenda — KMITS is now the pacing workstream for the rest of the primary-care pillar.</span></div>
+</div>
+  </div>
+</details>
+<details class="orgnode" id="node-6">
+  <summary><span class="dot dot-filled"></span><div><span class="oc-name">Asec. Christian Lel M. Saquilabon</span> <span class="oc-title">— concurrent Director IV, Legal Service · regulatory bureaus</span></div><span class="oc-arrow">›</span></summary>
+  <div class="orgnode-children">
+    <div class="leaf">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Health Facilities &amp; Service Regulatory Bureau</strong> <span class="leaf-title">— Engr. Annette B. Tan, Director IV</span></div></div>
+  <div class="strat"><b>Strategic focus</b><span>Enforce bed-allocation ratios and markup controls; lead regulatory mechanism for dialysis-clinic and transplant-capacity market dynamics.</span></div>
+</div>
+<div class="leaf">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Health Facility Development Bureau</strong> <span class="leaf-title">— Dr. Melissa T. Sena, Director IV</span></div></div>
+  <div class="strat"><b>Strategic focus</b><span>Push implementation of the EO on the Health Facility Development Plan — where Z Benefits line up; define Z-Benefit facility-upgrade requirements.</span></div>
+</div>
+<div class="leaf">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Bureau of Quarantine</strong> <span class="leaf-title">— Dr. Aleli Annie Grace P. Sudiacal, Director IV (DPO 4826)</span></div></div>
+  
+</div>
+  </div>
+</details>
+<details class="orgnode" id="node-7">
+  <summary><span class="dot dot-filled"></span><div><span class="oc-name">Usec. Brigida H. Romualdez-Aquino</span> <span class="oc-title">— special concerns · GAD focal · PITAHC</span></div><span class="oc-arrow">›</span></summary>
+  <div class="orgnode-children">
+    <div class="leaf">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>PITAHC</strong> <span class="leaf-title">— Dr. Ma. Teresa C. Iñigo, Director General</span></div></div>
+  
+</div>
+  </div>
+</details>
+<details class="orgnode" id="node-8">
+  <summary><span class="dot dot-filled"></span><div><span class="oc-name">Usec. Zhielah Ritz C. Gatchalian</span> <span class="oc-title">— Malasakit Program Office · Supply Chain Management Service</span></div><span class="oc-arrow">›</span></summary>
+  <div class="orgnode-children">
+    <div class="leaf">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Malasakit Program Office</strong> <span class="leaf-title">— Atty. Allison C. Umandap, Director IV</span></div></div>
+  
+</div>
+<div class="leaf">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Supply Chain Management Service</strong> <span class="leaf-title">— Ms. Johanna Solon-Banzon, Director IV</span></div></div>
+  
+</div>
+  </div>
+</details>
+<details class="orgnode" id="node-9">
+  <summary><span class="dot dot-filled"></span><div><span class="oc-name">Usec. Albert Francis E. Domingo</span> <span class="oc-title">— National Nutrition Council (self, concurrent Executive Director IV)</span></div><span class="oc-arrow">›</span></summary>
+  <div class="orgnode-children">
+    <div class="leaf">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>National Nutrition Council</strong> <span class="leaf-title">— Designated Jul 2026, succeeding Asec. Azucena M. Dayanghirang</span></div></div>
+  
+</div>
+  </div>
+</details>
+<details class="orgnode" id="node-10">
+  <summary><span class="dot dot-filled"></span><div><span class="oc-name">Usec. Emmie Liza Perez-Chiong</span> <span class="oc-title">— narrowed by DPO 4975 (22 Jul); CIO title revoked</span></div><span class="oc-arrow">›</span></summary>
+  <div class="orgnode-children">
+    <div class="leaf">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Oral Health Program</strong> <span class="leaf-title">— Dr. Manuel V. Vallesteros, Division Chief</span></div></div>
+  
+</div>
+<div class="leaf">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Philippine Medical Travel &amp; Wellness Tourism Program</strong> <span class="leaf-title">— —</span></div></div>
+  
+</div>
+  </div>
+</details>
+<details class="orgnode" id="node-11">
+  <summary><span class="dot dot-filled"></span><div><span class="oc-name">Secretary / authorized ExeCom member</span> <span class="oc-title">— audit, legal, health facilities enhancement, policy &amp; planning</span></div><span class="oc-arrow">›</span></summary>
+  <div class="orgnode-children">
+    <div class="leaf">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Internal Audit Service</strong> <span class="leaf-title">— Ms. Rowena C. Lora, Director IV</span></div></div>
+  
+</div>
+<div class="leaf">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Health Facilities Enhancement PMO</strong> <span class="leaf-title">— Engr. Maximo A. Adan Jr., OIC</span></div></div>
+  <div class="strat"><b>Strategic focus</b><span>Enable interconnectivity and digitalization by design; require API-readiness so primary-care equipment plugs into the shared IT agenda.</span></div>
+</div>
+<div class="leaf">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Health Policy Development &amp; Planning Bureau</strong> <span class="leaf-title">— Mr. Roderick M. Napulan, Director IV</span></div></div>
+  
+</div>
+  </div>
+</details></div>
+
+    <h2 class="stitle" id="osec-direct" style="margin-top:40px;">Office of the Secretary — direct</h2>
+    <p class="sdek">GOCC hospitals, PhilHealth, FDA, and priority-project assignees report directly to OSEC rather than through an Undersecretary.</p>
+    <div id="osec-direct-tree"><div class="leaf" style="padding-left:0;">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-B">B</span><div><strong>PhilHealth</strong> <span class="leaf-title">— Dr. Edwin M. Mercado, President &amp; CEO</span></div></div>
+  <div class="strat"><b>Strategic focus</b><span>Shift to Global Budget; initiate DRGs; address Z-Ben contracting bottlenecks; expand YAKAP × GAMOT inclusions; clear HRH incentives via SHF guidelines.</span></div>
+  <details class="hpaac">
+    <summary>HPAAC objects to the contribution-linked incentive proposal — 8 Jul 2026</summary>
+    <div class="hpaac-body">
+      <p><strong style="color:var(--ink);">Position.</strong> HPAAC states it "fully supports PhilHealth's efforts to improve premium collection among direct contributors," but requests, "with all humility," that PhilHealth withdraw the proposal.</p>
+      <p><strong style="color:var(--ink);">Concern 1 — inequity.</strong> Two patients with the same illness, receiving the same care in the same hospital, would receive different levels of PhilHealth support — inconsistent, HPAAC argues, with the equity and solidarity principles underpinning the UHC Act.</p>
+      <p><strong style="color:var(--ink);">Concern 2 — counterproductive incentive.</strong> Members may come to see premium payment as a voluntary purchase of enhanced benefits rather than a continuing obligation. A 20% increase in all case rates works out to roughly ₱700 per year in added benefit — an amount HPAAC argues many members may conclude isn't worth maintaining regular premium payments for.</p>
+      <p><strong style="color:var(--ink);">Alternative proposed.</strong> Strengthen premium collection systems, simplify payment mechanisms, improve enforcement of existing obligations, and push for the full annual National Government appropriation for PhilHealth as mandated by law.</p>
+    </div>
+  </details>
+</div>
+<div class="leaf" style="padding-left:0;">
+  <div class="leaf-row"><span class="dot dot-risk"></span><span class="tier tier-D">D</span><div><strong>FDA</strong> <span class="leaf-title">— Atty. Paolo S. Teston, Director General</span></div></div>
+  <div class="strat risk"><b>Strategic focus</b><span>Co-owns primary-care IT standards alongside KMITS. Incumbency unconfirmed — see note.</span></div>
+</div>
+<div class="leaf" style="padding-left:0;">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-B">B</span><div><strong>Philippine Heart Center</strong> <span class="leaf-title">— Dr. Avenilo L. Aventura Jr., Executive Director</span></div></div>
+  
+</div>
+<div class="leaf" style="padding-left:0;">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-B">B</span><div><strong>National Kidney &amp; Transplant Institute</strong> <span class="leaf-title">— Dr. Jose Dante P. Dator, Executive Director</span></div></div>
+  
+</div>
+<div class="leaf" style="padding-left:0;">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-B">B</span><div><strong>Lung Center of the Philippines</strong> <span class="leaf-title">— Dr. Jubert P. Benedicto, OIC-Executive Director</span></div></div>
+  
+</div>
+<div class="leaf" style="padding-left:0;">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-B">B</span><div><strong>Philippine Children's Medical Center</strong> <span class="leaf-title">— Dr. Cecilia O. Gan, Executive Director</span></div></div>
+  
+</div>
+<div class="leaf" style="padding-left:0;">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Administrative Service</strong> <span class="leaf-title">— Mr. Roderick M. Napulan, Director IV</span></div></div>
+  
+</div>
+<div class="leaf" style="padding-left:0;">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Financial &amp; Management Service</strong> <span class="leaf-title">— Ms. Maria Ella T. Guerrero, Director IV</span></div></div>
+  
+</div>
+<div class="leaf" style="padding-left:0;">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Procurement Service</strong> <span class="leaf-title">— Mr. Nigel Aleksei B. Tabion, OIC</span></div></div>
+  
+</div>
+<div class="leaf" style="padding-left:0;">
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Priority projects</strong> <span class="leaf-title">— Ms. Maria Kristina May L. Marasigan, Director IV</span></div></div>
+  
+</div></div>
+
+    <h2 class="stitle" id="glance" style="margin-top:44px;">Strategic focus, at a glance</h2>
+    <p class="sdek">Every live ask from the working agenda, in one table, cross-referenced to the office and Undersecretary above.</p>
+    <div class="card" style="padding:0;overflow:hidden;">
+      <table class="dt">
+        <thead><tr><th>Ask</th><th>Owning office</th><th>Oversight</th></tr></thead>
+        <tbody id="glance-body"><tr><td>EO on Health Facility Development Plan, Z-Benefit facility upgrades</td><td>Health Facility Development Bureau — Dr. Melissa T. Sena</td><td class='mono' style='font-size:11.5px;'>Asec. Saquilabon</td></tr>
+<tr><td>Bed-allocation enforcement (90:10/10:90/70:30), markup control</td><td>Hospital oversight — Usec. Punzalan / respective CHDs</td><td class='mono' style='font-size:11.5px;'>Usec. Punzalan</td></tr>
+<tr><td>Dialysis-clinic &amp; transplant-capacity regulation</td><td>Health Facilities &amp; Service Regulatory Bureau — Engr. Annette B. Tan</td><td class='mono' style='font-size:11.5px;'>Asec. Saquilabon</td></tr>
+<tr><td>KMITS/FDA IT standards, iClinicSys as default EMR</td><td>KMITS — Ms. Cherrie D. Esteban</td><td class='mono' style='font-size:11.5px;'>Asec. Beltran</td></tr>
+<tr><td>HSRP repositioning toward EMR financing</td><td>Bureau of International Health Cooperation — Dr. Grace Fe Buquiran-Nericua</td><td class='mono' style='font-size:11.5px;'>Usec. Escolango / Asec. Beltran</td></tr>
+<tr><td>Task-shifting standards, HRH workforce plan &amp; incentives</td><td>Health Human Resource Development Bureau — Dr. Mary Ruth S. Politico</td><td class='mono' style='font-size:11.5px;'>Usec. Escolango / Asec. Beltran</td></tr>
+<tr><td>Joint SHF guidelines linked to AOP/LIPH</td><td>Bureau of Local Health Systems Development — Dr. Juan Alfonso R. Perez IV</td><td class='mono' style='font-size:11.5px;'>Usec. Escolango / Asec. Beltran</td></tr>
+<tr><td>Healthy Schools &amp; Communities joint rollout</td><td>Health Promotion Bureau — Dr. Mar Wynn D. Bello</td><td class='mono' style='font-size:11.5px;'>Usec. Palermo-Maestral</td></tr>
+<tr><td>Global Budget, DRGs, Z-Ben contracting, YAKAP×GAMOT expansion</td><td>PhilHealth — Dr. Edwin M. Mercado</td><td class='mono' style='font-size:11.5px;'>OSEC direct</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================= -->
+<!-- SOURCES FOOTER (persistent, outside tabs) -->
+<!-- ============================================================= -->
+<div class="footstrip">
+  <div class="footstrip-inner">
+    <details class="srcpanel">
+      <summary>Sources, methodology &amp; correction log</summary>
+      <div class="srcpanel-body">
+        <p>A name only counts as current here if there's dated evidence of that person acting in the role — signing something, being quoted in the role, appearing on a dated masthead — not evidence they were once appointed to it.</p>
+        <div class="grid-2">
+          <div>
+            <strong style="color:var(--ink);">DOH Department Personnel Orders</strong>
+            <table class="dt" style="margin-top:8px;">
+              <tbody>
+                <tr><td class="mono">4726</td><td>14 Jul 2026 — base order</td></tr>
+                <tr><td class="mono">4826</td><td>16 Jul 2026 — Sudiacal → Bureau of Quarantine</td></tr>
+                <tr><td class="mono">4827</td><td>16 Jul 2026 — Flores → Central Luzon CHD</td></tr>
+                <tr><td class="mono">4975</td><td>22 Jul 2026 — Perez-Chiong narrowed</td></tr>
+                <tr><td class="mono">5142</td><td>28 Jul 2026 — Esteban designated CIO</td></tr>
+                <tr><td class="mono">5143</td><td>28 Jul 2026 — Suba-an → CALABARZON CHD</td></tr>
+                <tr><td class="mono">5144</td><td>28 Jul 2026 — Beltran, lead oversight of KMITS</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <strong style="color:var(--ink);">Hospital &amp; agenda data</strong>
+            <ul style="font-size:12.6px;padding-left:18px;margin-top:8px;">
+              <li>DOH Zero Balance Billing hospital list, via Health Secretary Herbosa statement, 2 Aug 2025</li>
+              <li>DOH per-hospital directory pages (doh.gov.ph/doh-hospitalofficial/…)</li>
+              <li>DOH–PhilHealth working agenda deck (RBM), for the strategic-focus notes throughout Internal Structure</li>
+              <li>HPAAC letter to the PhilHealth Board, 8 Jul 2026</li>
+            </ul>
+          </div>
+        </div>
+        <p style="margin-top:16px;"><strong style="color:var(--ink);">Correction log.</strong> NKTI's Executive Director was previously carried as Dr. Rose Marie O. Rosete-Liquete, sourced to NKTI's own leadership page — stale by roughly a year; corrected to Dr. Jose Dante P. Dator. SOCCSKSARGEN CHD was previously carried with a named Director IV from a page dated after two DPOs had already vacated that post; corrected to vacant. Both sourced from official pages that were simply out of date — kept here as a reminder that an institution's own website is not automatically current.</p>
+        <p class="footnote">Built for OPCEO reference use. Orders and appointments issued after 28 July 2026 are not captured. Verify before external circulation.</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<script>
+/* Tab switching */
+(function(){
+  var buttons = document.querySelectorAll('.tabbtn');
+  var panels = { hospitals: document.getElementById('panel-hospitals'), structure: document.getElementById('panel-structure') };
+  function activate(name, push){
+    buttons.forEach(function(b){
+      var on = b.dataset.tab === name;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-selected', on ? 'true':'false');
+    });
+    Object.keys(panels).forEach(function(k){ panels[k].classList.toggle('active', k===name); });
+    if(push) history.replaceState(null,'','#'+name);
+    window.scrollTo({top:0,behavior:'instant'});
+  }
+  buttons.forEach(function(b){ b.addEventListener('click', function(){ activate(b.dataset.tab, true); }); });
+  var initial = (location.hash||'').replace('#','');
+  if(initial === 'structure') activate('structure', false);
+})();
+
+/* Sub-nav scroll-spy, scoped per active panel */
+(function(){
+  function setup(panelId){
+    var panel = document.getElementById(panelId);
+    if(!panel) return;
+    var links = panel.parentElement.querySelectorAll ? null : null;
+  }
+  var subnavs = document.querySelectorAll('.subnav');
+  subnavs.forEach(function(nav){
+    var links = Array.from(nav.querySelectorAll('a'));
+    var targets = links.map(function(l){ return document.querySelector(l.getAttribute('href')); });
+    function onScroll(){
+      var pos = window.scrollY + 130;
+      var idx = 0;
+      targets.forEach(function(t,i){ if(t && t.offsetTop <= pos) idx = i; });
+      links.forEach(function(l,i){ l.classList.toggle('active', i===idx); });
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+  });
+})();
+</script>
+</body>
+</html>
