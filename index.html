@@ -515,6 +515,34 @@ table.pgt tr:last-child td{border-bottom:none;}
   color:var(--umber);background:#F1EDE0;border-radius:100px;padding:4px 12px;margin-bottom:16px;
 }
 
+/* ===== v4 additions: rank tags, aliases, jump-enabled glance rows ===== */
+.rank-tag{
+  display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;
+  letter-spacing:.04em;border-radius:5px;padding:2px 7px;margin-bottom:8px;
+}
+.rank-usec{background:#DCEBDC;color:#2E5A3A;}
+.rank-asec{background:#F1EADA;color:var(--gold-deep);}
+.rank-joint{background:#E3D9F0;color:#6a3f9e;}
+.rank-sec{background:#EFEBE0;color:var(--umber);}
+.rank-pending{background:var(--risk-soft);color:var(--risk);}
+.oc-card-pending{border-style:dashed;border-color:var(--muted);background:#FAF8F0;}
+.abbr-badge{
+  display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:700;
+  background:#F1EDE0;color:var(--umber);border-radius:5px;padding:1px 6px;margin-left:4px;vertical-align:middle;
+}
+.leaf-alias{
+  font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--gold-deep);font-weight:600;margin-right:6px;
+}
+tr.glance-row{cursor:pointer;}
+tr.glance-row:hover td{background:#FAF3E0;}
+.orgchart-caption{
+  font-size:12.5px;color:var(--umber);background:#F1EDE0;border-radius:10px;padding:12px 16px;margin-bottom:20px;
+}
+.orgchart-caption strong{color:var(--ink);}
+.pending-notice{
+  font-size:12px;color:#7a5417;background:#FBF3E0;border:1px solid #E9CE94;border-radius:8px;padding:8px 12px;margin-top:8px;
+}
+
 </style>
 </head>
 <body>
@@ -631,7 +659,7 @@ table.pgt tr:last-child td{border-bottom:none;}
   <div class="tabhead">
     <div class="eyebrow">Chain of command</div>
     <h1>DOH Structure</h1>
-    <p>Rebuilt from Department Personnel Order 2026-4726 and its five amending orders, all signed by Acting Secretary Jose S. Pujalte Jr. Every designation is expressly interim. Where an office carries a live ask from the DOH–PhilHealth working agenda (see UHC Mandates for the philosophy behind it), it's attached directly below that office.</p>
+    <p>Rebuilt from Department Personnel Order 2026-4726 and its five amending orders, all signed by Acting Secretary Jose S. Pujalte Jr., plus a 4 August 2026 Malacañang appointment letter reflected below. Every designation is expressly interim. Where an office carries a live ask from the DOH–PhilHealth working agenda (see UHC Mandates for the philosophy behind it), it's attached directly below that office.</p>
   </div>
 
   <div class="subnav">
@@ -639,7 +667,6 @@ table.pgt tr:last-child td{border-bottom:none;}
       <a href="#org-chart" class="active">Org Chart</a>
       <a href="#find-office">Find an Office</a>
       <a href="#execom-detail">Full Detail</a>
-      <a href="#glance">At a Glance</a>
     </div>
   </div>
 
@@ -655,6 +682,10 @@ table.pgt tr:last-child td{border-bottom:none;}
     <h2 class="stitle" id="org-chart">Organization chart</h2>
     <p class="sdek">The shape of the department at a glance. Click any box to jump straight to that office's full detail — no need to know which dropdown it's under.</p>
 
+    <div class="orgchart-caption">
+      <strong>Reading the connector line:</strong> every card below — whether tagged USEC, ASEC, or USEC + ASEC — holds a <em>direct</em> lead-oversight assignment from the Secretary per DPO 2026-4726, not a chain running Asec → Usec → Secretary. This is a feature of how the DPO structures interim lead oversight, not necessarily identical to formal civil-service rank order: an Assistant Secretary can hold an independent oversight portfolio reporting straight to the Secretary, the same as an Undersecretary does. Where two officials jointly hold one portfolio, the card is labeled "USEC + ASEC" and both names appear together.
+    </div>
+
     <div class="orgchart-section">
       <div class="orgchart-sec-card">
         <div class="role">Acting Secretary of Health</div>
@@ -663,72 +694,84 @@ table.pgt tr:last-child td{border-bottom:none;}
       <div class="orgchart-connector"></div>
       <div class="orgchart-grid">
 <a class="oc-card" href="#execnode-0" data-jump-target="execnode-0">
+  <span class="rank-tag rank-usec">USEC</span>
   <div class="oc-card-lead">Usec. Elmer G. Punzalan</div>
   <div class="oc-card-title">Metro Manila CHD · all DOH medical centers &amp; hospitals · PPP Mgmt Office</div>
   <div class="oc-card-n">3 offices</div>
   <div class="oc-card-strat">1 strategic ask</div>
 </a>
 <a class="oc-card" href="#execnode-1" data-jump-target="execnode-1">
+  <span class="rank-tag rank-usec">USEC</span>
   <div class="oc-card-lead">Usec. Gloria J. Balboa</div>
   <div class="oc-card-title">CHDs CAR / I / II / III / IV-A / IV-B / V · emergency mgmt · pharma · PNAC</div>
   <div class="oc-card-n">6 offices</div>
   
 </a>
 <a class="oc-card" href="#execnode-2" data-jump-target="execnode-2">
+  <span class="rank-tag rank-usec">USEC</span>
   <div class="oc-card-lead">Usec. Mary Ann Palermo-Maestral</div>
   <div class="oc-card-title">CHDs VI / VII / VIII / NIR · UHC Health Services Cluster · all DATRCs</div>
   <div class="oc-card-n">7 offices</div>
   <div class="oc-card-strat">1 strategic ask</div>
 </a>
 <a class="oc-card" href="#execnode-3" data-jump-target="execnode-3">
+  <span class="rank-tag rank-usec">USEC</span>
   <div class="oc-card-lead">Usec. Glenn Mathew G. Baggao</div>
   <div class="oc-card-title">CHDs IX / X / XI / XII / XIII</div>
   <div class="oc-card-n">1 office</div>
   
 </a>
 <a class="oc-card" href="#execnode-4" data-jump-target="execnode-4">
+  <span class="rank-tag rank-joint">USEC + ASEC</span>
   <div class="oc-card-lead">Usec. Randy B. Escolango &amp; Asec. Maylene M. Beltran</div>
   <div class="oc-card-title">co-oversight: local health systems · int'l cooperation · HR development</div>
   <div class="oc-card-n">3 offices</div>
   <div class="oc-card-strat">3 strategic asks</div>
 </a>
 <a class="oc-card" href="#execnode-5" data-jump-target="execnode-5">
+  <span class="rank-tag rank-asec">ASEC</span>
   <div class="oc-card-lead">Asec. Maylene M. Beltran</div>
   <div class="oc-card-title">Knowledge Management &amp; IT Service — added 28 Jul, DPO 5144</div>
   <div class="oc-card-n">1 office</div>
   <div class="oc-card-strat">1 strategic ask</div>
 </a>
 <a class="oc-card" href="#execnode-6" data-jump-target="execnode-6">
-  <div class="oc-card-lead">Asec. Christian Lel M. Saquilabon</div>
-  <div class="oc-card-title">concurrent Director IV, Legal Service · regulatory bureaus</div>
+  <span class="rank-tag rank-usec">USEC</span>
+  <div class="oc-card-lead">Usec. Christian Lel M. Saquilabon</div>
+  <div class="oc-card-title">appointed Undersecretary 4 Aug 2026, vice Usec. Perez-Chiong · concurrent Director IV, Legal Service · regulatory bureaus</div>
   <div class="oc-card-n">3 offices</div>
   <div class="oc-card-strat">2 strategic asks</div>
 </a>
 <a class="oc-card" href="#execnode-7" data-jump-target="execnode-7">
+  <span class="rank-tag rank-usec">USEC</span>
   <div class="oc-card-lead">Usec. Brigida H. Romualdez-Aquino</div>
   <div class="oc-card-title">special concerns · GAD focal · PITAHC</div>
   <div class="oc-card-n">1 office</div>
   
 </a>
 <a class="oc-card" href="#execnode-8" data-jump-target="execnode-8">
+  <span class="rank-tag rank-usec">USEC</span>
   <div class="oc-card-lead">Usec. Zhielah Ritz C. Gatchalian</div>
   <div class="oc-card-title">Malasakit Program Office · Supply Chain Management Service</div>
   <div class="oc-card-n">2 offices</div>
   <div class="oc-card-strat">1 strategic ask</div>
 </a>
 <a class="oc-card" href="#execnode-9" data-jump-target="execnode-9">
+  <span class="rank-tag rank-usec">USEC</span>
   <div class="oc-card-lead">Usec. Albert Francis E. Domingo</div>
   <div class="oc-card-title">National Nutrition Council (self, concurrent Executive Director IV)</div>
   <div class="oc-card-n">1 office</div>
   
 </a>
-<a class="oc-card" href="#execnode-10" data-jump-target="execnode-10">
-  <div class="oc-card-lead">Usec. Emmie Liza Perez-Chiong</div>
-  <div class="oc-card-title">narrowed by DPO 4975 (22 Jul); CIO title revoked</div>
+<a class="oc-card oc-card-pending" href="#execnode-10" data-jump-target="execnode-10">
+  <span class="rank-tag rank-pending">PENDING</span>
+  <div class="oc-card-lead">Oversight pending reassignment</div>
+  <div class="oc-card-title">Usec. Perez-Chiong replaced 4 Aug 2026 — successor oversight not yet confirmed by DPO</div>
   <div class="oc-card-n">2 offices</div>
-  
+  <div class="oc-card-strat">2 strategic asks</div>
 </a>
 <a class="oc-card" href="#execnode-11" data-jump-target="execnode-11">
+  <span class="rank-tag rank-sec">SEC/EXECOM</span>
   <div class="oc-card-lead">Secretary / authorized ExeCom member</div>
   <div class="oc-card-title">audit, legal, health facilities enhancement, policy &amp; planning</div>
   <div class="oc-card-n">3 offices</div>
@@ -790,259 +833,259 @@ table.pgt tr:last-child td{border-bottom:none;}
       <table class="office-table" id="office-table">
         <thead><tr><th>Office</th><th>Official</th><th>Oversight</th><th>Tier</th></tr></thead>
         <tbody>
-<tr id="off-metro-manila-chd--ncr" data-search-label="Metro Manila CHD (NCR)" data-search-sub="Dr. Lester M. Tan, Director IV Punzalan">
-  <td><span class="dot dot-filled"></span> Metro Manila CHD (NCR) </td>
+<tr id="off-metro-manila-chd--ncr" data-search-label="Metro Manila CHD (NCR)" data-search-sub="Dr. Lester M. Tan, Director IV Punzalan" data-search-alias="MMCHD CHD">
+  <td><span class="dot dot-filled"></span> Metro Manila CHD (NCR) <span class="abbr-badge">MMCHD</span> </td>
   <td>Dr. Lester M. Tan, Director IV</td>
   <td>Punzalan</td>
   <td><span class="tier tier-A">A</span></td>
 </tr>
-<tr id="off-all-doh-medical-centers--metro-manila-specialty-hospitals" data-search-label="All DOH medical centers &amp; Metro Manila specialty hospitals" data-search-sub="Lead oversight — see DOH Hospitals tab Punzalan">
+<tr id="off-all-doh-medical-centers--metro-manila-specialty-hospitals" data-search-label="All DOH medical centers &amp; Metro Manila specialty hospitals" data-search-sub="Lead oversight — see DOH Hospitals tab Punzalan" data-search-alias="">
   <td><span class="dot dot-filled"></span> All DOH medical centers &amp; Metro Manila specialty hospitals <span class="flat-strat-dot" title="Has a live DOH–PhilHealth strategic ask">●</span></td>
   <td>Lead oversight — see DOH Hospitals tab</td>
   <td>Punzalan</td>
   <td><span class="tier tier-A">A</span></td>
 </tr>
-<tr id="off-public-private-partnership-management-office" data-search-label="Public-Private Partnership Management Office" data-search-sub="— Punzalan">
-  <td><span class="dot dot-filled"></span> Public-Private Partnership Management Office </td>
+<tr id="off-public-private-partnership-management-office" data-search-label="Public-Private Partnership Management Office" data-search-sub="— Punzalan" data-search-alias="PPPMO">
+  <td><span class="dot dot-filled"></span> Public-Private Partnership Management Office <span class="abbr-badge">PPPMO</span> </td>
   <td>—</td>
   <td>Punzalan</td>
   <td><span class="tier tier-A">A</span></td>
 </tr>
-<tr id="off-7-centers-for-health-development" data-search-label="7 Centers for Health Development" data-search-sub="See DOH Hospitals tab for each region's hospital roster Balboa">
-  <td><span class="dot dot-filled"></span> 7 Centers for Health Development </td>
+<tr id="off-7-centers-for-health-development" data-search-label="7 Centers for Health Development" data-search-sub="See DOH Hospitals tab for each region's hospital roster Balboa" data-search-alias="CHD">
+  <td><span class="dot dot-filled"></span> 7 Centers for Health Development <span class="abbr-badge">CHD</span> </td>
   <td>See DOH Hospitals tab for each region's hospital roster</td>
   <td>Balboa</td>
   <td><span class="tier tier-A">A</span></td>
 </tr>
-<tr id="off-health-emergency-management-bureau" data-search-label="Health Emergency Management Bureau" data-search-sub="Dr. Bernadett P. Velasco, Director IV Balboa">
-  <td><span class="dot dot-filled"></span> Health Emergency Management Bureau </td>
+<tr id="off-health-emergency-management-bureau" data-search-label="Health Emergency Management Bureau" data-search-sub="Dr. Bernadett P. Velasco, Director IV Balboa" data-search-alias="HEMB">
+  <td><span class="dot dot-filled"></span> Health Emergency Management Bureau <span class="abbr-badge">HEMB</span> </td>
   <td>Dr. Bernadett P. Velasco, Director IV</td>
   <td>Balboa</td>
   <td><span class="tier tier-A">A</span></td>
 </tr>
-<tr id="off-pharmaceutical-division" data-search-label="Pharmaceutical Division" data-search-sub="Dr. Uriel C. Cachero, OIC Balboa">
-  <td><span class="dot dot-filled"></span> Pharmaceutical Division </td>
+<tr id="off-pharmaceutical-division" data-search-label="Pharmaceutical Division" data-search-sub="Dr. Uriel C. Cachero, OIC Balboa" data-search-alias="PD">
+  <td><span class="dot dot-filled"></span> Pharmaceutical Division <span class="abbr-badge">PD</span> </td>
   <td>Dr. Uriel C. Cachero, OIC</td>
   <td>Balboa</td>
   <td><span class="tier tier-A">A</span></td>
 </tr>
-<tr id="off-health-and-climate-change-office" data-search-label="Health and Climate Change Office" data-search-sub="Dr. Ronald Law, Director III Balboa">
-  <td><span class="dot dot-filled"></span> Health and Climate Change Office </td>
+<tr id="off-health-and-climate-change-office" data-search-label="Health and Climate Change Office" data-search-sub="Dr. Ronald Law, Director III Balboa" data-search-alias="HCCO">
+  <td><span class="dot dot-filled"></span> Health and Climate Change Office <span class="abbr-badge">HCCO</span> </td>
   <td>Dr. Ronald Law, Director III</td>
   <td>Balboa</td>
   <td><span class="tier tier-A">A</span></td>
 </tr>
-<tr id="off-philippine-national-aids-council" data-search-label="Philippine National AIDS Council" data-search-sub="Dr. Joselito R. Feliciano, Executive Director III Balboa">
-  <td><span class="dot dot-filled"></span> Philippine National AIDS Council </td>
+<tr id="off-philippine-national-aids-council" data-search-label="Philippine National AIDS Council" data-search-sub="Dr. Joselito R. Feliciano, Executive Director III Balboa" data-search-alias="PNAC">
+  <td><span class="dot dot-filled"></span> Philippine National AIDS Council <span class="abbr-badge">PNAC</span> </td>
   <td>Dr. Joselito R. Feliciano, Executive Director III</td>
   <td>Balboa</td>
   <td><span class="tier tier-A">A</span></td>
 </tr>
-<tr id="off-philippine-multi-sectoral-nutrition-project" data-search-label="Philippine Multi-Sectoral Nutrition Project" data-search-sub="— Balboa">
-  <td><span class="dot dot-filled"></span> Philippine Multi-Sectoral Nutrition Project </td>
+<tr id="off-philippine-multi-sectoral-nutrition-project" data-search-label="Philippine Multi-Sectoral Nutrition Project" data-search-sub="— Balboa" data-search-alias="PMNP">
+  <td><span class="dot dot-filled"></span> Philippine Multi-Sectoral Nutrition Project <span class="abbr-badge">PMNP</span> </td>
   <td>—</td>
   <td>Balboa</td>
   <td><span class="tier tier-A">A</span></td>
 </tr>
-<tr id="off-4-centers-for-health-development" data-search-label="4 Centers for Health Development" data-search-sub="See DOH Hospitals tab for each region's hospital roster Palermo-Maestral">
-  <td><span class="dot dot-filled"></span> 4 Centers for Health Development </td>
+<tr id="off-4-centers-for-health-development" data-search-label="4 Centers for Health Development" data-search-sub="See DOH Hospitals tab for each region's hospital roster Palermo-Maestral" data-search-alias="CHD">
+  <td><span class="dot dot-filled"></span> 4 Centers for Health Development <span class="abbr-badge">CHD</span> </td>
   <td>See DOH Hospitals tab for each region's hospital roster</td>
   <td>Palermo-Maestral</td>
   <td><span class="tier tier-A">A</span></td>
 </tr>
-<tr id="off-uhc-hsc-technical-office" data-search-label="UHC HSC Technical Office" data-search-sub="Ms. Frances Rose E. Mamaril, Director IV Palermo-Maestral">
-  <td><span class="dot dot-filled"></span> UHC HSC Technical Office </td>
+<tr id="off-uhc-hsc-technical-office" data-search-label="UHC HSC Technical Office" data-search-sub="Ms. Frances Rose E. Mamaril, Director IV Palermo-Maestral" data-search-alias="HSC-TO UHC HSC-TO">
+  <td><span class="dot dot-filled"></span> UHC HSC Technical Office <span class="abbr-badge">HSC-TO</span> </td>
   <td>Ms. Frances Rose E. Mamaril, Director IV</td>
   <td>Palermo-Maestral</td>
   <td><span class="tier tier-A">A</span></td>
 </tr>
-<tr id="off-disease-prevention--control-bureau" data-search-label="Disease Prevention &amp; Control Bureau" data-search-sub="Dr. Jose Gerard B. Belimac, OIC Palermo-Maestral">
-  <td><span class="dot dot-filled"></span> Disease Prevention &amp; Control Bureau </td>
+<tr id="off-disease-prevention--control-bureau" data-search-label="Disease Prevention &amp; Control Bureau" data-search-sub="Dr. Jose Gerard B. Belimac, OIC Palermo-Maestral" data-search-alias="DPCB">
+  <td><span class="dot dot-filled"></span> Disease Prevention &amp; Control Bureau <span class="abbr-badge">DPCB</span> </td>
   <td>Dr. Jose Gerard B. Belimac, OIC</td>
   <td>Palermo-Maestral</td>
   <td><span class="tier tier-A">A</span></td>
 </tr>
-<tr id="off-epidemiology-bureau" data-search-label="Epidemiology Bureau" data-search-sub="Dr. Gerna M. Manatad, Director IV Palermo-Maestral">
-  <td><span class="dot dot-filled"></span> Epidemiology Bureau </td>
+<tr id="off-epidemiology-bureau" data-search-label="Epidemiology Bureau" data-search-sub="Dr. Gerna M. Manatad, Director IV Palermo-Maestral" data-search-alias="EB">
+  <td><span class="dot dot-filled"></span> Epidemiology Bureau <span class="abbr-badge">EB</span> </td>
   <td>Dr. Gerna M. Manatad, Director IV</td>
   <td>Palermo-Maestral</td>
   <td><span class="tier tier-A">A</span></td>
 </tr>
-<tr id="off-health-promotion-bureau" data-search-label="Health Promotion Bureau" data-search-sub="Dr. Mar Wynn D. Bello, Director IV Palermo-Maestral">
-  <td><span class="dot dot-filled"></span> Health Promotion Bureau <span class="flat-strat-dot" title="Has a live DOH–PhilHealth strategic ask">●</span></td>
+<tr id="off-health-promotion-bureau" data-search-label="Health Promotion Bureau" data-search-sub="Dr. Mar Wynn D. Bello, Director IV Palermo-Maestral" data-search-alias="HPB">
+  <td><span class="dot dot-filled"></span> Health Promotion Bureau <span class="abbr-badge">HPB</span> <span class="flat-strat-dot" title="Has a live DOH–PhilHealth strategic ask">●</span></td>
   <td>Dr. Mar Wynn D. Bello, Director IV</td>
   <td>Palermo-Maestral</td>
   <td><span class="tier tier-A">A</span></td>
 </tr>
-<tr id="off-research-institute-for-tropical-medicine" data-search-label="Research Institute for Tropical Medicine" data-search-sub="Atty. Ana Liza P. Hombrado-Duran, Director IV Palermo-Maestral">
-  <td><span class="dot dot-filled"></span> Research Institute for Tropical Medicine </td>
+<tr id="off-research-institute-for-tropical-medicine" data-search-label="Research Institute for Tropical Medicine" data-search-sub="Atty. Ana Liza P. Hombrado-Duran, Director IV Palermo-Maestral" data-search-alias="RITM">
+  <td><span class="dot dot-filled"></span> Research Institute for Tropical Medicine <span class="abbr-badge">RITM</span> </td>
   <td>Atty. Ana Liza P. Hombrado-Duran, Director IV</td>
   <td>Palermo-Maestral</td>
   <td><span class="tier tier-A">A</span></td>
 </tr>
-<tr id="off-all-doh-drug-abuse-treatment--rehabilitation-centers" data-search-label="All DOH Drug Abuse Treatment &amp; Rehabilitation Centers" data-search-sub="— Palermo-Maestral">
-  <td><span class="dot dot-filled"></span> All DOH Drug Abuse Treatment &amp; Rehabilitation Centers </td>
+<tr id="off-all-doh-drug-abuse-treatment--rehabilitation-centers" data-search-label="All DOH Drug Abuse Treatment &amp; Rehabilitation Centers" data-search-sub="— Palermo-Maestral" data-search-alias="DATRC">
+  <td><span class="dot dot-filled"></span> All DOH Drug Abuse Treatment &amp; Rehabilitation Centers <span class="abbr-badge">DATRC</span> </td>
   <td>—</td>
   <td>Palermo-Maestral</td>
   <td><span class="tier tier-A">A</span></td>
 </tr>
-<tr id="off-5-centers-for-health-development" data-search-label="5 Centers for Health Development" data-search-sub="Region XII (SOCCSKSARGEN) currently vacant at Director IV — see DOH Hospitals tab Baggao">
-  <td><span class="dot dot-risk"></span> 5 Centers for Health Development </td>
+<tr id="off-5-centers-for-health-development" data-search-label="5 Centers for Health Development" data-search-sub="Region XII (SOCCSKSARGEN) currently vacant at Director IV — see DOH Hospitals tab Baggao" data-search-alias="CHD">
+  <td><span class="dot dot-risk"></span> 5 Centers for Health Development <span class="abbr-badge">CHD</span> </td>
   <td>Region XII (SOCCSKSARGEN) currently vacant at Director IV — see DOH Hospitals tab</td>
   <td>Baggao</td>
   <td><span class="tier tier-A">A</span></td>
 </tr>
-<tr id="off-bureau-of-local-health-systems-development" data-search-label="Bureau of Local Health Systems Development" data-search-sub="Dr. Juan Alfonso R. Perez IV, OIC Escolango / Beltran">
-  <td><span class="dot dot-filled"></span> Bureau of Local Health Systems Development <span class="flat-strat-dot" title="Has a live DOH–PhilHealth strategic ask">●</span></td>
+<tr id="off-bureau-of-local-health-systems-development" data-search-label="Bureau of Local Health Systems Development" data-search-sub="Dr. Juan Alfonso R. Perez IV, OIC Escolango / Beltran" data-search-alias="BLHSD">
+  <td><span class="dot dot-filled"></span> Bureau of Local Health Systems Development <span class="abbr-badge">BLHSD</span> <span class="flat-strat-dot" title="Has a live DOH–PhilHealth strategic ask">●</span></td>
   <td>Dr. Juan Alfonso R. Perez IV, OIC</td>
   <td>Escolango / Beltran</td>
   <td><span class="tier tier-A">A</span></td>
 </tr>
-<tr id="off-bureau-of-international-health-cooperation" data-search-label="Bureau of International Health Cooperation" data-search-sub="Dr. Grace Fe Buquiran-Nericua, OIC Escolango / Beltran">
-  <td><span class="dot dot-filled"></span> Bureau of International Health Cooperation <span class="flat-strat-dot" title="Has a live DOH–PhilHealth strategic ask">●</span></td>
+<tr id="off-bureau-of-international-health-cooperation" data-search-label="Bureau of International Health Cooperation" data-search-sub="Dr. Grace Fe Buquiran-Nericua, OIC Escolango / Beltran" data-search-alias="BIHC">
+  <td><span class="dot dot-filled"></span> Bureau of International Health Cooperation <span class="abbr-badge">BIHC</span> <span class="flat-strat-dot" title="Has a live DOH–PhilHealth strategic ask">●</span></td>
   <td>Dr. Grace Fe Buquiran-Nericua, OIC</td>
   <td>Escolango / Beltran</td>
   <td><span class="tier tier-A">A</span></td>
 </tr>
-<tr id="off-health-human-resource-development-bureau" data-search-label="Health Human Resource Development Bureau" data-search-sub="Dr. Mary Ruth S. Politico, OIC Escolango / Beltran">
-  <td><span class="dot dot-filled"></span> Health Human Resource Development Bureau <span class="flat-strat-dot" title="Has a live DOH–PhilHealth strategic ask">●</span></td>
+<tr id="off-health-human-resource-development-bureau" data-search-label="Health Human Resource Development Bureau" data-search-sub="Dr. Mary Ruth S. Politico, OIC Escolango / Beltran" data-search-alias="HHRDB">
+  <td><span class="dot dot-filled"></span> Health Human Resource Development Bureau <span class="abbr-badge">HHRDB</span> <span class="flat-strat-dot" title="Has a live DOH–PhilHealth strategic ask">●</span></td>
   <td>Dr. Mary Ruth S. Politico, OIC</td>
   <td>Escolango / Beltran</td>
   <td><span class="tier tier-A">A</span></td>
 </tr>
-<tr id="off-kmits" data-search-label="KMITS" data-search-sub="Ms. Cherrie D. Esteban, OIC Director IV &amp; concurrent Chief Information Officer (DPO 5142) Beltran">
-  <td><span class="dot dot-filled"></span> KMITS <span class="flat-strat-dot" title="Has a live DOH–PhilHealth strategic ask">●</span></td>
+<tr id="off-kmits" data-search-label="KMITS" data-search-sub="Ms. Cherrie D. Esteban, OIC Director IV &amp; concurrent Chief Information Officer (DPO 5142) Beltran" data-search-alias="KMITS">
+  <td><span class="dot dot-filled"></span> KMITS <span class="abbr-badge">KMITS</span> <span class="flat-strat-dot" title="Has a live DOH–PhilHealth strategic ask">●</span></td>
   <td>Ms. Cherrie D. Esteban, OIC Director IV &amp; concurrent Chief Information Officer (DPO 5142)</td>
   <td>Beltran</td>
   <td><span class="tier tier-A">A</span></td>
 </tr>
-<tr id="off-health-facilities--service-regulatory-bureau" data-search-label="Health Facilities &amp; Service Regulatory Bureau" data-search-sub="Engr. Annette B. Tan, Director IV Saquilabon">
-  <td><span class="dot dot-filled"></span> Health Facilities &amp; Service Regulatory Bureau <span class="flat-strat-dot" title="Has a live DOH–PhilHealth strategic ask">●</span></td>
+<tr id="off-health-facilities--service-regulatory-bureau" data-search-label="Health Facilities &amp; Service Regulatory Bureau" data-search-sub="Engr. Annette B. Tan, Director IV Saquilabon" data-search-alias="HFSRB">
+  <td><span class="dot dot-filled"></span> Health Facilities &amp; Service Regulatory Bureau <span class="abbr-badge">HFSRB</span> <span class="flat-strat-dot" title="Has a live DOH–PhilHealth strategic ask">●</span></td>
   <td>Engr. Annette B. Tan, Director IV</td>
   <td>Saquilabon</td>
   <td><span class="tier tier-A">A</span></td>
 </tr>
-<tr id="off-health-facility-development-bureau" data-search-label="Health Facility Development Bureau" data-search-sub="Dr. Melissa T. Sena, Director IV Saquilabon">
-  <td><span class="dot dot-filled"></span> Health Facility Development Bureau <span class="flat-strat-dot" title="Has a live DOH–PhilHealth strategic ask">●</span></td>
+<tr id="off-health-facility-development-bureau" data-search-label="Health Facility Development Bureau" data-search-sub="Dr. Melissa T. Sena, Director IV Saquilabon" data-search-alias="HFDB">
+  <td><span class="dot dot-filled"></span> Health Facility Development Bureau <span class="abbr-badge">HFDB</span> <span class="flat-strat-dot" title="Has a live DOH–PhilHealth strategic ask">●</span></td>
   <td>Dr. Melissa T. Sena, Director IV</td>
   <td>Saquilabon</td>
   <td><span class="tier tier-A">A</span></td>
 </tr>
-<tr id="off-bureau-of-quarantine" data-search-label="Bureau of Quarantine" data-search-sub="Dr. Aleli Annie Grace P. Sudiacal, Director IV (DPO 4826) Saquilabon">
-  <td><span class="dot dot-filled"></span> Bureau of Quarantine </td>
+<tr id="off-bureau-of-quarantine" data-search-label="Bureau of Quarantine" data-search-sub="Dr. Aleli Annie Grace P. Sudiacal, Director IV (DPO 4826) Saquilabon" data-search-alias="BOQ">
+  <td><span class="dot dot-filled"></span> Bureau of Quarantine <span class="abbr-badge">BOQ</span> </td>
   <td>Dr. Aleli Annie Grace P. Sudiacal, Director IV (DPO 4826)</td>
   <td>Saquilabon</td>
   <td><span class="tier tier-A">A</span></td>
 </tr>
-<tr id="off-pitahc" data-search-label="PITAHC" data-search-sub="Dr. Ma. Teresa C. Iñigo, Director General Romualdez-Aquino">
-  <td><span class="dot dot-filled"></span> PITAHC </td>
+<tr id="off-pitahc" data-search-label="PITAHC" data-search-sub="Dr. Ma. Teresa C. Iñigo, Director General Romualdez-Aquino" data-search-alias="PITAHC">
+  <td><span class="dot dot-filled"></span> PITAHC <span class="abbr-badge">PITAHC</span> </td>
   <td>Dr. Ma. Teresa C. Iñigo, Director General</td>
   <td>Romualdez-Aquino</td>
   <td><span class="tier tier-A">A</span></td>
 </tr>
-<tr id="off-malasakit-program-office" data-search-label="Malasakit Program Office" data-search-sub="Atty. Allison C. Umandap, Director IV Gatchalian">
-  <td><span class="dot dot-filled"></span> Malasakit Program Office <span class="flat-strat-dot" title="Has a live DOH–PhilHealth strategic ask">●</span></td>
+<tr id="off-malasakit-program-office" data-search-label="Malasakit Program Office" data-search-sub="Atty. Allison C. Umandap, Director IV Gatchalian" data-search-alias="MPO">
+  <td><span class="dot dot-filled"></span> Malasakit Program Office <span class="abbr-badge">MPO</span> <span class="flat-strat-dot" title="Has a live DOH–PhilHealth strategic ask">●</span></td>
   <td>Atty. Allison C. Umandap, Director IV</td>
   <td>Gatchalian</td>
   <td><span class="tier tier-A">A</span></td>
 </tr>
-<tr id="off-supply-chain-management-service" data-search-label="Supply Chain Management Service" data-search-sub="Ms. Johanna Solon-Banzon, Director IV Gatchalian">
-  <td><span class="dot dot-filled"></span> Supply Chain Management Service </td>
+<tr id="off-supply-chain-management-service" data-search-label="Supply Chain Management Service" data-search-sub="Ms. Johanna Solon-Banzon, Director IV Gatchalian" data-search-alias="SCMS">
+  <td><span class="dot dot-filled"></span> Supply Chain Management Service <span class="abbr-badge">SCMS</span> </td>
   <td>Ms. Johanna Solon-Banzon, Director IV</td>
   <td>Gatchalian</td>
   <td><span class="tier tier-A">A</span></td>
 </tr>
-<tr id="off-national-nutrition-council" data-search-label="National Nutrition Council" data-search-sub="Designated Jul 2026, succeeding Asec. Azucena M. Dayanghirang Domingo">
-  <td><span class="dot dot-filled"></span> National Nutrition Council </td>
+<tr id="off-national-nutrition-council" data-search-label="National Nutrition Council" data-search-sub="Designated Jul 2026, succeeding Asec. Azucena M. Dayanghirang Domingo" data-search-alias="NNC">
+  <td><span class="dot dot-filled"></span> National Nutrition Council <span class="abbr-badge">NNC</span> </td>
   <td>Designated Jul 2026, succeeding Asec. Azucena M. Dayanghirang</td>
   <td>Domingo</td>
   <td><span class="tier tier-A">A</span></td>
 </tr>
-<tr id="off-oral-health-program" data-search-label="Oral Health Program" data-search-sub="Dr. Manuel V. Vallesteros, Division Chief Perez-Chiong">
-  <td><span class="dot dot-filled"></span> Oral Health Program </td>
+<tr id="off-oral-health-program" data-search-label="Oral Health Program" data-search-sub="Dr. Manuel V. Vallesteros, Division Chief Pending" data-search-alias="OHP">
+  <td><span class="dot dot-filled"></span> Oral Health Program <span class="abbr-badge">OHP</span> <span class="flat-strat-dot" title="Has a live DOH–PhilHealth strategic ask">●</span></td>
   <td>Dr. Manuel V. Vallesteros, Division Chief</td>
-  <td>Perez-Chiong</td>
-  <td><span class="tier tier-A">A</span></td>
+  <td>Pending</td>
+  <td><span class="tier tier-D">D</span></td>
 </tr>
-<tr id="off-philippine-medical-travel--wellness-tourism-program" data-search-label="Philippine Medical Travel &amp; Wellness Tourism Program" data-search-sub="— Perez-Chiong">
-  <td><span class="dot dot-filled"></span> Philippine Medical Travel &amp; Wellness Tourism Program </td>
+<tr id="off-philippine-medical-travel--wellness-tourism-program" data-search-label="Philippine Medical Travel &amp; Wellness Tourism Program" data-search-sub="— Pending" data-search-alias="Medical Tourism">
+  <td><span class="dot dot-filled"></span> Philippine Medical Travel &amp; Wellness Tourism Program <span class="abbr-badge">Medical</span> <span class="flat-strat-dot" title="Has a live DOH–PhilHealth strategic ask">●</span></td>
   <td>—</td>
-  <td>Perez-Chiong</td>
-  <td><span class="tier tier-A">A</span></td>
+  <td>Pending</td>
+  <td><span class="tier tier-D">D</span></td>
 </tr>
-<tr id="off-internal-audit-service" data-search-label="Internal Audit Service" data-search-sub="Ms. Rowena C. Lora, Director IV Sec/ExeCom">
-  <td><span class="dot dot-filled"></span> Internal Audit Service </td>
+<tr id="off-internal-audit-service" data-search-label="Internal Audit Service" data-search-sub="Ms. Rowena C. Lora, Director IV Sec/ExeCom" data-search-alias="IAS">
+  <td><span class="dot dot-filled"></span> Internal Audit Service <span class="abbr-badge">IAS</span> </td>
   <td>Ms. Rowena C. Lora, Director IV</td>
   <td>Sec/ExeCom</td>
   <td><span class="tier tier-A">A</span></td>
 </tr>
-<tr id="off-health-facilities-enhancement-pmo" data-search-label="Health Facilities Enhancement PMO" data-search-sub="Engr. Maximo A. Adan Jr., OIC Sec/ExeCom">
-  <td><span class="dot dot-filled"></span> Health Facilities Enhancement PMO <span class="flat-strat-dot" title="Has a live DOH–PhilHealth strategic ask">●</span></td>
+<tr id="off-health-facilities-enhancement-pmo" data-search-label="Health Facilities Enhancement PMO" data-search-sub="Engr. Maximo A. Adan Jr., OIC Sec/ExeCom" data-search-alias="HFEP-MO HFEPMO">
+  <td><span class="dot dot-filled"></span> Health Facilities Enhancement PMO <span class="abbr-badge">HFEP-MO</span> <span class="flat-strat-dot" title="Has a live DOH–PhilHealth strategic ask">●</span></td>
   <td>Engr. Maximo A. Adan Jr., OIC</td>
   <td>Sec/ExeCom</td>
   <td><span class="tier tier-A">A</span></td>
 </tr>
-<tr id="off-health-policy-development--planning-bureau" data-search-label="Health Policy Development &amp; Planning Bureau" data-search-sub="Mr. Roderick M. Napulan, Director IV Sec/ExeCom">
-  <td><span class="dot dot-filled"></span> Health Policy Development &amp; Planning Bureau </td>
+<tr id="off-health-policy-development--planning-bureau" data-search-label="Health Policy Development &amp; Planning Bureau" data-search-sub="Mr. Roderick M. Napulan, Director IV Sec/ExeCom" data-search-alias="HPDPB">
+  <td><span class="dot dot-filled"></span> Health Policy Development &amp; Planning Bureau <span class="abbr-badge">HPDPB</span> </td>
   <td>Mr. Roderick M. Napulan, Director IV</td>
   <td>Sec/ExeCom</td>
   <td><span class="tier tier-A">A</span></td>
 </tr>
-<tr id="off-philhealth" data-search-label="PhilHealth" data-search-sub="Dr. Edwin M. Mercado, President &amp; CEO OSEC direct">
+<tr id="off-philhealth" data-search-label="PhilHealth" data-search-sub="Dr. Edwin M. Mercado, President &amp; CEO OSEC direct" data-search-alias="">
   <td><span class="dot dot-filled"></span> PhilHealth <span class="flat-strat-dot" title="Has a live DOH–PhilHealth strategic ask">●</span></td>
   <td>Dr. Edwin M. Mercado, President &amp; CEO</td>
   <td>OSEC — direct</td>
   <td><span class="tier tier-B">B</span></td>
 </tr>
-<tr id="off-fda" data-search-label="FDA" data-search-sub="Atty. Paolo S. Teston, Director General OSEC direct">
-  <td><span class="dot dot-risk"></span> FDA <span class="flat-strat-dot" title="Has a live DOH–PhilHealth strategic ask">●</span></td>
+<tr id="off-fda" data-search-label="FDA" data-search-sub="Atty. Paolo S. Teston, Director General OSEC direct" data-search-alias="FDA">
+  <td><span class="dot dot-risk"></span> FDA <span class="abbr-badge">FDA</span> <span class="flat-strat-dot" title="Has a live DOH–PhilHealth strategic ask">●</span></td>
   <td>Atty. Paolo S. Teston, Director General</td>
   <td>OSEC — direct</td>
   <td><span class="tier tier-D">D</span></td>
 </tr>
-<tr id="off-philippine-heart-center" data-search-label="Philippine Heart Center" data-search-sub="Dr. Avenilo L. Aventura Jr., Executive Director OSEC direct">
-  <td><span class="dot dot-filled"></span> Philippine Heart Center </td>
+<tr id="off-philippine-heart-center" data-search-label="Philippine Heart Center" data-search-sub="Dr. Avenilo L. Aventura Jr., Executive Director OSEC direct" data-search-alias="PHC">
+  <td><span class="dot dot-filled"></span> Philippine Heart Center <span class="abbr-badge">PHC</span> </td>
   <td>Dr. Avenilo L. Aventura Jr., Executive Director</td>
   <td>OSEC — direct</td>
   <td><span class="tier tier-B">B</span></td>
 </tr>
-<tr id="off-national-kidney--transplant-institute" data-search-label="National Kidney &amp; Transplant Institute" data-search-sub="Dr. Jose Dante P. Dator, Executive Director OSEC direct">
-  <td><span class="dot dot-filled"></span> National Kidney &amp; Transplant Institute </td>
+<tr id="off-national-kidney--transplant-institute" data-search-label="National Kidney &amp; Transplant Institute" data-search-sub="Dr. Jose Dante P. Dator, Executive Director OSEC direct" data-search-alias="NKTI">
+  <td><span class="dot dot-filled"></span> National Kidney &amp; Transplant Institute <span class="abbr-badge">NKTI</span> </td>
   <td>Dr. Jose Dante P. Dator, Executive Director</td>
   <td>OSEC — direct</td>
   <td><span class="tier tier-B">B</span></td>
 </tr>
-<tr id="off-lung-center-of-the-philippines" data-search-label="Lung Center of the Philippines" data-search-sub="Dr. Jubert P. Benedicto, OIC-Executive Director OSEC direct">
-  <td><span class="dot dot-filled"></span> Lung Center of the Philippines </td>
+<tr id="off-lung-center-of-the-philippines" data-search-label="Lung Center of the Philippines" data-search-sub="Dr. Jubert P. Benedicto, OIC-Executive Director OSEC direct" data-search-alias="LCP">
+  <td><span class="dot dot-filled"></span> Lung Center of the Philippines <span class="abbr-badge">LCP</span> </td>
   <td>Dr. Jubert P. Benedicto, OIC-Executive Director</td>
   <td>OSEC — direct</td>
   <td><span class="tier tier-B">B</span></td>
 </tr>
-<tr id="off-philippine-children-s-medical-center" data-search-label="Philippine Children's Medical Center" data-search-sub="Dr. Cecilia O. Gan, Executive Director OSEC direct">
-  <td><span class="dot dot-filled"></span> Philippine Children's Medical Center </td>
+<tr id="off-philippine-children-s-medical-center" data-search-label="Philippine Children's Medical Center" data-search-sub="Dr. Cecilia O. Gan, Executive Director OSEC direct" data-search-alias="PCMC">
+  <td><span class="dot dot-filled"></span> Philippine Children's Medical Center <span class="abbr-badge">PCMC</span> </td>
   <td>Dr. Cecilia O. Gan, Executive Director</td>
   <td>OSEC — direct</td>
   <td><span class="tier tier-B">B</span></td>
 </tr>
-<tr id="off-administrative-service" data-search-label="Administrative Service" data-search-sub="Mr. Roderick M. Napulan, Director IV OSEC direct">
-  <td><span class="dot dot-filled"></span> Administrative Service </td>
+<tr id="off-administrative-service" data-search-label="Administrative Service" data-search-sub="Mr. Roderick M. Napulan, Director IV OSEC direct" data-search-alias="AS">
+  <td><span class="dot dot-filled"></span> Administrative Service <span class="abbr-badge">AS</span> </td>
   <td>Mr. Roderick M. Napulan, Director IV</td>
   <td>OSEC — direct</td>
   <td><span class="tier tier-A">A</span></td>
 </tr>
-<tr id="off-financial--management-service" data-search-label="Financial &amp; Management Service" data-search-sub="Ms. Maria Ella T. Guerrero, Director IV OSEC direct">
-  <td><span class="dot dot-filled"></span> Financial &amp; Management Service </td>
+<tr id="off-financial--management-service" data-search-label="Financial &amp; Management Service" data-search-sub="Ms. Maria Ella T. Guerrero, Director IV OSEC direct" data-search-alias="FMS">
+  <td><span class="dot dot-filled"></span> Financial &amp; Management Service <span class="abbr-badge">FMS</span> </td>
   <td>Ms. Maria Ella T. Guerrero, Director IV</td>
   <td>OSEC — direct</td>
   <td><span class="tier tier-A">A</span></td>
 </tr>
-<tr id="off-procurement-service" data-search-label="Procurement Service" data-search-sub="Mr. Nigel Aleksei B. Tabion, OIC OSEC direct">
-  <td><span class="dot dot-filled"></span> Procurement Service </td>
+<tr id="off-procurement-service" data-search-label="Procurement Service" data-search-sub="Mr. Nigel Aleksei B. Tabion, OIC OSEC direct" data-search-alias="PS">
+  <td><span class="dot dot-filled"></span> Procurement Service <span class="abbr-badge">PS</span> </td>
   <td>Mr. Nigel Aleksei B. Tabion, OIC</td>
   <td>OSEC — direct</td>
   <td><span class="tier tier-A">A</span></td>
 </tr>
-<tr id="off-priority-projects" data-search-label="Priority projects" data-search-sub="Ms. Maria Kristina May L. Marasigan, Director IV OSEC direct">
+<tr id="off-priority-projects" data-search-label="Priority projects" data-search-sub="Ms. Maria Kristina May L. Marasigan, Director IV OSEC direct" data-search-alias="">
   <td><span class="dot dot-filled"></span> Priority projects </td>
   <td>Ms. Maria Kristina May L. Marasigan, Director IV</td>
   <td>OSEC — direct</td>
@@ -1060,7 +1103,7 @@ table.pgt tr:last-child td{border-bottom:none;}
   <summary><span class="dot dot-filled"></span><div><span class="oc-name">Usec. Elmer G. Punzalan</span> <span class="oc-title">— Metro Manila CHD · all DOH medical centers &amp; hospitals · PPP Mgmt Office</span></div><span class="oc-arrow">›</span></summary>
   <div class="orgnode-children">
     <div class="leaf" id="tree-off-metro-manila-chd--ncr">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Metro Manila CHD (NCR)</strong> <span class="leaf-title">— Dr. Lester M. Tan, Director IV</span></div></div>
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Metro Manila CHD (NCR)</strong> <span class="leaf-alias">MMCHD · CHD</span><span class="leaf-title">— Dr. Lester M. Tan, Director IV</span></div></div>
   
 </div>
 <div class="leaf" id="tree-off-all-doh-medical-centers--metro-manila-specialty-hospitals">
@@ -1068,7 +1111,7 @@ table.pgt tr:last-child td{border-bottom:none;}
   <div class="strat"><b>Strategic focus</b><span>Enforce 90:10 / 10:90 / 70:30 bed-allocation ratios; control hospital markups; policy on hospital surplus.</span></div>
 </div>
 <div class="leaf" id="tree-off-public-private-partnership-management-office">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Public-Private Partnership Management Office</strong> <span class="leaf-title">— —</span></div></div>
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Public-Private Partnership Management Office</strong> <span class="leaf-alias">PPPMO</span><span class="leaf-title">— —</span></div></div>
   
 </div>
   </div>
@@ -1077,27 +1120,27 @@ table.pgt tr:last-child td{border-bottom:none;}
   <summary><span class="dot dot-filled"></span><div><span class="oc-name">Usec. Gloria J. Balboa</span> <span class="oc-title">— CHDs CAR / I / II / III / IV-A / IV-B / V · emergency mgmt · pharma · PNAC</span></div><span class="oc-arrow">›</span></summary>
   <div class="orgnode-children">
     <div class="leaf" id="tree-off-7-centers-for-health-development">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>7 Centers for Health Development</strong> <span class="leaf-title">— See DOH Hospitals tab for each region's hospital roster</span></div></div>
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>7 Centers for Health Development</strong> <span class="leaf-alias">CHD</span><span class="leaf-title">— See DOH Hospitals tab for each region's hospital roster</span></div></div>
   
 </div>
 <div class="leaf" id="tree-off-health-emergency-management-bureau">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Health Emergency Management Bureau</strong> <span class="leaf-title">— Dr. Bernadett P. Velasco, Director IV</span></div></div>
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Health Emergency Management Bureau</strong> <span class="leaf-alias">HEMB</span><span class="leaf-title">— Dr. Bernadett P. Velasco, Director IV</span></div></div>
   
 </div>
 <div class="leaf" id="tree-off-pharmaceutical-division">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Pharmaceutical Division</strong> <span class="leaf-title">— Dr. Uriel C. Cachero, OIC</span></div></div>
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Pharmaceutical Division</strong> <span class="leaf-alias">PD</span><span class="leaf-title">— Dr. Uriel C. Cachero, OIC</span></div></div>
   
 </div>
 <div class="leaf" id="tree-off-health-and-climate-change-office">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Health and Climate Change Office</strong> <span class="leaf-title">— Dr. Ronald Law, Director III</span></div></div>
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Health and Climate Change Office</strong> <span class="leaf-alias">HCCO</span><span class="leaf-title">— Dr. Ronald Law, Director III</span></div></div>
   
 </div>
 <div class="leaf" id="tree-off-philippine-national-aids-council">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Philippine National AIDS Council</strong> <span class="leaf-title">— Dr. Joselito R. Feliciano, Executive Director III</span></div></div>
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Philippine National AIDS Council</strong> <span class="leaf-alias">PNAC</span><span class="leaf-title">— Dr. Joselito R. Feliciano, Executive Director III</span></div></div>
   
 </div>
 <div class="leaf" id="tree-off-philippine-multi-sectoral-nutrition-project">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Philippine Multi-Sectoral Nutrition Project</strong> <span class="leaf-title">— —</span></div></div>
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Philippine Multi-Sectoral Nutrition Project</strong> <span class="leaf-alias">PMNP</span><span class="leaf-title">— —</span></div></div>
   
 </div>
   </div>
@@ -1106,31 +1149,31 @@ table.pgt tr:last-child td{border-bottom:none;}
   <summary><span class="dot dot-filled"></span><div><span class="oc-name">Usec. Mary Ann Palermo-Maestral</span> <span class="oc-title">— CHDs VI / VII / VIII / NIR · UHC Health Services Cluster · all DATRCs</span></div><span class="oc-arrow">›</span></summary>
   <div class="orgnode-children">
     <div class="leaf" id="tree-off-4-centers-for-health-development">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>4 Centers for Health Development</strong> <span class="leaf-title">— See DOH Hospitals tab for each region's hospital roster</span></div></div>
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>4 Centers for Health Development</strong> <span class="leaf-alias">CHD</span><span class="leaf-title">— See DOH Hospitals tab for each region's hospital roster</span></div></div>
   
 </div>
 <div class="leaf" id="tree-off-uhc-hsc-technical-office">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>UHC HSC Technical Office</strong> <span class="leaf-title">— Ms. Frances Rose E. Mamaril, Director IV</span></div></div>
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>UHC HSC Technical Office</strong> <span class="leaf-alias">HSC-TO · UHC HSC-TO</span><span class="leaf-title">— Ms. Frances Rose E. Mamaril, Director IV</span></div></div>
   
 </div>
 <div class="leaf" id="tree-off-disease-prevention--control-bureau">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Disease Prevention &amp; Control Bureau</strong> <span class="leaf-title">— Dr. Jose Gerard B. Belimac, OIC</span></div></div>
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Disease Prevention &amp; Control Bureau</strong> <span class="leaf-alias">DPCB</span><span class="leaf-title">— Dr. Jose Gerard B. Belimac, OIC</span></div></div>
   
 </div>
 <div class="leaf" id="tree-off-epidemiology-bureau">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Epidemiology Bureau</strong> <span class="leaf-title">— Dr. Gerna M. Manatad, Director IV</span></div></div>
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Epidemiology Bureau</strong> <span class="leaf-alias">EB</span><span class="leaf-title">— Dr. Gerna M. Manatad, Director IV</span></div></div>
   
 </div>
 <div class="leaf" id="tree-off-health-promotion-bureau">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Health Promotion Bureau</strong> <span class="leaf-title">— Dr. Mar Wynn D. Bello, Director IV</span></div></div>
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Health Promotion Bureau</strong> <span class="leaf-alias">HPB</span><span class="leaf-title">— Dr. Mar Wynn D. Bello, Director IV</span></div></div>
   <div class="strat"><b>Strategic focus</b><span>Joint rollout of Healthy Schools and Healthy Communities. PhilHealth side: build on Settings-based Empanelment.</span></div>
 </div>
 <div class="leaf" id="tree-off-research-institute-for-tropical-medicine">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Research Institute for Tropical Medicine</strong> <span class="leaf-title">— Atty. Ana Liza P. Hombrado-Duran, Director IV</span></div></div>
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Research Institute for Tropical Medicine</strong> <span class="leaf-alias">RITM</span><span class="leaf-title">— Atty. Ana Liza P. Hombrado-Duran, Director IV</span></div></div>
   
 </div>
 <div class="leaf" id="tree-off-all-doh-drug-abuse-treatment--rehabilitation-centers">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>All DOH Drug Abuse Treatment &amp; Rehabilitation Centers</strong> <span class="leaf-title">— —</span></div></div>
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>All DOH Drug Abuse Treatment &amp; Rehabilitation Centers</strong> <span class="leaf-alias">DATRC</span><span class="leaf-title">— —</span></div></div>
   
 </div>
   </div>
@@ -1139,7 +1182,7 @@ table.pgt tr:last-child td{border-bottom:none;}
   <summary><span class="dot dot-filled"></span><div><span class="oc-name">Usec. Glenn Mathew G. Baggao</span> <span class="oc-title">— CHDs IX / X / XI / XII / XIII</span></div><span class="oc-arrow">›</span></summary>
   <div class="orgnode-children">
     <div class="leaf" id="tree-off-5-centers-for-health-development">
-  <div class="leaf-row"><span class="dot dot-risk"></span><span class="tier tier-A">A</span><div><strong>5 Centers for Health Development</strong> <span class="leaf-title">— Region XII (SOCCSKSARGEN) currently vacant at Director IV — see DOH Hospitals tab</span></div></div>
+  <div class="leaf-row"><span class="dot dot-risk"></span><span class="tier tier-A">A</span><div><strong>5 Centers for Health Development</strong> <span class="leaf-alias">CHD</span><span class="leaf-title">— Region XII (SOCCSKSARGEN) currently vacant at Director IV — see DOH Hospitals tab</span></div></div>
   
 </div>
   </div>
@@ -1148,15 +1191,15 @@ table.pgt tr:last-child td{border-bottom:none;}
   <summary><span class="dot dot-filled"></span><div><span class="oc-name">Usec. Randy B. Escolango &amp; Asec. Maylene M. Beltran</span> <span class="oc-title">— co-oversight: local health systems · int'l cooperation · HR development</span></div><span class="oc-arrow">›</span></summary>
   <div class="orgnode-children">
     <div class="leaf" id="tree-off-bureau-of-local-health-systems-development">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Bureau of Local Health Systems Development</strong> <span class="leaf-title">— Dr. Juan Alfonso R. Perez IV, OIC</span></div></div>
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Bureau of Local Health Systems Development</strong> <span class="leaf-alias">BLHSD</span><span class="leaf-title">— Dr. Juan Alfonso R. Perez IV, OIC</span></div></div>
   <div class="strat"><b>Strategic focus</b><span>Issue joint guidelines on SHF utilization — specifically incentives — linked to LIPH and AOP.</span></div>
 </div>
 <div class="leaf" id="tree-off-bureau-of-international-health-cooperation">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Bureau of International Health Cooperation</strong> <span class="leaf-title">— Dr. Grace Fe Buquiran-Nericua, OIC</span></div></div>
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Bureau of International Health Cooperation</strong> <span class="leaf-alias">BIHC</span><span class="leaf-title">— Dr. Grace Fe Buquiran-Nericua, OIC</span></div></div>
   <div class="strat"><b>Strategic focus</b><span>Reposition the Health System Strengthening Project (HSRP) to finance EMR, interconnectivity, and initial repository requirements.</span></div>
 </div>
 <div class="leaf" id="tree-off-health-human-resource-development-bureau">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Health Human Resource Development Bureau</strong> <span class="leaf-title">— Dr. Mary Ruth S. Politico, OIC</span></div></div>
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Health Human Resource Development Bureau</strong> <span class="leaf-alias">HHRDB</span><span class="leaf-title">— Dr. Mary Ruth S. Politico, OIC</span></div></div>
   <div class="strat"><b>Strategic focus</b><span>Institutionalize primary care as a practice; define task-shifting standards; workforce scholarships and HRH incentive design tied to SHF guidelines.</span></div>
 </div>
   </div>
@@ -1165,24 +1208,24 @@ table.pgt tr:last-child td{border-bottom:none;}
   <summary><span class="dot dot-filled"></span><div><span class="oc-name">Asec. Maylene M. Beltran</span> <span class="oc-title">— Knowledge Management &amp; IT Service — added 28 Jul, DPO 5144</span></div><span class="oc-arrow">›</span></summary>
   <div class="orgnode-children">
     <div class="leaf" id="tree-off-kmits">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>KMITS</strong> <span class="leaf-title">— Ms. Cherrie D. Esteban, OIC Director IV &amp; concurrent Chief Information Officer (DPO 5142)</span></div></div>
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>KMITS</strong> <span class="leaf-alias">KMITS</span><span class="leaf-title">— Ms. Cherrie D. Esteban, OIC Director IV &amp; concurrent Chief Information Officer (DPO 5142)</span></div></div>
   <div class="strat"><b>Strategic focus</b><span>Fast-track KMITS/FDA IT standards; publish iClinicSys as the default EMR. Primary care reform has matured into an IT-systems agenda — KMITS is now the pacing workstream for the rest of the primary-care pillar.</span></div>
 </div>
   </div>
 </details>
 <details class="orgnode" id="execnode-6">
-  <summary><span class="dot dot-filled"></span><div><span class="oc-name">Asec. Christian Lel M. Saquilabon</span> <span class="oc-title">— concurrent Director IV, Legal Service · regulatory bureaus</span></div><span class="oc-arrow">›</span></summary>
+  <summary><span class="dot dot-filled"></span><div><span class="oc-name">Usec. Christian Lel M. Saquilabon</span> <span class="oc-title">— appointed Undersecretary 4 Aug 2026, vice Usec. Perez-Chiong · concurrent Director IV, Legal Service · regulatory bureaus</span></div><span class="oc-arrow">›</span></summary>
   <div class="orgnode-children">
     <div class="leaf" id="tree-off-health-facilities--service-regulatory-bureau">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Health Facilities &amp; Service Regulatory Bureau</strong> <span class="leaf-title">— Engr. Annette B. Tan, Director IV</span></div></div>
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Health Facilities &amp; Service Regulatory Bureau</strong> <span class="leaf-alias">HFSRB</span><span class="leaf-title">— Engr. Annette B. Tan, Director IV</span></div></div>
   <div class="strat"><b>Strategic focus</b><span>Enforce bed-allocation ratios and markup controls; lead regulatory mechanism for dialysis-clinic and transplant-capacity market dynamics.</span></div>
 </div>
 <div class="leaf" id="tree-off-health-facility-development-bureau">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Health Facility Development Bureau</strong> <span class="leaf-title">— Dr. Melissa T. Sena, Director IV</span></div></div>
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Health Facility Development Bureau</strong> <span class="leaf-alias">HFDB</span><span class="leaf-title">— Dr. Melissa T. Sena, Director IV</span></div></div>
   <div class="strat"><b>Strategic focus</b><span>Push implementation of the EO on the Health Facility Development Plan — where Z Benefits line up; define Z-Benefit facility-upgrade requirements.</span></div>
 </div>
 <div class="leaf" id="tree-off-bureau-of-quarantine">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Bureau of Quarantine</strong> <span class="leaf-title">— Dr. Aleli Annie Grace P. Sudiacal, Director IV (DPO 4826)</span></div></div>
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Bureau of Quarantine</strong> <span class="leaf-alias">BOQ</span><span class="leaf-title">— Dr. Aleli Annie Grace P. Sudiacal, Director IV (DPO 4826)</span></div></div>
   
 </div>
   </div>
@@ -1191,7 +1234,7 @@ table.pgt tr:last-child td{border-bottom:none;}
   <summary><span class="dot dot-filled"></span><div><span class="oc-name">Usec. Brigida H. Romualdez-Aquino</span> <span class="oc-title">— special concerns · GAD focal · PITAHC</span></div><span class="oc-arrow">›</span></summary>
   <div class="orgnode-children">
     <div class="leaf" id="tree-off-pitahc">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>PITAHC</strong> <span class="leaf-title">— Dr. Ma. Teresa C. Iñigo, Director General</span></div></div>
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>PITAHC</strong> <span class="leaf-alias">PITAHC</span><span class="leaf-title">— Dr. Ma. Teresa C. Iñigo, Director General</span></div></div>
   
 </div>
   </div>
@@ -1200,11 +1243,11 @@ table.pgt tr:last-child td{border-bottom:none;}
   <summary><span class="dot dot-filled"></span><div><span class="oc-name">Usec. Zhielah Ritz C. Gatchalian</span> <span class="oc-title">— Malasakit Program Office · Supply Chain Management Service</span></div><span class="oc-arrow">›</span></summary>
   <div class="orgnode-children">
     <div class="leaf" id="tree-off-malasakit-program-office">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Malasakit Program Office</strong> <span class="leaf-title">— Atty. Allison C. Umandap, Director IV</span></div></div>
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Malasakit Program Office</strong> <span class="leaf-alias">MPO</span><span class="leaf-title">— Atty. Allison C. Umandap, Director IV</span></div></div>
   <div class="strat"><b>Strategic focus</b><span>Administers MAIFIP — the DOH-funded payer-of-last-resort that covers what's left after a PhilHealth case rate at DOH-retained hospitals. See Delivering on Mandates.</span></div>
 </div>
 <div class="leaf" id="tree-off-supply-chain-management-service">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Supply Chain Management Service</strong> <span class="leaf-title">— Ms. Johanna Solon-Banzon, Director IV</span></div></div>
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Supply Chain Management Service</strong> <span class="leaf-alias">SCMS</span><span class="leaf-title">— Ms. Johanna Solon-Banzon, Director IV</span></div></div>
   
 </div>
   </div>
@@ -1213,21 +1256,21 @@ table.pgt tr:last-child td{border-bottom:none;}
   <summary><span class="dot dot-filled"></span><div><span class="oc-name">Usec. Albert Francis E. Domingo</span> <span class="oc-title">— National Nutrition Council (self, concurrent Executive Director IV)</span></div><span class="oc-arrow">›</span></summary>
   <div class="orgnode-children">
     <div class="leaf" id="tree-off-national-nutrition-council">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>National Nutrition Council</strong> <span class="leaf-title">— Designated Jul 2026, succeeding Asec. Azucena M. Dayanghirang</span></div></div>
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>National Nutrition Council</strong> <span class="leaf-alias">NNC</span><span class="leaf-title">— Designated Jul 2026, succeeding Asec. Azucena M. Dayanghirang</span></div></div>
   
 </div>
   </div>
 </details>
 <details class="orgnode" id="execnode-10">
-  <summary><span class="dot dot-filled"></span><div><span class="oc-name">Usec. Emmie Liza Perez-Chiong</span> <span class="oc-title">— narrowed by DPO 4975 (22 Jul); CIO title revoked</span></div><span class="oc-arrow">›</span></summary>
+  <summary><span class="dot dot-outline"></span><div><span class="oc-name">Oversight pending reassignment</span> <span class="oc-title">— Usec. Perez-Chiong replaced 4 Aug 2026 — successor oversight not yet confirmed by DPO</span></div><span class="oc-arrow">›</span></summary>
   <div class="orgnode-children">
     <div class="leaf" id="tree-off-oral-health-program">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Oral Health Program</strong> <span class="leaf-title">— Dr. Manuel V. Vallesteros, Division Chief</span></div></div>
-  
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-D">D</span><div><strong>Oral Health Program</strong> <span class="leaf-alias">OHP</span><span class="leaf-title">— Dr. Manuel V. Vallesteros, Division Chief</span></div></div>
+  <div class="strat"><b>Strategic focus</b><span>Formerly under Usec. Emmie Liza Perez-Chiong, replaced as Undersecretary effective 4 Aug 2026 (Malacañang appointment letter, vice Emmie Liza P. Chiong). No DPO yet confirms successor oversight — this may change.</span></div>
 </div>
 <div class="leaf" id="tree-off-philippine-medical-travel--wellness-tourism-program">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Philippine Medical Travel &amp; Wellness Tourism Program</strong> <span class="leaf-title">— —</span></div></div>
-  
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-D">D</span><div><strong>Philippine Medical Travel &amp; Wellness Tourism Program</strong> <span class="leaf-alias">Medical Tourism</span><span class="leaf-title">— —</span></div></div>
+  <div class="strat"><b>Strategic focus</b><span>Formerly under Usec. Emmie Liza Perez-Chiong, replaced as Undersecretary effective 4 Aug 2026. No DPO yet confirms successor oversight — this may change.</span></div>
 </div>
   </div>
 </details>
@@ -1235,15 +1278,15 @@ table.pgt tr:last-child td{border-bottom:none;}
   <summary><span class="dot dot-filled"></span><div><span class="oc-name">Secretary / authorized ExeCom member</span> <span class="oc-title">— audit, legal, health facilities enhancement, policy &amp; planning</span></div><span class="oc-arrow">›</span></summary>
   <div class="orgnode-children">
     <div class="leaf" id="tree-off-internal-audit-service">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Internal Audit Service</strong> <span class="leaf-title">— Ms. Rowena C. Lora, Director IV</span></div></div>
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Internal Audit Service</strong> <span class="leaf-alias">IAS</span><span class="leaf-title">— Ms. Rowena C. Lora, Director IV</span></div></div>
   
 </div>
 <div class="leaf" id="tree-off-health-facilities-enhancement-pmo">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Health Facilities Enhancement PMO</strong> <span class="leaf-title">— Engr. Maximo A. Adan Jr., OIC</span></div></div>
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Health Facilities Enhancement PMO</strong> <span class="leaf-alias">HFEP-MO · HFEPMO</span><span class="leaf-title">— Engr. Maximo A. Adan Jr., OIC</span></div></div>
   <div class="strat"><b>Strategic focus</b><span>Enable interconnectivity and digitalization by design; require API-readiness so primary-care equipment plugs into the shared IT agenda.</span></div>
 </div>
 <div class="leaf" id="tree-off-health-policy-development--planning-bureau">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Health Policy Development &amp; Planning Bureau</strong> <span class="leaf-title">— Mr. Roderick M. Napulan, Director IV</span></div></div>
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Health Policy Development &amp; Planning Bureau</strong> <span class="leaf-alias">HPDPB</span><span class="leaf-title">— Mr. Roderick M. Napulan, Director IV</span></div></div>
   
 </div>
   </div>
@@ -1267,35 +1310,35 @@ table.pgt tr:last-child td{border-bottom:none;}
   </details>
 </div>
 <div class="leaf" id="tree-off-fda" style="padding-left:0;">
-  <div class="leaf-row"><span class="dot dot-risk"></span><span class="tier tier-D">D</span><div><strong>FDA</strong> <span class="leaf-title">— Atty. Paolo S. Teston, Director General</span></div></div>
+  <div class="leaf-row"><span class="dot dot-risk"></span><span class="tier tier-D">D</span><div><strong>FDA</strong> <span class="leaf-alias">FDA</span><span class="leaf-title">— Atty. Paolo S. Teston, Director General</span></div></div>
   <div class="strat risk"><b>Strategic focus</b><span>Co-owns primary-care IT standards alongside KMITS. Incumbency unconfirmed — role was publicly contested through early 2026.</span></div>
 </div>
 <div class="leaf" id="tree-off-philippine-heart-center" style="padding-left:0;">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-B">B</span><div><strong>Philippine Heart Center</strong> <span class="leaf-title">— Dr. Avenilo L. Aventura Jr., Executive Director</span></div></div>
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-B">B</span><div><strong>Philippine Heart Center</strong> <span class="leaf-alias">PHC</span><span class="leaf-title">— Dr. Avenilo L. Aventura Jr., Executive Director</span></div></div>
   
 </div>
 <div class="leaf" id="tree-off-national-kidney--transplant-institute" style="padding-left:0;">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-B">B</span><div><strong>National Kidney &amp; Transplant Institute</strong> <span class="leaf-title">— Dr. Jose Dante P. Dator, Executive Director</span></div></div>
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-B">B</span><div><strong>National Kidney &amp; Transplant Institute</strong> <span class="leaf-alias">NKTI</span><span class="leaf-title">— Dr. Jose Dante P. Dator, Executive Director</span></div></div>
   
 </div>
 <div class="leaf" id="tree-off-lung-center-of-the-philippines" style="padding-left:0;">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-B">B</span><div><strong>Lung Center of the Philippines</strong> <span class="leaf-title">— Dr. Jubert P. Benedicto, OIC-Executive Director</span></div></div>
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-B">B</span><div><strong>Lung Center of the Philippines</strong> <span class="leaf-alias">LCP</span><span class="leaf-title">— Dr. Jubert P. Benedicto, OIC-Executive Director</span></div></div>
   
 </div>
 <div class="leaf" id="tree-off-philippine-children-s-medical-center" style="padding-left:0;">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-B">B</span><div><strong>Philippine Children's Medical Center</strong> <span class="leaf-title">— Dr. Cecilia O. Gan, Executive Director</span></div></div>
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-B">B</span><div><strong>Philippine Children's Medical Center</strong> <span class="leaf-alias">PCMC</span><span class="leaf-title">— Dr. Cecilia O. Gan, Executive Director</span></div></div>
   
 </div>
 <div class="leaf" id="tree-off-administrative-service" style="padding-left:0;">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Administrative Service</strong> <span class="leaf-title">— Mr. Roderick M. Napulan, Director IV</span></div></div>
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Administrative Service</strong> <span class="leaf-alias">AS</span><span class="leaf-title">— Mr. Roderick M. Napulan, Director IV</span></div></div>
   
 </div>
 <div class="leaf" id="tree-off-financial--management-service" style="padding-left:0;">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Financial &amp; Management Service</strong> <span class="leaf-title">— Ms. Maria Ella T. Guerrero, Director IV</span></div></div>
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Financial &amp; Management Service</strong> <span class="leaf-alias">FMS</span><span class="leaf-title">— Ms. Maria Ella T. Guerrero, Director IV</span></div></div>
   
 </div>
 <div class="leaf" id="tree-off-procurement-service" style="padding-left:0;">
-  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Procurement Service</strong> <span class="leaf-title">— Mr. Nigel Aleksei B. Tabion, OIC</span></div></div>
+  <div class="leaf-row"><span class="dot dot-filled"></span><span class="tier tier-A">A</span><div><strong>Procurement Service</strong> <span class="leaf-alias">PS</span><span class="leaf-title">— Mr. Nigel Aleksei B. Tabion, OIC</span></div></div>
   
 </div>
 <div class="leaf" id="tree-off-priority-projects" style="padding-left:0;">
@@ -1304,25 +1347,6 @@ table.pgt tr:last-child td{border-bottom:none;}
 </div>
     </div>
 
-    <h2 class="stitle" id="glance" style="margin-top:44px;">Strategic focus, at a glance</h2>
-    <p class="sdek">Every live ask from the working agenda, in one table, cross-referenced to the office and Undersecretary above.</p>
-    <div class="card" style="padding:0;overflow:hidden;">
-      <table class="dt">
-        <thead><tr><th>Ask</th><th>Owning office</th><th>Oversight</th></tr></thead>
-        <tbody>
-<tr><td>EO on Health Facility Development Plan, Z-Benefit facility upgrades</td><td>Health Facility Development Bureau — Dr. Melissa T. Sena</td><td class='mono' style='font-size:11.5px;'>Asec. Saquilabon</td></tr>
-<tr><td>Bed-allocation enforcement (90:10/10:90/70:30), markup control</td><td>Hospital oversight — Usec. Punzalan / respective CHDs</td><td class='mono' style='font-size:11.5px;'>Usec. Punzalan</td></tr>
-<tr><td>Dialysis-clinic &amp; transplant-capacity regulation</td><td>Health Facilities &amp; Service Regulatory Bureau — Engr. Annette B. Tan</td><td class='mono' style='font-size:11.5px;'>Asec. Saquilabon</td></tr>
-<tr><td>KMITS/FDA IT standards, iClinicSys as default EMR</td><td>KMITS — Ms. Cherrie D. Esteban</td><td class='mono' style='font-size:11.5px;'>Asec. Beltran</td></tr>
-<tr><td>HSRP repositioning toward EMR financing</td><td>Bureau of International Health Cooperation — Dr. Grace Fe Buquiran-Nericua</td><td class='mono' style='font-size:11.5px;'>Usec. Escolango / Asec. Beltran</td></tr>
-<tr><td>Task-shifting standards, HRH workforce plan &amp; incentives</td><td>Health Human Resource Development Bureau — Dr. Mary Ruth S. Politico</td><td class='mono' style='font-size:11.5px;'>Usec. Escolango / Asec. Beltran</td></tr>
-<tr><td>Joint SHF guidelines linked to AOP/LIPH</td><td>Bureau of Local Health Systems Development — Dr. Juan Alfonso R. Perez IV</td><td class='mono' style='font-size:11.5px;'>Usec. Escolango / Asec. Beltran</td></tr>
-<tr><td>Healthy Schools &amp; Communities joint rollout</td><td>Health Promotion Bureau — Dr. Mar Wynn D. Bello</td><td class='mono' style='font-size:11.5px;'>Usec. Palermo-Maestral</td></tr>
-<tr><td>Global Budget, DRGs, Z-Ben contracting, YAKAP×GAMOT expansion</td><td>PhilHealth — Dr. Edwin M. Mercado</td><td class='mono' style='font-size:11.5px;'>OSEC direct</td></tr>
-<tr><td>MAIFIP administration (payer-of-last-resort for ward-level balances)</td><td>Malasakit Program Office — Atty. Allison C. Umandap</td><td class='mono' style='font-size:11.5px;'>Usec. Gatchalian</td></tr>
-        </tbody>
-      </table>
-    </div>
   </div>
 </div>
 
@@ -3548,19 +3572,96 @@ LOC. 228</div>
   <div class="tabhead">
     <div class="eyebrow">From mandate to delivery</div>
     <h1>Delivering on Mandates</h1>
-    <p>Three inputs to strategy formation: precedent (what worked operationally during COVID), constraint (fragmented financing), and objective (the UHC pyramid).</p>
+    <p>Objective (the UHC pyramid and who owns each tier), precedent (what worked operationally during COVID), and constraint (fragmented financing) — in that order.</p>
   </div>
 
   <div class="subnav">
     <div class="subnav-inner">
-      <a href="#covid-wins" class="active">Leveraging COVID Wins</a>
+      <a href="#pyramid" class="active">The UHC Pyramid</a>
+      <a href="#glance">Strategic Focus at a Glance</a>
+      <a href="#covid-wins">Leveraging COVID Wins</a>
       <a href="#financing">Financing Alignment</a>
-      <a href="#pyramid">The UHC Pyramid</a>
     </div>
   </div>
 
   <div class="wrap">
-    <h2 class="stitle" id="covid-wins">Leveraging COVID wins</h2>
+
+<h2 class="stitle" id="pyramid">The UHC pyramid</h2>
+    <p class="sdek">Four reach-ordered tiers plus one foundation layer, restated from the strategic-focus tags in DOH Structure. The pyramid orders by population reach — Healthy Settings at the base serves the broadest population; Specialty Care at the apex serves the narrowest, highest-acuity population. Healthcare Workforce sits beneath the pyramid as the enabling layer common to all four tiers, not as a fifth reach-ordered tier in its own right.</p>
+
+    <div class="komorebi-panel" style="padding:36px 32px;">
+      <div style="display:flex;gap:36px;flex-wrap:wrap;align-items:center;position:relative;">
+        <div style="flex:1 1 320px;min-width:280px;">
+          <svg viewBox="0 0 520 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="UHC pyramid: Specialty Care at the apex, then Zero Co-payment, Primary Care, and Healthy Settings at the base, with Healthcare Workforce as the foundation layer beneath.">
+  <defs>
+    <radialGradient id="lightDot" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#E3A63E" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#E3A63E" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <circle cx="46" cy="34" r="26" fill="url(#lightDot)"/>
+  <circle cx="46" cy="34" r="5.5" fill="#E3A63E"/>
+  <g stroke="#E3A63E" stroke-width="0.6" stroke-dasharray="2,3" opacity="0.55">
+    <line x1="46" y1="34" x2="250" y2="20"/>
+    <line x1="46" y1="34" x2="214" y2="78"/>
+    <line x1="46" y1="34" x2="170" y2="148"/>
+    <line x1="46" y1="34" x2="124" y2="222"/>
+    <line x1="46" y1="34" x2="50" y2="340"/>
+  </g>
+
+  <polygon points="250,20 214,78 286,78" fill="#F3D9A4" stroke="#1B3624" stroke-width="1.4"/>
+  <polygon points="214,78 286,78 330,148 170,148" fill="#E8E3D3" stroke="#1B3624" stroke-width="1.4"/>
+  <polygon points="170,148 330,148 376,222 124,222" fill="#DCD6C2" stroke="#1B3624" stroke-width="1.4"/>
+  <polygon points="124,222 376,222 450,340 50,340" fill="#CFC8AE" stroke="#1B3624" stroke-width="1.4"/>
+
+  <text x="250" y="62" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="9" fill="#1B3624">Specialty</text>
+  <text x="250" y="72" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="9" fill="#1B3624">Care</text>
+  <text x="250" y="119" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="12.5" fill="#1B3624">Zero Co-payment</text>
+  <text x="250" y="191" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="15" fill="#1B3624">Primary Care</text>
+  <text x="250" y="286" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="17" fill="#1B3624">Healthy Settings</text>
+
+  <line x1="50" y1="362" x2="450" y2="362" stroke="#E3A63E" stroke-width="1.6" stroke-dasharray="1,4"/>
+  <text x="250" y="384" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="15.5" fill="#F3D9A4">Healthcare Workforce</text>
+</svg>
+
+        </div>
+        <div style="flex:1 1 320px;min-width:280px;">
+          <table class="dt" style="width:100%;">
+            <tbody>
+              <tr><td style="color:var(--gold-soft);font-weight:700;width:34%;">Specialty Care</td><td style="color:rgba(255,255,255,0.9);">Abot-kamay na specialty center sa lahat ng rehiyon. EO on the Health Facility Development Plan; Z-Benefit facility-upgrade alignment.</td></tr>
+              <tr><td style="color:var(--gold-soft);font-weight:700;">Zero Co-payment</td><td style="color:rgba(255,255,255,0.9);">Walang karagdagang bayad sa lahat ng ward ng pampublikong ospital. Bed-allocation ratio enforcement (90:10, 10:90, 70:30); hospital markup control.</td></tr>
+              <tr><td style="color:var(--gold-soft);font-weight:700;">Primary Care</td><td style="color:rgba(255,255,255,0.9);">Bawat Pilipino may doktor, mura ang gamot. iClinicSys as default EMR; pooled procurement; primary-care facility census.</td></tr>
+              <tr><td style="color:var(--gold-soft);font-weight:700;">Healthy Settings</td><td style="color:rgba(255,255,255,0.9);">Malusog na paaralan at komunidad. Joint DOH–PhilHealth Healthy Schools and Healthy Communities rollout.</td></tr>
+              <tr><td style="color:var(--gold-soft);font-weight:700;">Healthcare Workforce <span style="color:rgba(243,217,164,0.5);font-weight:500;">(foundation)</span></td><td style="color:rgba(255,255,255,0.9);">Palakasin ang suporta sa healthcare worker. Scholarship and career-pathway development toward primary-care team leads.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <p class="pyramid-caption">Each tier links to a real office and a live ask — see DOH Structure's "strategic focus, at a glance" table for ownership.</p>
+  
+
+    <h2 class="stitle" id="glance" style="margin-top:44px;">Strategic focus, at a glance</h2>
+    <p class="sdek">Every live ask from the working agenda, cross-referenced to its owning office and Undersecretary. Click a row to jump to that office's full detail in DOH Structure.</p>
+    <div class="card" style="padding:0;overflow:hidden;">
+      <table class="dt">
+        <thead><tr><th>Ask</th><th>Owning office</th><th>Oversight</th></tr></thead>
+        <tbody>
+<tr class="glance-row" data-jump-target="off-health-facility-development-bureau"><td>EO on Health Facility Development Plan, Z-Benefit facility upgrades</td><td>Health Facility Development Bureau — Dr. Melissa T. Sena</td><td class='mono' style='font-size:11.5px;'>Usec. Saquilabon</td></tr>
+<tr class="glance-row" data-jump-target="off-all-doh-medical-centers--metro-manila-specialty-hospitals"><td>Bed-allocation enforcement (90:10/10:90/70:30), markup control</td><td>Hospital oversight — Usec. Punzalan / respective CHDs</td><td class='mono' style='font-size:11.5px;'>Usec. Punzalan</td></tr>
+<tr class="glance-row" data-jump-target="off-health-facilities--service-regulatory-bureau"><td>Dialysis-clinic &amp; transplant-capacity regulation</td><td>Health Facilities &amp; Service Regulatory Bureau — Engr. Annette B. Tan</td><td class='mono' style='font-size:11.5px;'>Usec. Saquilabon</td></tr>
+<tr class="glance-row" data-jump-target="off-kmits"><td>KMITS/FDA IT standards, iClinicSys as default EMR</td><td>KMITS — Ms. Cherrie D. Esteban</td><td class='mono' style='font-size:11.5px;'>Asec. Beltran</td></tr>
+<tr class="glance-row" data-jump-target="off-bureau-of-international-health-cooperation"><td>HSRP repositioning toward EMR financing</td><td>Bureau of International Health Cooperation — Dr. Grace Fe Buquiran-Nericua</td><td class='mono' style='font-size:11.5px;'>Usec. Escolango / Asec. Beltran</td></tr>
+<tr class="glance-row" data-jump-target="off-health-human-resource-development-bureau"><td>Task-shifting standards, HRH workforce plan &amp; incentives</td><td>Health Human Resource Development Bureau — Dr. Mary Ruth S. Politico</td><td class='mono' style='font-size:11.5px;'>Usec. Escolango / Asec. Beltran</td></tr>
+<tr class="glance-row" data-jump-target="off-bureau-of-local-health-systems-development"><td>Joint SHF guidelines linked to AOP/LIPH</td><td>Bureau of Local Health Systems Development — Dr. Juan Alfonso R. Perez IV</td><td class='mono' style='font-size:11.5px;'>Usec. Escolango / Asec. Beltran</td></tr>
+<tr class="glance-row" data-jump-target="off-health-promotion-bureau"><td>Healthy Schools &amp; Communities joint rollout</td><td>Health Promotion Bureau — Dr. Mar Wynn D. Bello</td><td class='mono' style='font-size:11.5px;'>Usec. Palermo-Maestral</td></tr>
+<tr class="glance-row" data-jump-target="off-philhealth"><td>Global Budget, DRGs, Z-Ben contracting, YAKAP×GAMOT expansion</td><td>PhilHealth — Dr. Edwin M. Mercado</td><td class='mono' style='font-size:11.5px;'>OSEC direct</td></tr>
+<tr class="glance-row" data-jump-target="off-malasakit-program-office"><td>MAIFIP administration (payer-of-last-resort for ward-level balances)</td><td>Malasakit Program Office — Atty. Allison C. Umandap</td><td class='mono' style='font-size:11.5px;'>Usec. Gatchalian</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+<h2 class="stitle" id="covid-wins">Leveraging COVID wins</h2>
     <p class="sdek">The pandemic response produced, on a compressed timeline, four mechanisms UHC implementation had targeted over a longer horizon: primary-care assignment, real-time referral coordination, population-wide health promotion, and zero-co-pay financing. Per the DOH–PhilHealth working agenda, these pandemic-era mechanisms are treated as a starting base for UHC rollout rather than a precedent to rebuild from scratch.</p>
 
     <div class="covid-grid">
@@ -3652,60 +3753,7 @@ LOC. 228</div>
 
     <div class="divider"></div>
 
-    <h2 class="stitle" id="pyramid">The UHC pyramid</h2>
-    <p class="sdek">Four reach-ordered tiers plus one foundation layer, restated from the strategic-focus tags in DOH Structure. The pyramid orders by population reach — Healthy Settings at the base serves the broadest population; Specialty Care at the apex serves the narrowest, highest-acuity population. Healthcare Workforce sits beneath the pyramid as the enabling layer common to all four tiers, not as a fifth reach-ordered tier in its own right.</p>
-
-    <div class="komorebi-panel" style="padding:36px 32px;">
-      <div style="display:flex;gap:36px;flex-wrap:wrap;align-items:center;position:relative;">
-        <div style="flex:1 1 320px;min-width:280px;">
-          <svg viewBox="0 0 520 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="UHC pyramid: Specialty Care at the apex, then Zero Co-payment, Primary Care, and Healthy Settings at the base, with Healthcare Workforce as the foundation layer beneath.">
-  <defs>
-    <radialGradient id="lightDot" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#E3A63E" stop-opacity="0.9"/>
-      <stop offset="100%" stop-color="#E3A63E" stop-opacity="0"/>
-    </radialGradient>
-  </defs>
-  <circle cx="46" cy="34" r="26" fill="url(#lightDot)"/>
-  <circle cx="46" cy="34" r="5.5" fill="#E3A63E"/>
-  <g stroke="#E3A63E" stroke-width="0.6" stroke-dasharray="2,3" opacity="0.55">
-    <line x1="46" y1="34" x2="250" y2="20"/>
-    <line x1="46" y1="34" x2="214" y2="78"/>
-    <line x1="46" y1="34" x2="170" y2="148"/>
-    <line x1="46" y1="34" x2="124" y2="222"/>
-    <line x1="46" y1="34" x2="50" y2="340"/>
-  </g>
-
-  <polygon points="250,20 214,78 286,78" fill="#F3D9A4" stroke="#1B3624" stroke-width="1.4"/>
-  <polygon points="214,78 286,78 330,148 170,148" fill="#E8E3D3" stroke="#1B3624" stroke-width="1.4"/>
-  <polygon points="170,148 330,148 376,222 124,222" fill="#DCD6C2" stroke="#1B3624" stroke-width="1.4"/>
-  <polygon points="124,222 376,222 450,340 50,340" fill="#CFC8AE" stroke="#1B3624" stroke-width="1.4"/>
-
-  <text x="250" y="62" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="9" fill="#1B3624">Specialty</text>
-  <text x="250" y="72" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="9" fill="#1B3624">Care</text>
-  <text x="250" y="119" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="12.5" fill="#1B3624">Zero Co-payment</text>
-  <text x="250" y="191" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="15" fill="#1B3624">Primary Care</text>
-  <text x="250" y="286" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="17" fill="#1B3624">Healthy Settings</text>
-
-  <line x1="50" y1="362" x2="450" y2="362" stroke="#E3A63E" stroke-width="1.6" stroke-dasharray="1,4"/>
-  <text x="250" y="384" text-anchor="middle" font-family="Fraunces, serif" font-weight="700" font-size="15.5" fill="#F3D9A4">Healthcare Workforce</text>
-</svg>
-
-        </div>
-        <div style="flex:1 1 320px;min-width:280px;">
-          <table class="dt" style="width:100%;">
-            <tbody>
-              <tr><td style="color:var(--gold-soft);font-weight:700;width:34%;">Specialty Care</td><td style="color:rgba(255,255,255,0.9);">Abot-kamay na specialty center sa lahat ng rehiyon. EO on the Health Facility Development Plan; Z-Benefit facility-upgrade alignment.</td></tr>
-              <tr><td style="color:var(--gold-soft);font-weight:700;">Zero Co-payment</td><td style="color:rgba(255,255,255,0.9);">Walang karagdagang bayad sa lahat ng ward ng pampublikong ospital. Bed-allocation ratio enforcement (90:10, 10:90, 70:30); hospital markup control.</td></tr>
-              <tr><td style="color:var(--gold-soft);font-weight:700;">Primary Care</td><td style="color:rgba(255,255,255,0.9);">Bawat Pilipino may doktor, mura ang gamot. iClinicSys as default EMR; pooled procurement; primary-care facility census.</td></tr>
-              <tr><td style="color:var(--gold-soft);font-weight:700;">Healthy Settings</td><td style="color:rgba(255,255,255,0.9);">Malusog na paaralan at komunidad. Joint DOH–PhilHealth Healthy Schools and Healthy Communities rollout.</td></tr>
-              <tr><td style="color:var(--gold-soft);font-weight:700;">Healthcare Workforce <span style="color:rgba(243,217,164,0.5);font-weight:500;">(foundation)</span></td><td style="color:rgba(255,255,255,0.9);">Palakasin ang suporta sa healthcare worker. Scholarship and career-pathway development toward primary-care team leads.</td></tr>
-            </tbody>
-          </table>
-        </div>
       </div>
-    </div>
-    <p class="pyramid-caption">Each tier links to a real office and a live ask — see DOH Structure's "strategic focus, at a glance" table for ownership.</p>
-  </div>
 </div>
 
 
@@ -3728,6 +3776,7 @@ LOC. 228</div>
                 <tr><td class="mono">5142</td><td>28 Jul 2026 — Esteban designated CIO</td></tr>
                 <tr><td class="mono">5143</td><td>28 Jul 2026 — Suba-an → CALABARZON CHD</td></tr>
                 <tr><td class="mono">5144</td><td>28 Jul 2026 — Beltran, lead oversight of KMITS</td></tr>
+                <tr><td class="mono">—</td><td>4 Aug 2026 — Malacañang appointment letter: Saquilabon, Undersecretary DOH, vice Perez-Chiong</td></tr>
               </tbody>
             </table>
           </div>
@@ -3815,6 +3864,13 @@ document.querySelectorAll('.oc-card[data-jump-target]').forEach(function(card){
   });
 });
 
+/* Glance table rows (Tab 4) jump cross-tab to DOH Structure */
+document.querySelectorAll('tr.glance-row[data-jump-target]').forEach(function(row){
+  row.addEventListener('click', function(){
+    jumpTo(row.dataset.jumpTarget, 'structure');
+  });
+});
+
 /* ===== Local office filter (Find an office) ===== */
 (function(){
   var input = document.getElementById('office-filter');
@@ -3827,7 +3883,8 @@ document.querySelectorAll('.oc-card[data-jump-target]').forEach(function(card){
     rows.forEach(function(r){
       var label = (r.dataset.searchLabel||'').toLowerCase();
       var sub = (r.dataset.searchSub||'').toLowerCase();
-      var match = !q || label.indexOf(q)!==-1 || sub.indexOf(q)!==-1;
+      var alias = (r.dataset.searchAlias||'').toLowerCase();
+      var match = !q || label.indexOf(q)!==-1 || sub.indexOf(q)!==-1 || alias.indexOf(q)!==-1;
       r.classList.toggle('row-hidden', !match);
       if(match) shown++;
     });
@@ -3843,7 +3900,8 @@ var SEARCH_INDEX = [
 "sub": "Dr. Lester M. Tan, Director IV",
 "tab": "structure",
 "id": "off-metro-manila-chd--ncr",
-"kind": "office"
+"kind": "office",
+"alias": "MMCHD CHD"
 },
 {
 "label": "All DOH medical centers & Metro Manila specialty hospitals",
@@ -3857,217 +3915,248 @@ var SEARCH_INDEX = [
 "sub": "\u2014",
 "tab": "structure",
 "id": "off-public-private-partnership-management-office",
-"kind": "office"
+"kind": "office",
+"alias": "PPPMO"
 },
 {
 "label": "7 Centers for Health Development",
 "sub": "See DOH Hospitals tab for each region's hospital roster",
 "tab": "structure",
 "id": "off-7-centers-for-health-development",
-"kind": "office"
+"kind": "office",
+"alias": "CHD"
 },
 {
 "label": "Health Emergency Management Bureau",
 "sub": "Dr. Bernadett P. Velasco, Director IV",
 "tab": "structure",
 "id": "off-health-emergency-management-bureau",
-"kind": "office"
+"kind": "office",
+"alias": "HEMB"
 },
 {
 "label": "Pharmaceutical Division",
 "sub": "Dr. Uriel C. Cachero, OIC",
 "tab": "structure",
 "id": "off-pharmaceutical-division",
-"kind": "office"
+"kind": "office",
+"alias": "PD"
 },
 {
 "label": "Health and Climate Change Office",
 "sub": "Dr. Ronald Law, Director III",
 "tab": "structure",
 "id": "off-health-and-climate-change-office",
-"kind": "office"
+"kind": "office",
+"alias": "HCCO"
 },
 {
 "label": "Philippine National AIDS Council",
 "sub": "Dr. Joselito R. Feliciano, Executive Director III",
 "tab": "structure",
 "id": "off-philippine-national-aids-council",
-"kind": "office"
+"kind": "office",
+"alias": "PNAC"
 },
 {
 "label": "Philippine Multi-Sectoral Nutrition Project",
 "sub": "\u2014",
 "tab": "structure",
 "id": "off-philippine-multi-sectoral-nutrition-project",
-"kind": "office"
+"kind": "office",
+"alias": "PMNP"
 },
 {
 "label": "4 Centers for Health Development",
 "sub": "See DOH Hospitals tab for each region's hospital roster",
 "tab": "structure",
 "id": "off-4-centers-for-health-development",
-"kind": "office"
+"kind": "office",
+"alias": "CHD"
 },
 {
 "label": "UHC HSC Technical Office",
 "sub": "Ms. Frances Rose E. Mamaril, Director IV",
 "tab": "structure",
 "id": "off-uhc-hsc-technical-office",
-"kind": "office"
+"kind": "office",
+"alias": "HSC-TO UHC HSC-TO"
 },
 {
 "label": "Disease Prevention & Control Bureau",
 "sub": "Dr. Jose Gerard B. Belimac, OIC",
 "tab": "structure",
 "id": "off-disease-prevention--control-bureau",
-"kind": "office"
+"kind": "office",
+"alias": "DPCB"
 },
 {
 "label": "Epidemiology Bureau",
 "sub": "Dr. Gerna M. Manatad, Director IV",
 "tab": "structure",
 "id": "off-epidemiology-bureau",
-"kind": "office"
+"kind": "office",
+"alias": "EB"
 },
 {
 "label": "Health Promotion Bureau",
 "sub": "Dr. Mar Wynn D. Bello, Director IV",
 "tab": "structure",
 "id": "off-health-promotion-bureau",
-"kind": "office"
+"kind": "office",
+"alias": "HPB"
 },
 {
 "label": "Research Institute for Tropical Medicine",
 "sub": "Atty. Ana Liza P. Hombrado-Duran, Director IV",
 "tab": "structure",
 "id": "off-research-institute-for-tropical-medicine",
-"kind": "office"
+"kind": "office",
+"alias": "RITM"
 },
 {
 "label": "All DOH Drug Abuse Treatment & Rehabilitation Centers",
 "sub": "\u2014",
 "tab": "structure",
 "id": "off-all-doh-drug-abuse-treatment--rehabilitation-centers",
-"kind": "office"
+"kind": "office",
+"alias": "DATRC"
 },
 {
 "label": "5 Centers for Health Development",
 "sub": "Region XII (SOCCSKSARGEN) currently vacant at Director IV \u2014 see DOH Hospitals tab",
 "tab": "structure",
 "id": "off-5-centers-for-health-development",
-"kind": "office"
+"kind": "office",
+"alias": "CHD"
 },
 {
 "label": "Bureau of Local Health Systems Development",
 "sub": "Dr. Juan Alfonso R. Perez IV, OIC",
 "tab": "structure",
 "id": "off-bureau-of-local-health-systems-development",
-"kind": "office"
+"kind": "office",
+"alias": "BLHSD"
 },
 {
 "label": "Bureau of International Health Cooperation",
 "sub": "Dr. Grace Fe Buquiran-Nericua, OIC",
 "tab": "structure",
 "id": "off-bureau-of-international-health-cooperation",
-"kind": "office"
+"kind": "office",
+"alias": "BIHC"
 },
 {
 "label": "Health Human Resource Development Bureau",
 "sub": "Dr. Mary Ruth S. Politico, OIC",
 "tab": "structure",
 "id": "off-health-human-resource-development-bureau",
-"kind": "office"
+"kind": "office",
+"alias": "HHRDB"
 },
 {
 "label": "KMITS",
 "sub": "Ms. Cherrie D. Esteban, OIC Director IV & concurrent Chief Information Officer (DPO 5142)",
 "tab": "structure",
 "id": "off-kmits",
-"kind": "office"
+"kind": "office",
+"alias": "KMITS"
 },
 {
 "label": "Health Facilities & Service Regulatory Bureau",
 "sub": "Engr. Annette B. Tan, Director IV",
 "tab": "structure",
 "id": "off-health-facilities--service-regulatory-bureau",
-"kind": "office"
+"kind": "office",
+"alias": "HFSRB"
 },
 {
 "label": "Health Facility Development Bureau",
 "sub": "Dr. Melissa T. Sena, Director IV",
 "tab": "structure",
 "id": "off-health-facility-development-bureau",
-"kind": "office"
+"kind": "office",
+"alias": "HFDB"
 },
 {
 "label": "Bureau of Quarantine",
 "sub": "Dr. Aleli Annie Grace P. Sudiacal, Director IV (DPO 4826)",
 "tab": "structure",
 "id": "off-bureau-of-quarantine",
-"kind": "office"
+"kind": "office",
+"alias": "BOQ"
 },
 {
 "label": "PITAHC",
 "sub": "Dr. Ma. Teresa C. I\u00f1igo, Director General",
 "tab": "structure",
 "id": "off-pitahc",
-"kind": "office"
+"kind": "office",
+"alias": "PITAHC"
 },
 {
 "label": "Malasakit Program Office",
 "sub": "Atty. Allison C. Umandap, Director IV",
 "tab": "structure",
 "id": "off-malasakit-program-office",
-"kind": "office"
+"kind": "office",
+"alias": "MPO"
 },
 {
 "label": "Supply Chain Management Service",
 "sub": "Ms. Johanna Solon-Banzon, Director IV",
 "tab": "structure",
 "id": "off-supply-chain-management-service",
-"kind": "office"
+"kind": "office",
+"alias": "SCMS"
 },
 {
 "label": "National Nutrition Council",
 "sub": "Designated Jul 2026, succeeding Asec. Azucena M. Dayanghirang",
 "tab": "structure",
 "id": "off-national-nutrition-council",
-"kind": "office"
+"kind": "office",
+"alias": "NNC"
 },
 {
 "label": "Oral Health Program",
 "sub": "Dr. Manuel V. Vallesteros, Division Chief",
 "tab": "structure",
 "id": "off-oral-health-program",
-"kind": "office"
+"kind": "office",
+"alias": "OHP"
 },
 {
 "label": "Philippine Medical Travel & Wellness Tourism Program",
 "sub": "\u2014",
 "tab": "structure",
 "id": "off-philippine-medical-travel--wellness-tourism-program",
-"kind": "office"
+"kind": "office",
+"alias": "Medical Tourism"
 },
 {
 "label": "Internal Audit Service",
 "sub": "Ms. Rowena C. Lora, Director IV",
 "tab": "structure",
 "id": "off-internal-audit-service",
-"kind": "office"
+"kind": "office",
+"alias": "IAS"
 },
 {
 "label": "Health Facilities Enhancement PMO",
 "sub": "Engr. Maximo A. Adan Jr., OIC",
 "tab": "structure",
 "id": "off-health-facilities-enhancement-pmo",
-"kind": "office"
+"kind": "office",
+"alias": "HFEP-MO HFEPMO"
 },
 {
 "label": "Health Policy Development & Planning Bureau",
 "sub": "Mr. Roderick M. Napulan, Director IV",
 "tab": "structure",
 "id": "off-health-policy-development--planning-bureau",
-"kind": "office"
+"kind": "office",
+"alias": "HPDPB"
 },
 {
 "label": "PhilHealth",
@@ -4081,56 +4170,64 @@ var SEARCH_INDEX = [
 "sub": "Atty. Paolo S. Teston, Director General",
 "tab": "structure",
 "id": "off-fda",
-"kind": "office"
+"kind": "office",
+"alias": "FDA"
 },
 {
 "label": "Philippine Heart Center",
 "sub": "Dr. Avenilo L. Aventura Jr., Executive Director",
 "tab": "structure",
 "id": "off-philippine-heart-center",
-"kind": "office"
+"kind": "office",
+"alias": "PHC"
 },
 {
 "label": "National Kidney & Transplant Institute",
 "sub": "Dr. Jose Dante P. Dator, Executive Director",
 "tab": "structure",
 "id": "off-national-kidney--transplant-institute",
-"kind": "office"
+"kind": "office",
+"alias": "NKTI"
 },
 {
 "label": "Lung Center of the Philippines",
 "sub": "Dr. Jubert P. Benedicto, OIC-Executive Director",
 "tab": "structure",
 "id": "off-lung-center-of-the-philippines",
-"kind": "office"
+"kind": "office",
+"alias": "LCP"
 },
 {
 "label": "Philippine Children's Medical Center",
 "sub": "Dr. Cecilia O. Gan, Executive Director",
 "tab": "structure",
 "id": "off-philippine-children-s-medical-center",
-"kind": "office"
+"kind": "office",
+"alias": "PCMC"
 },
 {
 "label": "Administrative Service",
 "sub": "Mr. Roderick M. Napulan, Director IV",
 "tab": "structure",
 "id": "off-administrative-service",
-"kind": "office"
+"kind": "office",
+"alias": "AS"
 },
 {
 "label": "Financial & Management Service",
 "sub": "Ms. Maria Ella T. Guerrero, Director IV",
 "tab": "structure",
 "id": "off-financial--management-service",
-"kind": "office"
+"kind": "office",
+"alias": "FMS"
 },
 {
 "label": "Procurement Service",
 "sub": "Mr. Nigel Aleksei B. Tabion, OIC",
 "tab": "structure",
 "id": "off-procurement-service",
-"kind": "office"
+"kind": "office",
+"alias": "PS"
 },
 {
 "label": "Priority projects",
@@ -4788,28 +4885,32 @@ var SEARCH_INDEX = [
 "sub": "GOCC specialty center",
 "tab": "hospitals",
 "id": "gocc-philippine-heart-center",
-"kind": "hospital"
+"kind": "hospital",
+"alias": "Bopis hospitals Bopis"
 },
 {
 "label": "National Kidney and Transplant Institute",
 "sub": "GOCC specialty center",
 "tab": "hospitals",
 "id": "gocc-national-kidney-and-transplant-institute",
-"kind": "hospital"
+"kind": "hospital",
+"alias": "Bopis hospitals Bopis"
 },
 {
 "label": "Lung Center of the Philippines",
 "sub": "GOCC specialty center",
 "tab": "hospitals",
 "id": "gocc-lung-center-of-the-philippines",
-"kind": "hospital"
+"kind": "hospital",
+"alias": "Bopis hospitals Bopis"
 },
 {
 "label": "Philippine Children's Medical Center",
 "sub": "GOCC specialty center",
 "tab": "hospitals",
 "id": "gocc-philippine-children-s-medical-center",
-"kind": "hospital"
+"kind": "hospital",
+"alias": "Bopis hospitals Bopis"
 }
 ];
 
@@ -4842,7 +4943,8 @@ var SEARCH_INDEX = [
     var q = input.value.trim().toLowerCase();
     if(!q){ results.classList.remove('show'); return; }
     var matches = SEARCH_INDEX.filter(function(item){
-      return item.label.toLowerCase().indexOf(q)!==-1 || item.sub.toLowerCase().indexOf(q)!==-1;
+      var aliasMatch = item.alias ? item.alias.toLowerCase().indexOf(q)!==-1 : false;
+      return item.label.toLowerCase().indexOf(q)!==-1 || item.sub.toLowerCase().indexOf(q)!==-1 || aliasMatch;
     });
     render(matches);
   }
