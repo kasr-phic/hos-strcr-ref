@@ -241,6 +241,32 @@ details.srcpanel[open] summary::before{transform:rotate(90deg);}
 .srcpanel-body{margin-top:16px;font-size:12.8px;color:var(--umber);}
 .srcpanel-body .grid-2{margin-top:14px;}
 .footnote{font-size:11.6px;color:var(--muted);margin-top:8px;}
+
+/* ===== PhilHealth contracts ===== */
+.ph-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:8px 0 30px;}
+@media(max-width:900px){.ph-summary{grid-template-columns:repeat(2,1fr);}}
+.ph-stat{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:20px;}
+.ph-stat .n{font-family:'Fraunces',serif;font-weight:700;font-size:30px;color:var(--canopy);line-height:1;}
+.ph-stat .l{font-size:12.5px;color:var(--umber);margin-top:6px;font-weight:600;}
+details.ph-row{border:1px solid var(--line);border-radius:10px;margin-bottom:8px;background:var(--paper);overflow:hidden;}
+details.ph-row[open]{border-color:var(--gold-deep);}
+details.ph-row summary{
+  list-style:none;cursor:pointer;padding:12px 16px;display:flex;align-items:center;gap:12px;font-size:13.4px;flex-wrap:wrap;
+}
+details.ph-row summary::-webkit-details-marker{display:none;}
+.ph-name{font-weight:700;color:var(--canopy);flex:1 1 240px;min-width:180px;}
+.ph-region{font-family:'IBM Plex Mono',monospace;font-size:10.6px;color:var(--muted);background:#F1EDE0;border-radius:100px;padding:3px 9px;}
+.ph-badge{font-family:'IBM Plex Mono',monospace;font-size:10.6px;font-weight:700;border-radius:100px;padding:3px 9px;white-space:nowrap;}
+.ph-z{background:#F6DCC8;color:#a5552a;}
+.ph-so{background:#DECBF0;color:#4a2c6e;}
+.ph-none{background:#EFEBE0;color:var(--muted);font-weight:600;}
+.ph-chevron{margin-left:auto;color:var(--gold-deep);font-size:14px;transition:transform .15s;}
+details.ph-row[open] .ph-chevron{transform:rotate(180deg);}
+.ph-detail{border-top:1px solid var(--line);padding:14px 20px;display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+@media(max-width:700px){.ph-detail{grid-template-columns:1fr;}}
+.ph-detail h5{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--gold-deep);font-family:'IBM Plex Mono',monospace;margin:0 0 8px;font-weight:600;}
+.ph-detail ul{margin:0;padding-left:18px;font-size:12.8px;color:var(--ink);}
+.ph-detail li{margin-bottom:4px;}
 </style>
 </head>
 <body>
@@ -274,6 +300,7 @@ details.srcpanel[open] summary::before{transform:rotate(90deg);}
       <a href="#gocc" class="active">GOCC Hospitals</a>
       <a href="#regional">Regional Hospitals</a>
       <a href="#distribution">Distribution</a>
+      <a href="#philhealth">PhilHealth Contracts</a>
     </div>
   </div>
 
@@ -1212,6 +1239,635 @@ details.srcpanel[open] summary::before{transform:rotate(90deg);}
       <strong style="color:var(--ink);">Region XII — SOCCSKSARGEN carries only one DOH-retained hospital</strong> in this dataset, against 5–8 in comparably-sized neighboring regions — and it's Unspecified in level. This is the same region whose CHD Director IV post is currently vacant (see Internal Structure).
       <br><br>
       <strong style="color:var(--ink);">On hospital-to-CHD distances:</strong> every hospital above resolves to a city/province, and every CHD's general location is known, so an approximate distance table is possible in principle — but building one credibly would mean geocoding all 92 facilities against their CHD office coordinates, which hasn't been done here. Happy to build it as a follow-on if useful.
+    </div>
+
+    <h2 class="stitle" id="philhealth" style="margin-top:48px;">PhilHealth contracted services</h2>
+    <p class="sdek">Cross-referenced against PhilHealth's own contracted-facility lists for Z Benefit packages and Specialized Outpatient (SO) Benefit packages, both dated 30 June 2026. Filtered to government (sector "G") facilities that match this hospital roster — private, provincial, LGU, and state-university hospitals in the source lists (e.g. UP-PGH, Ospital ng Makati, provincial hospitals) are correctly excluded since they aren't DOH-retained.</p>
+
+    <div class="ph-summary">
+      <div class="ph-stat"><div class="n">47</div><div class="l">of 96 DOH/GOCC hospitals hold at least one PhilHealth contract in this dataset</div></div>
+      <div class="ph-stat"><div class="n">44</div><div class="l">hold a Z-Benefit package contract</div></div>
+      <div class="ph-stat"><div class="n">36</div><div class="l">hold an SO-Benefit package contract</div></div>
+      <div class="ph-stat"><div class="n">49</div><div class="l">show no contract in either source list</div></div>
+    </div>
+
+    <p class="sdek" style="margin-top:-12px;">Sorted by total package count, most to least. Click a hospital to see its specific packages.</p>
+    <div id="philhealth-rows">
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Southern Philippines Medical Center</span>
+    <span class="ph-region">Region XI</span>
+    <span class="ph-badge ph-z">19 Z-Benefit</span>
+    <span class="ph-badge ph-so">5 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (19)</h5><ul><li>Acute Lymphocytic (Lymphoblastic) Leukemia (All)</li><li>Breast Cancer</li><li>Cervical Cancer</li><li>Children With Developmental Disability</li><li>Children With Hearing Impairment</li><li>Children With Mobility Disorder</li><li>Colon Cancer</li><li>Coronary Artey Bypass Graft</li><li>Expanded Z Morph</li><li>Kidney Transplant</li><li>Peritoneal Dialysis (Pd First)</li><li>Post-Kidney Transplant In Adults</li><li>Premature Or Small Newborn</li><li>Prostate Cancer</li><li>Rectum Cancer</li><li>Selected Orthopedic Implants</li><li>Tetralogy Of Fallot</li><li>Vetricular Septal Defect (Vsd)</li><li>Z Morph</li></ul></div>
+    <div><h5>SO-Benefit packages (5)</h5><ul><li>Assistive Mobility Devices</li><li>Occupational Therapy</li><li>Physical Therapy Services</li><li>Rheumatic Fever/Rheumatic Heart Disease</li><li>Specialty Mental Health Services</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Western Visayas Medical Center</span>
+    <span class="ph-region">Region VI</span>
+    <span class="ph-badge ph-z">14 Z-Benefit</span>
+    <span class="ph-badge ph-so">3 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (14)</h5><ul><li>Acute Lymphocytic (Lymphoblastic) Leukemia (All)</li><li>Breast Cancer</li><li>Cervical Cancer</li><li>Children With Hearing Impairment</li><li>Colon Cancer</li><li>Coronary Artey Bypass Graft</li><li>Heart Valve Repair/Replacement For Valvular Heart Disease</li><li>Peritoneal Dialysis (Pd First)</li><li>Premature Or Small Newborn</li><li>Prostate Cancer</li><li>Rectum Cancer</li><li>Selected Orthopedic Implants</li><li>Tetralogy Of Fallot</li><li>Vetricular Septal Defect (Vsd)</li></ul></div>
+    <div><h5>SO-Benefit packages (3)</h5><ul><li>Physical Therapy Services</li><li>Rheumatic Fever/Rheumatic Heart Disease</li><li>Specialty Mental Health Services</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Bicol Medical Center</span>
+    <span class="ph-region">Region V</span>
+    <span class="ph-badge ph-z">14 Z-Benefit</span>
+    <span class="ph-badge ph-so">3 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (14)</h5><ul><li>Acute Lymphocytic (Lymphoblastic) Leukemia (All)</li><li>Breast Cancer</li><li>Children With Hearing Impairment</li><li>Colon Cancer</li><li>Coronary Artey Bypass Graft</li><li>Heart Valve Repair/Replacement For Valvular Heart Disease</li><li>Kidney Transplant</li><li>Peritoneal Dialysis (Pd First)</li><li>Post-Kidney Transplant In Adults</li><li>Premature Or Small Newborn</li><li>Rectum Cancer</li><li>Selected Orthopedic Implants</li><li>Tetralogy Of Fallot</li><li>Vetricular Septal Defect (Vsd)</li></ul></div>
+    <div><h5>SO-Benefit packages (3)</h5><ul><li>Physical Therapy Services</li><li>Rheumatic Fever/Rheumatic Heart Disease</li><li>Specialty Mental Health Services</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Baguio General Hospital and Medical Center</span>
+    <span class="ph-region">CAR</span>
+    <span class="ph-badge ph-z">14 Z-Benefit</span>
+    <span class="ph-badge ph-so">3 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (14)</h5><ul><li>Acute Lymphocytic (Lymphoblastic) Leukemia (All)</li><li>Breast Cancer</li><li>Children With Developmental Disability</li><li>Colon Cancer</li><li>Coronary Artey Bypass Graft</li><li>Kidney Transplant</li><li>Peritoneal Dialysis (Pd First)</li><li>Post-Kidney Transplant In Adults</li><li>Post-Kidney Transplant In Children</li><li>Premature Or Small Newborn</li><li>Rectum Cancer</li><li>Selected Orthopedic Implants</li><li>Tetralogy Of Fallot</li><li>Vetricular Septal Defect (Vsd)</li></ul></div>
+    <div><h5>SO-Benefit packages (3)</h5><ul><li>Physical Therapy Services</li><li>Rheumatic Fever/Rheumatic Heart Disease</li><li>Specialty Mental Health Services</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Dr. Paulino J. Garcia Memorial Research and Medical Center</span>
+    <span class="ph-region">Region III</span>
+    <span class="ph-badge ph-z">13 Z-Benefit</span>
+    <span class="ph-badge ph-so">3 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (13)</h5><ul><li>Acute Lymphocytic (Lymphoblastic) Leukemia (All)</li><li>Breast Cancer</li><li>Children With Visual Disability</li><li>Colon Cancer</li><li>Coronary Artey Bypass Graft</li><li>Expanded Z Morph</li><li>Kidney Transplant</li><li>Peritoneal Dialysis (Pd First)</li><li>Premature Or Small Newborn</li><li>Prostate Cancer</li><li>Rectum Cancer</li><li>Selected Orthopedic Implants</li><li>Z Morph</li></ul></div>
+    <div><h5>SO-Benefit packages (3)</h5><ul><li>General Mental Health Services</li><li>Rheumatic Fever/Rheumatic Heart Disease</li><li>Specialty Mental Health Services</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Vicente Sotto Memorial Medical Center</span>
+    <span class="ph-region">Region VII</span>
+    <span class="ph-badge ph-z">13 Z-Benefit</span>
+    <span class="ph-badge ph-so">1 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (13)</h5><ul><li>Acute Lymphocytic (Lymphoblastic) Leukemia (All)</li><li>Breast Cancer</li><li>Cervical Cancer</li><li>Colon Cancer</li><li>Coronary Artey Bypass Graft</li><li>Kidney Transplant</li><li>Peritoneal Dialysis (Pd First)</li><li>Premature Or Small Newborn</li><li>Prostate Cancer</li><li>Rectum Cancer</li><li>Selected Orthopedic Implants</li><li>Tetralogy Of Fallot</li><li>Vetricular Septal Defect (Vsd)</li></ul></div>
+    <div><h5>SO-Benefit packages (1)</h5><ul><li>Rheumatic Fever/Rheumatic Heart Disease</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Cotabato Regional and Medical Center</span>
+    <span class="ph-region">BARMM</span>
+    <span class="ph-badge ph-z">13 Z-Benefit</span>
+    <span class="ph-badge ph-so">1 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (13)</h5><ul><li>Acute Lymphocytic (Lymphoblastic) Leukemia (All)</li><li>Breast Cancer</li><li>Cervical Cancer</li><li>Children With Mobility Disorder</li><li>Colon Cancer</li><li>Coronary Artey Bypass Graft</li><li>Expanded Z Morph</li><li>Peritoneal Dialysis (Pd First)</li><li>Premature Or Small Newborn</li><li>Rectum Cancer</li><li>Tetralogy Of Fallot</li><li>Vetricular Septal Defect (Vsd)</li><li>Z Morph</li></ul></div>
+    <div><h5>SO-Benefit packages (1)</h5><ul><li>General Mental Health Services</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Northern Mindanao Medical Center</span>
+    <span class="ph-region">Region X</span>
+    <span class="ph-badge ph-z">9 Z-Benefit</span>
+    <span class="ph-badge ph-so">4 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (9)</h5><ul><li>Acute Lymphocytic (Lymphoblastic) Leukemia (All)</li><li>Breast Cancer</li><li>Coronary Artey Bypass Graft</li><li>Kidney Transplant</li><li>Peritoneal Dialysis (Pd First)</li><li>Premature Or Small Newborn</li><li>Selected Orthopedic Implants</li><li>Tetralogy Of Fallot</li><li>Vetricular Septal Defect (Vsd)</li></ul></div>
+    <div><h5>SO-Benefit packages (4)</h5><ul><li>Assistive Mobility Devices</li><li>Physical Therapy Services</li><li>Rheumatic Fever/Rheumatic Heart Disease</li><li>Speech And Language Pathology Or Speech Therapy</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Bicol Regional Hospital and Medical Center</span>
+    <span class="ph-region">Region V</span>
+    <span class="ph-badge ph-z">10 Z-Benefit</span>
+    <span class="ph-badge ph-so">3 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (10)</h5><ul><li>Acute Lymphocytic (Lymphoblastic) Leukemia (All)</li><li>Breast Cancer</li><li>Coronary Artey Bypass Graft</li><li>Heart Valve Repair/Replacement For Valvular Heart Disease</li><li>Peritoneal Dialysis (Pd First)</li><li>Premature Or Small Newborn</li><li>Prostate Cancer</li><li>Selected Orthopedic Implants</li><li>Tetralogy Of Fallot</li><li>Vetricular Septal Defect (Vsd)</li></ul></div>
+    <div><h5>SO-Benefit packages (3)</h5><ul><li>General Mental Health Services</li><li>Physical Therapy Services</li><li>Rheumatic Fever/Rheumatic Heart Disease</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Davao Regional Medical Center</span>
+    <span class="ph-region">Region XI</span>
+    <span class="ph-badge ph-z">8 Z-Benefit</span>
+    <span class="ph-badge ph-so">4 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (8)</h5><ul><li>Acute Lymphocytic (Lymphoblastic) Leukemia (All)</li><li>Breast Cancer</li><li>Cervical Cancer</li><li>Expanded Z Morph</li><li>Kidney Transplant</li><li>Peritoneal Dialysis (Pd First)</li><li>Selected Orthopedic Implants</li><li>Z Morph</li></ul></div>
+    <div><h5>SO-Benefit packages (4)</h5><ul><li>Assistive Mobility Devices</li><li>General Mental Health Services</li><li>Occupational Therapy</li><li>Physical Therapy Services</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Gov. Celestino Gallares Memorial Medical Center</span>
+    <span class="ph-region">Region VII</span>
+    <span class="ph-badge ph-z">5 Z-Benefit</span>
+    <span class="ph-badge ph-so">6 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (5)</h5><ul><li>Breast Cancer</li><li>Cervical Cancer</li><li>Premature Or Small Newborn</li><li>Prostate Cancer</li><li>Selected Orthopedic Implants</li></ul></div>
+    <div><h5>SO-Benefit packages (6)</h5><ul><li>Assistive Mobility Devices</li><li>Occupational Therapy</li><li>Physical Therapy Services</li><li>Psychological Services</li><li>Rheumatic Fever/Rheumatic Heart Disease</li><li>Speech And Language Pathology Or Speech Therapy</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Eastern Visayas Medical Center</span>
+    <span class="ph-region">Region VIII</span>
+    <span class="ph-badge ph-z">8 Z-Benefit</span>
+    <span class="ph-badge ph-so">3 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (8)</h5><ul><li>Acute Lymphocytic (Lymphoblastic) Leukemia (All)</li><li>Children With Developmental Disability</li><li>Children With Mobility Disorder</li><li>Children With Visual Disability</li><li>Expanded Z Morph</li><li>Peritoneal Dialysis (Pd First)</li><li>Premature Or Small Newborn</li><li>Z Morph</li></ul></div>
+    <div><h5>SO-Benefit packages (3)</h5><ul><li>Assistive Mobility Devices</li><li>General Mental Health Services</li><li>Rheumatic Fever/Rheumatic Heart Disease</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">East Avenue Medical Center</span>
+    <span class="ph-region">NCR</span>
+    <span class="ph-badge ph-z">10 Z-Benefit</span>
+    <span class="ph-badge ph-so">1 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (10)</h5><ul><li>Acute Lymphocytic (Lymphoblastic) Leukemia (All)</li><li>Breast Cancer</li><li>Cervical Cancer</li><li>Children With Visual Disability</li><li>Colon Cancer</li><li>Peritoneal Dialysis (Pd First)</li><li>Premature Or Small Newborn</li><li>Prostate Cancer</li><li>Rectum Cancer</li><li>Selected Orthopedic Implants</li></ul></div>
+    <div><h5>SO-Benefit packages (1)</h5><ul><li>Rheumatic Fever/Rheumatic Heart Disease</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Batangas Medical Center</span>
+    <span class="ph-region">Region IV-A</span>
+    <span class="ph-badge ph-z">10 Z-Benefit</span>
+    <span class="ph-badge ph-so">1 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (10)</h5><ul><li>Acute Lymphocytic (Lymphoblastic) Leukemia (All)</li><li>Breast Cancer</li><li>Cervical Cancer</li><li>Children With Visual Disability</li><li>Colon Cancer</li><li>Kidney Transplant</li><li>Premature Or Small Newborn</li><li>Prostate Cancer</li><li>Rectum Cancer</li><li>Selected Orthopedic Implants</li></ul></div>
+    <div><h5>SO-Benefit packages (1)</h5><ul><li>Specialty Mental Health Services</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Jose B. Lingad Memorial General Hospital</span>
+    <span class="ph-region">Region III</span>
+    <span class="ph-badge ph-z">9 Z-Benefit</span>
+    <span class="ph-badge ph-so">2 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (9)</h5><ul><li>Acute Lymphocytic (Lymphoblastic) Leukemia (All)</li><li>Breast Cancer</li><li>Colon Cancer</li><li>Expanded Z Morph</li><li>Premature Or Small Newborn</li><li>Prostate Cancer</li><li>Rectum Cancer</li><li>Selected Orthopedic Implants</li><li>Z Morph</li></ul></div>
+    <div><h5>SO-Benefit packages (2)</h5><ul><li>General Mental Health Services</li><li>Specialty Mental Health Services</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Cagayan Valley Medical Center</span>
+    <span class="ph-region">Region II</span>
+    <span class="ph-badge ph-z">7 Z-Benefit</span>
+    <span class="ph-badge ph-so">3 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (7)</h5><ul><li>Acute Lymphocytic (Lymphoblastic) Leukemia (All)</li><li>Breast Cancer</li><li>Children With Mobility Disorder</li><li>Expanded Z Morph</li><li>Peritoneal Dialysis (Pd First)</li><li>Premature Or Small Newborn</li><li>Z Morph</li></ul></div>
+    <div><h5>SO-Benefit packages (3)</h5><ul><li>Assistive Mobility Devices</li><li>Physical Therapy Services</li><li>Specialty Mental Health Services</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Zamboanga City Medical Center</span>
+    <span class="ph-region">Region IX</span>
+    <span class="ph-badge ph-z">7 Z-Benefit</span>
+    <span class="ph-badge ph-so">2 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (7)</h5><ul><li>Acute Lymphocytic (Lymphoblastic) Leukemia (All)</li><li>Breast Cancer</li><li>Cervical Cancer</li><li>Colon Cancer</li><li>Peritoneal Dialysis (Pd First)</li><li>Prostate Cancer</li><li>Rectum Cancer</li></ul></div>
+    <div><h5>SO-Benefit packages (2)</h5><ul><li>Rheumatic Fever/Rheumatic Heart Disease</li><li>Specialty Mental Health Services</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Mariano Marcos Memorial Hospital and Medical Center</span>
+    <span class="ph-region">Region I</span>
+    <span class="ph-badge ph-z">7 Z-Benefit</span>
+    <span class="ph-badge ph-so">2 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (7)</h5><ul><li>Acute Lymphocytic (Lymphoblastic) Leukemia (All)</li><li>Breast Cancer</li><li>Coronary Artey Bypass Graft</li><li>Peritoneal Dialysis (Pd First)</li><li>Premature Or Small Newborn</li><li>Prostate Cancer</li><li>Vetricular Septal Defect (Vsd)</li></ul></div>
+    <div><h5>SO-Benefit packages (2)</h5><ul><li>General Mental Health Services</li><li>Rheumatic Fever/Rheumatic Heart Disease</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Quirino Memorial Medical Center</span>
+    <span class="ph-region">NCR</span>
+    <span class="ph-badge ph-z">6 Z-Benefit</span>
+    <span class="ph-badge ph-so">2 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (6)</h5><ul><li>Breast Cancer</li><li>Cervical Cancer</li><li>Colon Cancer</li><li>Premature Or Small Newborn</li><li>Prostate Cancer</li><li>Rectum Cancer</li></ul></div>
+    <div><h5>SO-Benefit packages (2)</h5><ul><li>General Mental Health Services</li><li>Specialty Mental Health Services</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Corazon Locsin Montelibano Memorial Regional Hospital</span>
+    <span class="ph-region">Region VI</span>
+    <span class="ph-badge ph-z">6 Z-Benefit</span>
+    <span class="ph-badge ph-so">1 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (6)</h5><ul><li>Acute Lymphocytic (Lymphoblastic) Leukemia (All)</li><li>Breast Cancer</li><li>Kidney Transplant</li><li>Premature Or Small Newborn</li><li>Prostate Cancer</li><li>Selected Orthopedic Implants</li></ul></div>
+    <div><h5>SO-Benefit packages (1)</h5><ul><li>Rheumatic Fever/Rheumatic Heart Disease</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Jose R. Reyes Memorial Medical Center</span>
+    <span class="ph-region">NCR</span>
+    <span class="ph-badge ph-z">7 Z-Benefit</span>
+    <span class="ph-badge ph-none">0 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (7)</h5><ul><li>Breast Cancer</li><li>Cervical Cancer</li><li>Colon Cancer</li><li>Peritoneal Dialysis (Pd First)</li><li>Premature Or Small Newborn</li><li>Prostate Cancer</li><li>Rectum Cancer</li></ul></div>
+    <div><h5>SO-Benefit packages (0)</h5><ul><li style="color:var(--muted);">None</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Philippine Orthopedic Center</span>
+    <span class="ph-region">NCR</span>
+    <span class="ph-badge ph-z">3 Z-Benefit</span>
+    <span class="ph-badge ph-so">4 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (3)</h5><ul><li>Children With Mobility Disorder</li><li>Expanded Z Morph</li><li>Z Morph</li></ul></div>
+    <div><h5>SO-Benefit packages (4)</h5><ul><li>Assistive Mobility Devices</li><li>Occupational Therapy</li><li>Physical Therapy Services</li><li>Speech And Language Pathology Or Speech Therapy</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Ilocos Training and Regional Medical Center</span>
+    <span class="ph-region">Region I</span>
+    <span class="ph-badge ph-z">5 Z-Benefit</span>
+    <span class="ph-badge ph-so">2 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (5)</h5><ul><li>Acute Lymphocytic (Lymphoblastic) Leukemia (All)</li><li>Breast Cancer</li><li>Peritoneal Dialysis (Pd First)</li><li>Premature Or Small Newborn</li><li>Selected Orthopedic Implants</li></ul></div>
+    <div><h5>SO-Benefit packages (2)</h5><ul><li>Rheumatic Fever/Rheumatic Heart Disease</li><li>Specialty Mental Health Services</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Cebu South Medical Center</span>
+    <span class="ph-region">Region VII</span>
+    <span class="ph-badge ph-z">2 Z-Benefit</span>
+    <span class="ph-badge ph-so">4 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (2)</h5><ul><li>Peritoneal Dialysis (Pd First)</li><li>Premature Or Small Newborn</li></ul></div>
+    <div><h5>SO-Benefit packages (4)</h5><ul><li>Assistive Mobility Devices</li><li>Occupational Therapy</li><li>Physical Therapy Services</li><li>Speech And Language Pathology Or Speech Therapy</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Rizal Medical Center</span>
+    <span class="ph-region">NCR</span>
+    <span class="ph-badge ph-z">4 Z-Benefit</span>
+    <span class="ph-badge ph-so">1 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (4)</h5><ul><li>Breast Cancer</li><li>Colon Cancer</li><li>Rectum Cancer</li><li>Selected Orthopedic Implants</li></ul></div>
+    <div><h5>SO-Benefit packages (1)</h5><ul><li>Rheumatic Fever/Rheumatic Heart Disease</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Philippine Heart Center</span>
+    <span class="ph-region">GOCC</span>
+    <span class="ph-badge ph-z">4 Z-Benefit</span>
+    <span class="ph-badge ph-so">1 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (4)</h5><ul><li>Coronary Artey Bypass Graft</li><li>Heart Valve Repair/Replacement For Valvular Heart Disease</li><li>Tetralogy Of Fallot</li><li>Vetricular Septal Defect (Vsd)</li></ul></div>
+    <div><h5>SO-Benefit packages (1)</h5><ul><li>Rheumatic Fever/Rheumatic Heart Disease</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">National Kidney and Transplant Institute</span>
+    <span class="ph-region">GOCC</span>
+    <span class="ph-badge ph-z">5 Z-Benefit</span>
+    <span class="ph-badge ph-none">0 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (5)</h5><ul><li>Kidney Transplant</li><li>Peritoneal Dialysis (Pd First)</li><li>Post-Kidney Transplant In Adults</li><li>Post-Kidney Transplant In Children</li><li>Prostate Cancer</li></ul></div>
+    <div><h5>SO-Benefit packages (0)</h5><ul><li style="color:var(--muted);">None</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Region II Trauma and Medical Center</span>
+    <span class="ph-region">Region II</span>
+    <span class="ph-badge ph-z">2 Z-Benefit</span>
+    <span class="ph-badge ph-so">3 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (2)</h5><ul><li>Acute Lymphocytic (Lymphoblastic) Leukemia (All)</li><li>Premature Or Small Newborn</li></ul></div>
+    <div><h5>SO-Benefit packages (3)</h5><ul><li>Assistive Mobility Devices</li><li>General Mental Health Services</li><li>Physical Therapy Services</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Tondo Medical Center</span>
+    <span class="ph-region">NCR</span>
+    <span class="ph-badge ph-z">3 Z-Benefit</span>
+    <span class="ph-badge ph-so">2 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (3)</h5><ul><li>Acute Lymphocytic (Lymphoblastic) Leukemia (All)</li><li>Breast Cancer</li><li>Premature Or Small Newborn</li></ul></div>
+    <div><h5>SO-Benefit packages (2)</h5><ul><li>Assistive Mobility Devices</li><li>Physical Therapy Services</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Bataan General Hospital and Medical Center</span>
+    <span class="ph-region">Region III</span>
+    <span class="ph-badge ph-z">1 Z-Benefit</span>
+    <span class="ph-badge ph-so">3 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (1)</h5><ul><li>Peritoneal Dialysis (Pd First)</li></ul></div>
+    <div><h5>SO-Benefit packages (3)</h5><ul><li>Occupational Therapy</li><li>Physical Therapy Services</li><li>Rheumatic Fever/Rheumatic Heart Disease</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">National Children&#x27;s Hospital</span>
+    <span class="ph-region">NCR</span>
+    <span class="ph-badge ph-z">3 Z-Benefit</span>
+    <span class="ph-badge ph-so">1 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (3)</h5><ul><li>Acute Lymphocytic (Lymphoblastic) Leukemia (All)</li><li>Children With Developmental Disability</li><li>Premature Or Small Newborn</li></ul></div>
+    <div><h5>SO-Benefit packages (1)</h5><ul><li>Rheumatic Fever/Rheumatic Heart Disease</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Las Piñas General Hospital and Satellite Trauma Center</span>
+    <span class="ph-region">NCR</span>
+    <span class="ph-badge ph-z">1 Z-Benefit</span>
+    <span class="ph-badge ph-so">3 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (1)</h5><ul><li>Acute Lymphocytic (Lymphoblastic) Leukemia (All)</li></ul></div>
+    <div><h5>SO-Benefit packages (3)</h5><ul><li>Occupational Therapy</li><li>Physical Therapy Services</li><li>Speech And Language Pathology Or Speech Therapy</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Southern Isabela Medical Center</span>
+    <span class="ph-region">Region II</span>
+    <span class="ph-badge ph-z">3 Z-Benefit</span>
+    <span class="ph-badge ph-none">0 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (3)</h5><ul><li>Breast Cancer</li><li>Peritoneal Dialysis (Pd First)</li><li>Premature Or Small Newborn</li></ul></div>
+    <div><h5>SO-Benefit packages (0)</h5><ul><li style="color:var(--muted);">None</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Davao Occidental General Hospital</span>
+    <span class="ph-region">Region XI</span>
+    <span class="ph-badge ph-none">0 Z-Benefit</span>
+    <span class="ph-badge ph-so">3 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (0)</h5><ul><li style="color:var(--muted);">None</li></ul></div>
+    <div><h5>SO-Benefit packages (3)</h5><ul><li>General Mental Health Services</li><li>Occupational Therapy</li><li>Physical Therapy Services</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Dr. Jose Fabella Memorial Hospital</span>
+    <span class="ph-region">NCR</span>
+    <span class="ph-badge ph-z">2 Z-Benefit</span>
+    <span class="ph-badge ph-so">1 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (2)</h5><ul><li>Acute Lymphocytic (Lymphoblastic) Leukemia (All)</li><li>Premature Or Small Newborn</li></ul></div>
+    <div><h5>SO-Benefit packages (1)</h5><ul><li>Rheumatic Fever/Rheumatic Heart Disease</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Caraga Regional Hospital</span>
+    <span class="ph-region">Region XIII</span>
+    <span class="ph-badge ph-z">2 Z-Benefit</span>
+    <span class="ph-badge ph-none">0 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (2)</h5><ul><li>Peritoneal Dialysis (Pd First)</li><li>Selected Orthopedic Implants</li></ul></div>
+    <div><h5>SO-Benefit packages (0)</h5><ul><li style="color:var(--muted);">None</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Region I Medical Center</span>
+    <span class="ph-region">Region I</span>
+    <span class="ph-badge ph-z">2 Z-Benefit</span>
+    <span class="ph-badge ph-none">0 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (2)</h5><ul><li>Breast Cancer</li><li>Kidney Transplant</li></ul></div>
+    <div><h5>SO-Benefit packages (0)</h5><ul><li style="color:var(--muted);">None</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Amang Rodriguez Memorial Medical Center</span>
+    <span class="ph-region">NCR</span>
+    <span class="ph-badge ph-z">1 Z-Benefit</span>
+    <span class="ph-badge ph-so">1 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (1)</h5><ul><li>Breast Cancer</li></ul></div>
+    <div><h5>SO-Benefit packages (1)</h5><ul><li>Rheumatic Fever/Rheumatic Heart Disease</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Valenzuela Medical Center</span>
+    <span class="ph-region">NCR</span>
+    <span class="ph-badge ph-z">2 Z-Benefit</span>
+    <span class="ph-badge ph-none">0 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (2)</h5><ul><li>Peritoneal Dialysis (Pd First)</li><li>Premature Or Small Newborn</li></ul></div>
+    <div><h5>SO-Benefit packages (0)</h5><ul><li style="color:var(--muted);">None</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Philippine Children&#x27;s Medical Center</span>
+    <span class="ph-region">GOCC</span>
+    <span class="ph-badge ph-z">2 Z-Benefit</span>
+    <span class="ph-badge ph-none">0 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (2)</h5><ul><li>Acute Lymphocytic (Lymphoblastic) Leukemia (All)</li><li>Peritoneal Dialysis (Pd First)</li></ul></div>
+    <div><h5>SO-Benefit packages (0)</h5><ul><li style="color:var(--muted);">None</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Bicol Region General Hospital and Geriatric Medical Center</span>
+    <span class="ph-region">Region V</span>
+    <span class="ph-badge ph-z">1 Z-Benefit</span>
+    <span class="ph-badge ph-so">1 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (1)</h5><ul><li>Peritoneal Dialysis (Pd First)</li></ul></div>
+    <div><h5>SO-Benefit packages (1)</h5><ul><li>Physical Therapy Services</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Culion Sanitarium and General Hospital</span>
+    <span class="ph-region">Region IV-B</span>
+    <span class="ph-badge ph-z">1 Z-Benefit</span>
+    <span class="ph-badge ph-none">0 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (1)</h5><ul><li>Premature Or Small Newborn</li></ul></div>
+    <div><h5>SO-Benefit packages (0)</h5><ul><li style="color:var(--muted);">None</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Amai Pakpak Medical Center</span>
+    <span class="ph-region">BARMM</span>
+    <span class="ph-badge ph-z">1 Z-Benefit</span>
+    <span class="ph-badge ph-none">0 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (1)</h5><ul><li>Coronary Artey Bypass Graft</li></ul></div>
+    <div><h5>SO-Benefit packages (0)</h5><ul><li style="color:var(--muted);">None</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Southern Tagalog Regional Hospital</span>
+    <span class="ph-region">Region IV-A</span>
+    <span class="ph-badge ph-z">1 Z-Benefit</span>
+    <span class="ph-badge ph-none">0 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (1)</h5><ul><li>Premature Or Small Newborn</li></ul></div>
+    <div><h5>SO-Benefit packages (0)</h5><ul><li style="color:var(--muted);">None</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">National Center for Mental Health</span>
+    <span class="ph-region">NCR</span>
+    <span class="ph-badge ph-none">0 Z-Benefit</span>
+    <span class="ph-badge ph-so">1 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (0)</h5><ul><li style="color:var(--muted);">None</li></ul></div>
+    <div><h5>SO-Benefit packages (1)</h5><ul><li>Specialty Mental Health Services</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Don Jose S. Monfort Medical Center</span>
+    <span class="ph-region">Region VI</span>
+    <span class="ph-badge ph-none">0 Z-Benefit</span>
+    <span class="ph-badge ph-so">1 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (0)</h5><ul><li style="color:var(--muted);">None</li></ul></div>
+    <div><h5>SO-Benefit packages (1)</h5><ul><li>Specialty Mental Health Services</li></ul></div>
+  </div>
+</details>
+<details class="ph-row">
+  <summary>
+    <span class="ph-name">Ospital ng Palawan</span>
+    <span class="ph-region">Region IV-B</span>
+    <span class="ph-badge ph-z">1 Z-Benefit</span>
+    <span class="ph-badge ph-none">0 SO-Benefit</span>
+    <span class="ph-chevron">⌄</span>
+  </summary>
+  <div class="ph-detail">
+    <div><h5>Z-Benefit packages (1)</h5><ul><li>Premature Or Small Newborn</li></ul></div>
+    <div><h5>SO-Benefit packages (0)</h5><ul><li style="color:var(--muted);">None</li></ul></div>
+  </div>
+</details>
+    </div>
+
+    <div class="covbar" style="margin-top:22px;">
+      <strong style="color:var(--ink);">A zero here is a coverage finding, not a verdict.</strong> 49 hospitals in this roster — including several regional facilities with real bed capacity — show no match in either contracted-provider list as of 30 June 2026. Some of that is real (a Level 2 district hospital with no oncology unit has no business holding a cancer Z-Benefit contract). Some of it may be a naming mismatch this parser didn't catch, or a contract that exists but wasn't in these two specific package categories — PhilHealth publishes many other benefit packages (e.g. Konsulta/YAKAP, Maternity Care, TB-DOTS) not covered by either uploaded list. Treat this section as Z-Benefit and SO-Benefit coverage specifically, not total PhilHealth accreditation status.
     </div>
   </div>
 </div>
