@@ -603,9 +603,19 @@ tr.glance-row:hover td{background:#FAF3E0;}
 
 /* ===== RISE30 tab ===== */
 .rise-arch-banner{
-  background:var(--canopy);color:#fff;font-family:'Fraunces',serif;font-weight:700;font-size:17px;
+  position:relative;overflow:hidden;color:#fff;font-family:'Fraunces',serif;font-weight:700;font-size:17px;
   text-align:center;padding:14px 20px;border-radius:12px 12px 0 0;
+  background:
+    radial-gradient(ellipse 280px 120px at 88% -20%, rgba(243,217,164,0.20), transparent 60%),
+    radial-gradient(ellipse 240px 140px at 6% 130%, rgba(255,255,255,0.12), transparent 65%),
+    linear-gradient(100deg, #081F2E 0%, #0C3A4C 50%, #12586A 100%);
 }
+.rise-arch-banner::before{
+  content:"";position:absolute;inset:0;opacity:0.5;pointer-events:none;
+  background-image:radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size:3px 3px;
+}
+.rise-arch-banner-text{position:relative;}
 table.rise-arch-table{width:100%;border-collapse:collapse;font-size:13.4px;background:var(--paper);border-radius:0 0 12px 12px;overflow:hidden;}
 table.rise-arch-table th{
   background:#F1EDE0;font-family:'IBM Plex Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;
@@ -638,9 +648,19 @@ table.rise-arch-table tr:last-child td{border-bottom:none;}
 .rise-stat-l{font-size:11.6px;color:var(--umber);margin-top:6px;font-weight:600;}
 
 .pullquote-rise{
-  background:var(--canopy);color:var(--gold-soft);border-radius:14px;padding:22px 26px;
+  position:relative;overflow:hidden;color:#EAF7FB;border-radius:14px;padding:22px 26px;
   font-family:'Fraunces',serif;font-style:italic;font-weight:500;font-size:16px;line-height:1.4;
+  background:
+    radial-gradient(ellipse 320px 160px at 90% -10%, rgba(243,217,164,0.20), transparent 60%),
+    radial-gradient(ellipse 280px 150px at 4% 115%, rgba(255,255,255,0.12), transparent 65%),
+    linear-gradient(150deg, #081F2E 0%, #0C3A4C 45%, #12586A 100%);
 }
+.pullquote-rise::before{
+  content:"";position:absolute;inset:0;opacity:0.5;pointer-events:none;
+  background-image:radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size:3px 3px;
+}
+.pullquote-rise-text{position:relative;}
 
 .rise-maturing-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
 @media(max-width:820px){.rise-maturing-grid{grid-template-columns:1fr;}}
@@ -683,12 +703,18 @@ table.rise-arch-table tr:last-child td{border-bottom:none;}
 #panel-rise30 table.rise-arch-table th{background:var(--floor);}
 #panel-rise30 .asof-tag{background:var(--gold-soft);color:var(--canopy-2);}
 #panel-rise30 .subnav{background:rgba(246,248,249,0.94);border-bottom-color:var(--line);}
-#panel-rise30 .subnav a.active{color:var(--canopy);border-bottom-color:var(--gold);}
-.rise-header-zone{background:#E4F1F7;}
+#panel-rise30 .subnav a{border-radius:8px 8px 0 0;}
+#panel-rise30 .subnav a.active{color:#0F6E9C;background:#DCF1F8;border-bottom-color:#0F6E9C;}
+.rise-header-zone{background:#EEF8FB;}
 
-/* Wave crest divider — sits under the tab header, ahead of the ribbon */
+/* Wave crest divider — sits under the tab header, ahead of the subnav */
 .tide-wave-divider{width:100%;height:46px;margin:6px 0 0;line-height:0;}
 .tide-wave-divider svg{width:100%;height:100%;display:block;}
+#panel-rise30 .eyebrow{
+  display:inline-flex;background:#DCF1F8;color:#0F6E9C;border-radius:100px;padding:5px 13px 5px 11px;gap:7px;
+  border:1px solid rgba(15,110,156,0.30);box-shadow:0 1px 3px rgba(15,110,156,0.12);
+}
+#panel-rise30 .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:#0F6E9C;}
 
 /* RISE30 brand ribbon — official asset, image + integrated legend (values stated once, with subtext) */
 .rise-ribbon-hero{display:flex;align-items:center;gap:30px;margin:10px 0 34px;flex-wrap:wrap;}
@@ -4078,7 +4104,7 @@ LOC. 228</div>
       </div>
     </div>
 
-    <div class="rise-arch-banner">RISE30 Shared Architecture</div>
+    <div class="rise-arch-banner"><span class="rise-arch-banner-text">RISE30 Shared Architecture</span></div>
 <div class="scroll-table-wrap">
   <table class="rise-arch-table">
     <thead>
@@ -4194,7 +4220,7 @@ LOC. 228</div>
 </div>
 
 <div class="pullquote-rise" style="margin-top:26px;">
-  The measure of progress is not the payment disbursed, but the worry it relieves.
+  <span class="pullquote-rise-text">The measure of progress is not the payment disbursed, but the worry it relieves.</span>
 </div>
 
 
@@ -4375,7 +4401,7 @@ LOC. 228</div>
 
 <h3 style="font-size:17px;margin:26px 0 12px;">Institutional narrative</h3>
 <div class="pullquote-rise">
-  Strategic reforms shifted the narrative from PhilHealth as a symbol of governance failures to a benchmark for public sector renewal.
+  <span class="pullquote-rise-text">Strategic reforms shifted the narrative from PhilHealth as a symbol of governance failures to a benchmark for public sector renewal.</span>
 </div>
 
 <div class="divider"></div>
